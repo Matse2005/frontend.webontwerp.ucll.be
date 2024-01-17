@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_taal/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>JS taal</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+    <blockquote>
+      <p>
+        <span class="citaat">JavaScript is the world's most misunderstood programming language.</span>
+        <br>
+        &mdash;Douglas Crockford
+      </p>
+    </blockquote>
+    <h1>Een beperkt overzicht over de taal JavaScript</h1>
+    <p>
+      We bekijken in dit deel een heel beperkt aantal JS constructies. We gaan
+      er van uit dat je al de basis van programmeren snapt. Ondanks de beperking
+      die we ons opleggen om <em>alleen maar de absolute basis te tonen</em>,
+      wordt dit toch een lang stuk. Hopelijk vind je het wel te verteren door de
+      vele kleine voorbeeldjes en oefeningen. Het overzicht is sterk gebaseerd
+      op <a href="https://javascript.info/">https://javascript.info/</a>.
+    </p>
+
+    <div class="iframewrapper kaltura">
+      <iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_uvj095tu&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_uf7l8ai7" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+    </div>
+
+    <h2>Variabelen</h2>
+    <p>
+      Je kan een variabele bekijken als een doos met een unieke naam erop. In
+      deze doos kan je data bewaren. Je <em>declareert</em> een variabele met <code>let</code> of <code>const</code>. Je ziet ook soms nog <code>var</code>, maar is in
+      de meeste gevallen verouderd. Als je weet dat een variabele na de eerste
+      toekenning niet meer mag of kan veranderen, dan declareer je de variabele
+      liefst met <code>const</code>. Als je later in je code dan per ongeluk
+      toch deze variabele probeert een andere waarde te geven, krijg je een
+      foutmelding.
+    </p>
+
+    <pre><code>// dit is commentaar van 1 regel
+"use strict"; // zet JS in strict mode = veiliger
+let x = 10; // x heeft waarde 10
+let dubbel = 2 * x; // de variabele y bevat nu het getal 20
+x = 11 // x bevat nu het getal 11, geen let meer gebruiken!
+let getal; // de doos getal is klaar, maar bevat nog niets
+const maxGetal = 100; // maxGetal mag je hierna geen nieuwe waarde geven
+</code></pre>
+
+    <h2>Datatypes</h2>
+    <p>
+      JS is <em>zwak getypeerd</em>, in tegenstelling tot talen zoals Java of
+      C#, die sterk getypeerd zijn. De voornaamste datatypes die we in ons
+      beperkt overzicht nodig kunnen hebben zijn:
+    </p>
+    <ul>
+      <li>number: getallen, zowel geheel als kommagetallen</li>
+      <li>
+        string: 0 of meerdere karakters tussen enkele of dubbele
+        aanhalingstekens
+      </li>
+      <li>boolean: true / false</li>
+      <li>null: voor onbekende waarden</li>
+      <li>undefined als er nog geen waarde toegekend is</li>
+      <li>object: voor meer complexe datastructuren</li>
+    </ul>
+    <p>
+      De operator <code>typeof</code> kan nuttig zijn om het type van een variabele
+      op te vragen
+    </p>
+    <pre><code>// datatypes
+let start = 2;
+typeof start; // geeft number als resultaat
+let boodschap = 'De waarde is:';
+let stap = "1"; // stap is een string
+let klaar = false;
+</code></pre>
+
+    <h2>Typeconversie</h2>
+    <p>
+      Een zwak getypeerde taal laat heel wat bewerkingen toe die in een sterk
+      getypeerde taal fouten zouden opleveren. Een voorbeeld dat gebruik maakt
+      van de declaraties in het vorige stuk: een number (start) optellen bij een
+      string (stap). In C# zou je hier expliciete casting op los moeten laten.
+      JS maakt er geen probleem van en plakt beide variabelen aan elkaar:
+    </p>
+    <pre><code>let res = start + stap // res bevat de string '21'</code></pre>
+
+    <h2>Enkele operatoren</h2>
+    <h3>Wiskunde</h3>
+    <p>
+      Eerst een paar begrippen kort verduidelijken. In de JS-code <code>4 + 8</code> noemen we <code>+</code> een <em>operator</em>. De getallen 4 en 8 zijn
+      dan de linker- en rechteroperand (men gebruikt soms ook de benaming
+      ‘argumenten’). De operator <code>+</code> is een <em>binaire</em> operator
+      omdat er twee operanden zijn.
+    </p>
+    <p>
+      De verwachte wiskundige operatoren zijn beschikbaar: <code>+ - * /</code>.
+      We kunnen ook de rest bij een gehele deling (<code>%</code>) en
+      machtsverheffing (<code>**</code>) gebruiken.
+    </p>
+    <pre><code>3 + 8.1; // geeft 11.1
+1 / 3; // 0.3333333333333333
+14 % 3; // geeft 2, de rest bij gehele deling van 14 door 3
+2 ** 8 // 256 = 2 tot de 8ste macht</code></pre>
+    <p>
+      Voor moeilijker wiskundige bewerkingen is er het <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"><code>Math</code>
+      </a> object, dat heel wat eigenschappen en methoden heeft. Denk hierbij aan
+      alle toetsen op je rekenmachine die niet de gewone bewerkingen vormen, zoals
+      sin, cos, log, afronden enz.
+    </p>
+
+    <h3>Strings aan elkaar plakken</h3>
+    <p>
+      Twee strings plak je (zoals in zoveel andere programmeertalen) met de
+      binaire operator <code>+</code>. In het Engels heet deze bewerking ‘string
+      concatenation’.
+    </p>
+    <pre><code>let leeftijd = 12;
+console.log('Ik ben ' + leeftijd + ' jaar oud.');</code></pre>
+
+    <p>
+      Een krachtiger manier om met strings om te gaan zijn zogenaamde <em>backticks</em>. Die laten immers toe om <em>elke uitdrukking in te voegen in een string</em>
+      door gebruik te maken van $&lbrace;…&rbrace;. Bovenstaand voorbeeld kan hiermee
+      korter geschreven worden:
+    </p>
+    <pre><code>console.log(`Ik ben $&lbrace;leeftijd&rbrace; jaar oud.`); // krachtiger en korter dan werken met +</code></pre>
+
+    <h3>Toekenning</h3>
+    <p>
+      De toekenning <code>=</code> is ook een operator. Eentje met een lage prioriteit,
+      bovendien. Dat is de reden waarom in <code>let x = 3 * 2</code> eerst de operator
+      <code>*</code> uitgevoerd wordt. Het resultaat van deze berekening wordt dan
+      toegekend aan de variabele <code>x</code> door de operator <code>=</code>.
+    </p>
+
+    <h3>Modify-in-place</h3>
+    <p>
+      Het komt vaak voor dat we een operator moeten toepassen op een variabele
+      en het nieuwe resultaat daarvan in diezelfde variabele moeten opslaan.
+      Denk bvb. aan het verhogen of verlagen van een teller. Dat gaat als volgt:
+    </p>
+    <pre><code>let teller = 0;
+teller = teller + 5; // teller heeft nu waarde 5
+teller += 2 // teller is nu 7, korte versie van teller = teller + 2
+teller *= 10 // teller is nu 70, korte versie van teller = teller * 10</code></pre>
+
+    <h3>Verhoog / verlaag</h3>
+    <p>
+      Een van de meest gebruikte wiskundige bewerkingen is een variabele met 1
+      verhogen of verlagen. Dat doe je met de operatoren <code>++</code> en <code>--</code>.
+    </p>
+    <pre><code>let x = 3;
+console.log(x++) // print 4 in console</code></pre>
+    <p>
+      Er is een klein maar belangrijk verschil tussen <code>i++</code> en <code>++i</code>. Beiden doen ongeveer hetzelfde. Zoek zelf het verschil even op tussen
+      beide, bvb op <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#arithmetic_operators">de MDN-pagina over uitdrukkingen en operatoren</a> bij de rubriek ‘Arithmetic operators’. Los dan volgende (moeilijke!) oefening
+      op.
+    </p>
+    <section class="taak">
+      <p>
+        Bekijk volgende code en voorspel wat er na het uitvoeren van deze regels
+        in de variabelen <code>s1</code>, <code>s2</code> en <code>som</code> staat.
+      </p>
+      <pre><code>let som = 6;
+let s1 = som++;
+let s2 = ++som;</code></pre>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        De variabele <code>som</code> wordt twee keer verhoogd met 1, dus is het
+        logisch dat na het uitvoeren van de volledige code <code>som</code> de waarde
+        8 heeft. De variabele <code>s1</code> is wel wat moeilijker: die heeft namelijk
+        de waarde 6! Doordat de <code>++</code>
+        <em>achteraan</em> staat wordt eerst de originele waarde van <code>som</code> (dus 6) gebruikt voor de toekenning aan <code>s1</code>. Pas nadat <code>s1</code> de waarde 6 gekregen heeft, wordt <code>som</code> met 1 verhoogd tot 7.
+        Het omgekeerde gebeurt met <code>s2</code>. Doordat de <code>++</code>
+        <em>voor</em> de variabele <code>som</code> staat, wordt deze bewerking eerst
+        uitgevoerd. De waarde van <code>som</code> wordt dus 8. Deze waarde wordt
+        vervolgens toegekend aan <code>s2</code>. Samengevat: <code>s1</code> bevat
+        de waarde 6, <code>s2</code> bevat 8 en <code>som</code> bevat 8.
+      </p>
+    </section>
+
+    <h2>Vergelijken</h2>
+    <h3>Resultaat van vergelijking is een boolean</h3>
+    <p>
+      Je kent heel wat vergelijkingsmogelijkheden uit wiskunde: groter dan (<code>&gt;</code>), groter dan of gelijk aan (<code>&gt;=</code>), kleiner dan (<code>&lt;</code>), kleiner dan of gelijk aan (<code>&lt;=</code>), gelijk aan (<code>==</code> of <code>===</code>) en niet gelijk aan (<code>!=</code>). Merk op dat
+      een <em>enkel</em> gelijkheidsteken een <em>toekenning</em> en geen vergelijking
+      is.
+    </p>
+    <p>
+      Het resultaat van een vergelijking is altijd een boolean. Enkele
+      voorbeelden:
+    </p>
+    <pre><code>let getal = 4.6;
+getal &lt; 5; // true
+7 &lt;= getal; // false
+getal == 4; // false
+getal = -2 // geen vergelijking maar een toekenning aan de variabele!</code></pre>
+
+    <h3>Strings vergelijken</h3>
+    <p>
+      Je kan ook strings vergelijken. Details vind je op <a href="https://javascript.info/comparison">javascript.info</a>. Een paar kleine voorbeelden als illustratie:
+    </p>
+    <pre><code>'appel' &lt; 'banaan'; // true volgens alfabetische volgorde
+'appel' &lt; 'appelmoes'; // true want eerste 5 letters gelijk en tweede woord is langer
+'appel' == 'peer'; // false
+'peer' != 'banaan'; // true</code></pre>
+
+    <h3>Variabelen met een verschillend type vergelijken</h3>
+    <p>
+      Als je twee variabelen met een verschillend type vergelijkt zal JS die
+      eerst naar getallen converteren. De boolean <code>true</code> wordt gelijk
+      aan 1, de boolean <code>false</code> aan 0.
+    </p>
+    <pre><code>3 &gt;= '1'; // true
+false &lt; 1; // true want 0 &lt; 1
+'05' == 5 // true, de string wordt eerst naar het getal 5 geconverteerd</code></pre>
+
+    <h3>Stricte gelijkheid ===</h3>
+    <p>
+      Meestal is het veiliger om te testen op <em>strikte gelijkheid</em>.
+      Hiervoor bestaat <code>===</code>. Als de operanden (de waarden aan beide
+      kanten van de drie gelijkheidstekens) een verschillend teken hebben, geeft
+      de vergelijking sowieso <code>false</code>.
+    </p>
+    <pre><code>3.1 === 3.1; // true
+3.1 == '3.1'; // true want string wordt een getal
+3.1 === '3.1'; // false want verschillend type</code></pre>
+    <p class="opgepast">
+      Als het kan, kies altijd voor de strikte gelijkheid <code>===</code>!
+    </p>
+
+    <h3>‘truthy’ en ‘falsy’</h3>
+    <p>
+      Voor de volledigheid willen we toch even ook deze begrippen vermelden.
+      Alles wat niet ‘falsy’ (‘valsachtig’) is, is ‘truthy’ (‘waarachtig’), zie <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">de pagina op MDN over ‘falsy’</a>. Bij het testen van voorwaarden wordt er niet gekeken naar true / false,
+      maar wel naar truthy / falsy. Falsy is: false, 0, lege string, null,
+      undefined, NaN. Al de rest is truthy.
+    </p>
+
+    <h2>Voorwaarden: if, else</h2>
+    <h3>if ()</h3>
+    <p>
+      Soms wil je verschillende acties uitvoeren, afhankelijk van een bepaalde
+      voorwaarde. Hiervoor bestaan in JS <code>if</code> en de ‘vraagtekenoperator’
+      <code>?</code>.
+    </p>
+    <p>
+      Stel dat je naar de console de boodschap "getal … is even" wilt schrijven
+      als de waarde van een bepaalde variabele even is, dan zou dit eenvoudig
+      voorbeeld er als volgt kunnen uitzien:
+    </p>
+    <pre><code>let test = 5;
+if (test %2 === 0) &lbrace;
+  console.log('Het getal ' + test + ' is even');
+&rbrace;</code></pre>
+    <p>
+      In bovenstaand voorbeeld is de bewerking <code>%2</code> de ‘modulo 2’ bewerking,
+      of de rest bij deling door 2. Als een getal bij deling door 2 een rest gelijk
+      aan 0 heeft, is het een even getal. Merk ook op dat we de strikte gelijkheid
+      <code>===</code> gebruiken. Er zal niets verschijnen naar de console, want
+      de test tussen ronde haakjes () geeft <code>false</code>. Je had de
+      accolades ook kunnen weglaten na de <code>if</code> en alles op één regel schrijven,
+      maar voor de duidelijkheid zou ik voorstellen om het toch altijd zo met accolades
+      &lbrace;&rbrace; en inspringen te noteren.
+    </p>
+
+    <p>
+      Vanaf hier wordt het verhaal over truthy / falsy belangrijk. De code <code>if (5) console.log("gelukt")</code> zal wel degelijk de string "gelukt" uitschrijven in de console. Het getal
+      5 in de <code>if</code> is namelijk niet 0 en dus is deze voorwaarde truthy.
+    </p>
+
+    <h3>if () else</h3>
+    <p>We breiden dit voorbeeld uit tot:</p>
+    <pre><code>let test = 5;
+if (test %2 === 0) &lbrace;
+  console.log('Het getal ' + test + ' is even');
+&rbrace; else &lbrace;
+  console.log('Het getal ' + test + ' is oneven');
+&rbrace;
+// in de console verschijnt nu de string 'Het getal 5 is oneven'</code></pre>
+
+    <h3>?</h3>
+    <p>
+      De vraagtekenoperator <code>?</code> wordt ook wel ‘ternaire operator’ genoemd
+      omdat dit de enige operator is die <em>drie</em> operanden heeft. Het voorbeeld
+      hierboven kan korter geschreven worden als:
+    </p>
+    <pre><code>let test = 5;
+console.log('Het getal ' + test + ' is ' + (test %2 === 0 ? 'even' : 'oneven'));
+// in de console verschijnt nu de string 'Het getal 5 is oneven'</code></pre>
+    <p>
+      Nog een voorbeeld: <code>let magAlcoholKopen = (leeftijd &gt; 18) ? true : false;</code> kent aan de variabele <code>magAlcoholKopen</code> de waarde <code>true</code> toe als de leeftijdstest slaagt en <code>false</code> in het andere geval.
+    </p>
+
+    <h2>Logische operatoren: of, en, niet</h2>
+    <p>
+      Je bent ongetwijfeld uit één van je programmeerOPO's al vertrouwd met de
+      logische operatoren ‘en’ (<code>&amp;&amp;</code>), ‘of’ (<code>||</code>)
+      en ‘niet’ (<code>!</code>).
+    </p>
+    <p>
+      De ‘of’ werkt zoals je verwacht: als één van beide operanden waar
+      (‘truthy’) is, is de volledige uitdrukking <code>true</code>. JS kent
+      echter – zoals vele talen – het principe van ‘kortsluiting’. Van zodra in
+      een ‘of’ de waarde <code>true</code> (eigenlijk ‘truthy’) bereikt wordt, stopt
+      de evaluatie. Deze techniek wordt o.a. gebruikt om voor de ‘of’ iets te doen
+      dat nodig is voor het stukje erna.
+    </p>
+    <pre><code>let x = 3;
+x === 3 || console.log('dit wordt niet geschreven');
+// geeft true, de zin wordt niet naar de console geschreven
+
+x === 2 || console.log('dit wordt wel geschreven');
+// het resultaat is undefined, zin wordt wel geschreven
+</code></pre>
+
+    <p>
+      Ook ‘en’ werkt gelijkaardig: alleen als beide operanden waar (eigenlijk
+      ‘truthy’) zijn is de volledige uitdrukking <code>true</code>. Ook hier
+      geldt het principe van kortsluiting, maar dan wel voor ‘falsy’: van zodra
+      in een ‘en’ er één ‘falsy’ waarde optreedt, stopt de evaluatie meteen en
+      komen de andere delen niet meer aan bod.
+    </p>
+
+    <h2>Lussen: while en for</h2>
+    <p>
+      Je bent ondertussen al in contact gekomen met lussen in je programmeerOPO.
+      JS kent verschillende soorten lussen. We geven een voorbeeld van een <code>while</code> en een <code>for</code> lus. Hetzelfde voorbeeld wordt twee keer uitgewerkt:
+      bereken de som van alle vijfvouden met drie getallen (geen nullen vooraan)
+      en schrijf deze getallen naar de console.
+    </p>
+
+    <h3>While</h3>
+    <p>De while-lus heeft volgende structuur:</p>
+    <pre><code>while (voorwaarde) &lbrace;
+  // code 
+&rbrace;</code></pre>
+    <p>
+      De getallen met drie cijfers gaan van 100 tot 1000 (niet inbegrepen). Om
+      alle veelvouden van 5 te bereiken volstaat het om van 100 te vertrekken en
+      dit getal telkens met 5 te verhogen. In de lus houdt een variabele <code>som</code> de som van alle getallen bij. Zorg dat je bij een <code>while</code> lus
+      niet vergeet om op het einde een aanpassing (in dit geval verhoging met 5)
+      te doen aan een lusvariabele, want anders krijg je een <em>oneindige lus</em>.
+    </p>
+    <pre><code>let getal = 100; // declareer variabele en initialiseer op 100
+let som = 0;
+while (getal &lt; 1000) &lbrace;
+  console.log(getal);
+  som += getal // kort voor som = som + getal
+  getal += 5 // verhoog getal met 5
+&rbrace;</code></pre>
+    <p>
+      Zolang de waarde tussen haakjes (de uitdrukking <code>getal &lt; 1000)</code> ‘truthy’ is, wordt de code tussen de accolades uitgevoerd.
+    </p>
+    <p>
+      Op het moment dat <code>getal</code> van 995 naar 1000 gaat, wordt de waarde
+      van de vergelijking ‘falsy’ en stopt de lus. De waarde van de variabele <code>getal</code> is dan 1000, in <code>som</code> zit de waarde 98550 (= 100 + 105 + … + 995).
+    </p>
+
+    <p>
+      Er bestaat ook een <code>do … while</code> lus. Het enige verschil is dat deze
+      lus minstens één keer zal uitgevoerd worden, want de test gebeurt pas na de
+      eerste uitvoer van de code tussen accolades.
+    </p>
+
+    <h3>For</h3>
+    <p>
+      We werken hetzelfde voorbeeld uit als bij de <code>while</code>. De
+      structuur van een for-lus is:
+    </p>
+    <pre><code>for (begin; voorwaarde; stap) &lbrace;
+  // code 
+&rbrace;</code></pre>
+    <p>
+      De alternatieve versie van het voorbeeld met deze lus kan er dan als volgt
+      uitzien:
+    </p>
+    <pre><code>let som = 0;
+for (let i = 100; i &lt; 1000; i += 5) &lbrace;
+  console.log(i);
+  som += i;
+&rbrace;</code></pre>
+    <p>
+      Het is gebruikelijk om als lusvariabele een korte naam te kiezen, bvb. <code>i</code>.
+    </p>
+
+    <h3>Een lus onderbreken</h3>
+    <p>
+      Je kan een lus stoppen met <code>break</code> of een stap onderbreken met <code>continue</code>. Sorry, dat kan ik hier niet uitleggen … mijn vingers blokkeren op het
+      klavier. Ik heb namelijk leren programmeren in een tijd waarin dit
+      absoluut verboden was om te doen, want het produceerde ‘spaghetticode’.
+      Mijn proffen hebben dit er zo ingestampt (en beloofden ons ‘hel en
+      verdoemenis’) dat ik niet in staat ben deze techniek te gebruiken. Ik zal
+      altijd het onderbreken in de lusvoorwaarde zelf programmeren.
+    </p>
+    <p>
+      Er bestaan nog andere soorten for-lussen: <code>for … of</code> en <code>for … await … of</code>. De <code>for … in</code> wordt afgeraden om te gebruiken.
+    </p>
+
+    <h2>Functies</h2>
+    <p>
+      Als je op verschillende plaatsen in je script een gelijkaardige actie wil
+      doen, is het meestal handig om een functie te maken. Functies zijn de
+      hoofdbouwblokken van een programma.
+    </p>
+    <p>Een <em>functiedeclaratie</em> ziet er zo uit:</p>
+    <pre><code>function naam(parameter1, parameter2, …) &lbrace;
+  // code 
+&rbrace;</code></pre>
+    <p>
+      Als een functie iets moet berekenen en dat resultaat teruggeven, gebruik
+      je een <code>return</code>. Die zorgt er voor dat de waarde wordt
+      teruggegeven en de verdere uitvoer van de functie gestopt wordt.
+    </p>
+    <p>
+      We komen even terug op het voorbeeld van bij de lussen, waar we de som 100
+      + 105 + … 995 berekenden. Stel dat je ook zoals 3 + 5 + 7 + … +31 en 10 +
+      11 + 12 + … 19 wilt uitrekenen. Je merkt dat er hier een patroon is: een
+      beginwaarde, stapgrootte en een eindwaarde (in wiskunde noemen we dit een <em>rekenkundige rij</em>). We schrijven hiervoor een functie en beperken ons even tot een
+      positieve stapgrootte:
+    </p>
+    <pre><code>function berekenSom(begin, eind, stap) &lbrace;
+  // berekent de som van alle getallen van begin
+  // tot eind, met stapgrootte stap
+  let som = 0; // initialiseer som
+  for (let i = begin; i &lt;= eind; i += stap) &lbrace;
+    som += i;
+  &rbrace;   
+  return som
+&rbrace;</code></pre>
+    <p>
+      Met deze functie kan ik nu het totaal aantal ogen op een dobbelsteen
+      berekenen: <code>berekenSom(1, 6, 1)</code>. Je bekomt 21 als resultaat
+      van de functie-oproep.
+    </p>
+    <p>
+      Het is belangrijk om te beseffen dat variabelen die je declareert binnen
+      de functiedefinitie alleen tijdens het uitvoeren van de functie bestaan.
+      Als de functie gedaan is, kan je bvb de waarde van de variabele <code>som</code> niet opvragen.
+    </p>
+
+    <section class="taak">
+      <p>
+        Als ik de functie oproep met <code>berekenSom(6, 1, -1)</code> kom ik als
+        waarde 0 uit. Kan je dat verklaren? Toch zou ik graag de som 6 + 5 + 4 +
+        3 + 2 + 1 kunnen uitrekenen. Pas de code van de functie aan zodat je ook
+        sommen met negatieve stap kan uitrekenen. Er zijn meerdere oplossingen mogelijk.
+      </p>
+      <button>Toon / verberg oplossing</button>
+      <section class="oplossing">
+        <p>
+          De reden waarom de functie-oproep 0 teruggeeft is dat de lus geen
+          enkele keer wordt uitgevoerd want de beginwaarde van i (6) is niet
+          kleiner dan of gelijk aan de eindwaarde 1. Dit moet je dus aanpassen
+          in de code. Eén mogelijkheid is om bij een negatieve stapgrootte de
+          begin- en eindwaarde om te wisselen en de stap positief te maken. Dus
+          i.p.v. 6 + 5 + … + 1 te berekenen bereken je 1 + 2 + … + 6. Dat kan
+          bvb. met volgende code:
+        </p>
+        <pre><code>function berekenSom(begin, eind, stap) &lbrace;
+  // berekent de som van alle gehele getallen van begin
+  // tot eind, met stapgrootte stap
+  let som = 0; // initialiseer som
+  if (stap &lt; 0) &lbrace;
+    stap = -stap; // maak stap positief
+    let hulp = eind; // om de inhoud van 2 variabelen te wisselen heb je een hulp-var nodig
+    eind = begin;
+    begin = hulp;
+  &rbrace;
+  for (let i = begin; i &lt;= eind; i += stap) &lbrace;
+    som += i;
+  &rbrace;   
+  return som
+&rbrace;</code></pre>
+      </section>
+    </section>
+
+    <h2>Arrow functions</h2>
+    <p>
+      Er is een modernere – kortere – manier om functies te noteren, de
+      zogenaamde ‘pijlnotatie’. Je zal die veel tegenkomen in moderne
+      JS-scripts. We tonen het even met een voorbeeld. Volgende functie (gewone
+      notatie) berekent het gemiddelde van twee getallen. Merk trouwens op in
+      het voorbeeld dat we de functie als een waarde kunnen <em>
+        toekennen aan een variabele
+      </em>. Men spreekt dan over een ‘functie-uitdrukking’.
+    </p>
+    <pre><code>let gemiddelde = function(a, b) &lbrace;
+  return (a + b) / 2;
+&rbrace;</code></pre>
+    <p>In ‘arrow notation’ wordt dat:</p>
+    <pre><code>let gemiddelde = (a, b) =&gt; &lbrace;
+  return (a + b) / 2;
+&rbrace;</code></pre>
+    <p>
+      Aangezien er maar één uitdrukking in de <code>return</code> staat, kan je dit
+      korter noteren als volgt:
+    </p>
+    <pre><code>let gemiddelde = (a, b) =&gt; (a + b) / 2;</code></pre>
+
+    <h2>Al de rest …</h2>
+    <p>
+      Eigenlijk moet ik het nu hebben over <a href="https://javascript.info/string">strings</a>, <a href="https://javascript.info/object">object</a>, <a href="https://javascript.info/array">arrays</a>, … en de vele methoden die er bestaan om elementen van deze types te
+      manipuleren. Dat past echter onmogelijk binnen de beperkte hoeveelheid
+      studiepunten van dit OPO. Mijn raad zou zijn: als je bvb. een array nodig
+      hebt, zoek dan even in <a href="https://frontend.webontwerp.ucll.be/JS_bronnen">één van de bronnen</a> op wat
+      het juist is en hoe je ermee werkt.
+    </p>
+  </main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_taal/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

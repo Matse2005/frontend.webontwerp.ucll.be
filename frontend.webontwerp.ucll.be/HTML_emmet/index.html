@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_emmet/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>HTML emmet</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Learn to harness the power of Emmet, a popular code editor plugin. Mentored by the Sourceress, you'll summon large chunks of HTML code with just a snap of your fingertips. With Emmet, you can type shortcuts that expand to the code you want — helping you write HTML faster, more accurately, and with better structure.</span> <br>
+					&mdash; codepip.com/games/sourcery/
+					
+			</p>
+		</blockquote>
+		<h1>Coderen met Emmet</h1>
+        <section class="leerdoel">
+            <p>We verkennen even enkele mogelijkheden van Emmet, een plugin (meestal al vooraf geïnstalleerd in editors zoals visual studio code) om efficiënt HTML (en later ook CSS) te schrijven.</p>
+            <ul>
+                <li>URL: <a href="https://emmet.io/">https://emmet.io</a></li>
+                <li>&gt;, *, +, ()</li>
+                <li>dummy tekst met lorem</li>
+                <li>gebruik tab-toets</li>
+            </ul>
+        </section>
+		
+        <h2>Emmet video Kevin Powell</h2>
+        <p>Emmet zit standaard ingebouwd in Visual Studio Code en kan ook in andere editors als plugin geïnstalleerd worden. Het versnelt de invoer van HTML en CSS aanzienlijk. Hoe je Emmet voor CSS kan gebruiken is voor een later moment.</p>
+        <p>In volgend youtube filmpje toont Kevin Powell in een tiental minuten een aantal Emmet shortcuts die het intypen van HTML-code vereenvoudigen. Na de video toon ik nog een Emmet shortcut die ik vaak gebruik en hoe ik daar dan een afkorting aan toeken in Visual Studio Code.</p>
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/EhRPdUv1ZrA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <section class="taak">
+    <p>Schrijf een regel Emmet-code om in één keer een <code>section</code> te maken, met daarin twee alinea's (<code>p</code>). Elke alinea bevat 50 random woorden (lorem-tekst). Na de tweede alinea staat nog een geordende lijst met drie items.</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">Typ het volgende in (zonder spaties, alles aan elkaar) <code>section&gt;(p&gt;lorem50)*2+ol&gt;li*3</code> en sluit af met de tab-toets of enter.</p>
+</section>
+
+        <h2>Nieuwe shortcut in Visual Studio Code</h2>
+        <p>Volgende situatie komt geregeld voor: je hebt een bepaald stuk HTML code en er moet een element rond gezet worden. Rond een paar <code>p</code> elementen moet bvb een <code>section</code> gezet worden.</p>
+        <p>Je kan dan een <code>section</code> typen voor de paragrafen. Vervelend is wel dat je dan de sluittag <code>&lt;/section&gt;</code> moet uitknippen en verplaatsen naar achter.</p>
+        <p>Er bestaat echter een Emmet-afkorting die een element rond een ander element kan zetten! Die zit jammer genoeg wat weggestopt in Visual Studio Code: <kbd>View &gt; Command Palette &gt; Emmet: wrap with abbreviation</kbd>. In de volgende video toon ik hoe je zelf een afkorting maakt voor een dergelijk commando.</p>
+        <div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_6eec3waf&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=nl&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_3kkjr1n0" width="960" height="540" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" title="Kaltura Player"></iframe></div>
+
+        <h2>Meer info, cheat sheets</h2>
+        <ul>
+            <li><a href="http://emmet.io/">http://emmet.io</a>, bij ‘documentation’ vind je o.a. een zeer uitgebreide cheat sheet</li>
+            <li><a href="https://frontend.webontwerp.ucll.be/assets/tools/emmet-cheatsheet.pdf">een eenvoudige cheat sheet van Kevin Powell</a></li>
+        </ul>
+
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_emmet/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

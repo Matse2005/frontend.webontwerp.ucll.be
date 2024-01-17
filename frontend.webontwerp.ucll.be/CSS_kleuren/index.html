@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_kleuren/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS kleuren</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">An optimist is a person who sees a green light everywhere, while a pessimist sees only the red stoplight. . . The truly wise person is colorblind.</span> <br>
+					&mdash; Albert Schweitzer (1875–1965)
+					
+			</p>
+		</blockquote>
+		<h1>CSS kleuren en achtergrond</h1>
+        <section class="leerdoel">
+
+            <ul>
+                <li>CSS kleuren;</li>
+                <li>transparantie;</li>
+                <li>achtergrondkleur en -afbeeldingen;</li>
+                <li>enkele selectoren;</li>
+                <li>gradiënten;</li>
+                <li>custom properties (CSS variabelen).</li>
+            </ul>
+        </section>
+		
+        <h2>Kleuren specifiëren</h2>
+        <p>Over kleuren, kleurmodellen, transparantie, … valt heel veel te vertellen. We willen dit stukje echter zo eenvoudig mogelijk houden. Kevin Powell geeft een goed overzicht van enkele mogelijkheden om met kleuren te werken. </p>
+        <p class="opgepast">Mogen we voorstellen om zo weinig mogelijk met kleurennamen te werken? Ik gebruik die zelf ook wel eens om in een voorbeeldje snel iets duidelijk te maken, maar je leert eigenlijk meer over hoe kleuren werken in CSS als je de andere opties (RGB hex, RGB decimaal, … ) gebruikt.</p>
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/AQnR5TtXvZk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <h2>Kleur en toegankelijkheid</h2>
+        <h3>Contrast voor- en achtergrondkleur</h3>
+        <p>Hoe kan je bepalen of de tekstkleur voldoende contrast heeft met de achtergrondkleur? In het volgend filmpje toon ik hoe je de Colour Contrast Analyser gebruikt. <a href="https://www.tpgi.com/color-contrast-checker/">Download deze tool voor windows / mac OS.</a></p>
+
+        <div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_76m88j66&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_72wkv7a3" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+
+        <h3>Kleurenblindheid</h3>
+        <section class="taak">
+    <p>Hoeveel procent van de mannelijke bevolking heeft een verstoord kleurenzicht, algemeen ‘kleurenblindheid’ genoemd? En hoeveel procent bij de vrouwen, denk je?</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">Voor mannen vind je vaak percentages in de buurt van 8%. Eén man op 12 heeft dus last met kleurenzicht. Bij vrouwen komt dit veel minder voor: het meest geciteerde percentage is 0,4%</p>
+</section>
+
+        <p>Niet iedereen neemt kleuren op dezelfde manier waar. Groen / rood is een veel voorkomend probleem bij mensen met verstoord kleurenzicht. Ik heb een vriend die geen bosaardbeitjes kan plukken, omdat voor hem de vruchtjes dezelfde kleur hebben als de rest van de plant.</p>
+        <p>Gebruik dus nooit alleen kleur om informatie door te geven. Daarom is het geen goed idee om links in de tekst niet te onderlijnen. Wie weet koos je een kleur die voor jou wel heel duidelijk is, maar die voor iemand met kleurenblindheid bijna niet te onderscheiden valt van de rest van de tekst. </p>
+        <p class="opgepast">Links in de tekst onderstreep je altijd! Links in de navigatie zijn door hun plaats sowieso duidelijk als link herkenbaar. Die hoef je dus niet te onderstrepen.</p>
+        <p>Volgende screenshot van het <abbr title="Web Accessibility Initiative">WAI</abbr> toont hoe je niet alleen op kleur mag betrouwen om informatie door te geven. De rechterkolom geeft telkens een goed alternatief voor de foute versie in de linkerkolom.</p>
+        <p class="noindent"><img src="https://frontend.webontwerp.ucll.be/assets/css/kleurenblind.png" alt="Gebruik niet alleen kleur om iets te beschrijven"></p>
+
+
+
+
+        <h2>Achtergrondafbeeldingen</h2>
+        <p>Werken met achtergrondafbeeldingen (<code>background-image</code>) kan mooi zijn, maar het is niet zo eenvoudig om het goed te doen. Bekijk volgend fragmentje uit een studentensite. Je merkt hoe sommige letters goed leesbaar zijn, maar andere dan weer helemaal niet. Als je de ‘Colour Contrast Analyser’ los zou laten op de letter ‘c’ van het woord ‘Voice’ hieronder, ben ik wel zeker dat de vereiste contrastverhouding niet gehaald wordt.</p>
+        <p class="noindent fout"><img src="https://frontend.webontwerp.ucll.be/assets/css/storende-achtergrond.png" alt="Een afbeelding achter een stuk tekst is bijna altijd een slecht idee"></p>
+        <p>Op bepaalde schermresoluties is volgende afbeelding op een site OK, maar dus duidelijk niet op de resolutie die ik gebruikte om de site van University of Twente te bekijken, want sommige witte letters komen op een licht stuk van de achtergrondfoto terecht.</p>
+        <p class="noindent fout"><img src="https://frontend.webontwerp.ucll.be/assets/css/UCTwente.png" alt=""></p>
+
+        <p class="opgepast">Een afbeelding achter tekst kan zeker, maar je zal bijna altijd met speciale technieken moeten werken, zoals transparantie, text-shadow enz. Eigenlijk heeft het alleen zin voor een beperkte hoeveelheid letters, die dan vaak nog groot zijn ook (zoals bij de zogenaamde ‘hero-images’).</p>
+        <p>Volgende foto toont het gebruik van <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Howto/Add_a_text_shadow"><code>text-shadow</code></a> om de leesbaarheid te garanderen als de tekst bovenop een foto (die zowel lichte delen zoals het haar als donkere delen zoals de jas heeft) staat.</p>
+        <p class="noindent"><img src="https://frontend.webontwerp.ucll.be/assets/css/text-shadow.png" alt="tekst een schaduw geven kan de leesbaarheid verhogen"></p>
+
+
+        <h2>Gradiënten</h2>
+        <p>Je kan in CSS vrij eenvoudig een verlooptint (gradiënt) maken. Kevin Powell geeft een mooi overzicht van enkele mogelijkheden in vijf minuten.</p>
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/4kWHW7da4U8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <h2>CSS custom properties (variabelen)</h2>
+        <p>Het is een goed idee om met een beperkt kleurenpallet te werken. Stel, je gebruikt een mooie tint van oranje voor links, blauw voor titels, enz. Die kleuren komen dan mogelijk tientallen keren voor in je CSS.</p>
+        <p>Een grafisch ontwerper bekijkt je site en overtuigt je ervan om toch maar andere kleuren te kiezen. Dat betekent dus dat die waarden overal moeten aangepast worden in je CSS.</p>
+        <p>Om je code zo leesbaar en onderhoudbaar te maken is het een goed idee om gebruik te maken van <em>CSS custom properties</em>, vaak ‘variabelen’ genoemd. Voor de site die je nu leest, maak ik gebruik van volgende custom properties:</p>
+<pre><code>:root &lbrace;
+  --linkkleur: rgb(247, 126, 12); /* oranje */
+  --titelkleur: #00A; /* blauw */
+  --afronding: 5px; /* consistente afrondingen van kaders */
+&rbrace;</code></pre>
+        <p>Je gebruikt dit dan als volgt in de rest van je code:</p>
+<pre><code>header nav li a &lbrace;
+  display: block;
+  padding: 3px 0.7em;
+  color: #eee;
+  text-decoration: none;
+  border-radius: var(--afronding);
+&rbrace;
+
+header nav ul li.hier a &lbrace;
+  color: #fff;
+  background-color: var(--linkkleur);
+&rbrace;</code></pre>
+
+<h2>Kleurenschema (niet? een beetje?) baseren op het bedrijfslogo</h2>
+<p>Het is soms een goed idee een (of meerdere) kleuren uit een logo te laten terugkomen in het kleurenpalet van de site. De voor de hand liggende fout echter is dat je hierin veel te ver gaat. Volgende schermafbeelding is van een studentensite voor een matrassenwinkel. Die heeft een logo met blauw en geel erin. Het resultaat doet pijn aan de ogen:</p>
+<img src="https://frontend.webontwerp.ucll.be/assets/css/geelblauw.png" alt="pagina met veel gele tekst op felblauwe achtergrond" class="blok">
+<p>Toegegeven, ik zocht er het meest overdreven voorbeeld uit. Meestal is het niet zo erg, maar toch: de verleiding om je teveel te laten leiden door kleuren uit het logo is dikwijls aanwezig. Ontwerper Steve Schoger zegt het in ‘Refactoring UI’ zo: “Be conservative with how you use brand colors in your designs — you’d be surprised how little color you need to make your designs feel colorful.” Als illustratie hiervan volgend voorbeeld:</p>
+<img src="https://frontend.webontwerp.ucll.be/assets/css/SteveSchogerKleur.jpeg" alt="kleine hints van een logokleur zijn vaak voldoende" class="blok">
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_kleuren/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

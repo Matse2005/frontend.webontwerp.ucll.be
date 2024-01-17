@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_typografie/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS typografie</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Typography is what comes between the author and the reader. This is as true on the web as it is in any other medium. If a text has anything at all significant to say, it needs a typographer's care, which will in turn be repaid by the reader's attention. If you design websites or use CSS then you are a typographer whether you know it or not.</span> <br>
+					&mdash;Richard Rutter, Web Typography
+					
+			</p>
+		</blockquote>
+		<h1>CSS Typografie</h1>
+<p>Met ‘typografie’ bedoelen we ‘alles wat te maken heeft met lettertypes, uitlijning, interlinie, regellengte enz’. Ik geef toe dat ik een beetje een typografie-nerd ben. Ik kan me verliezen in lettertypes, zitten sleutelen aan de juiste interlinie, regellengte, lettergrootte. Maar ik geloof dat die aandacht voor detail ook echt belangrijk is. Veel sites (zeker deze!) bestaan voor een groot stuk uit tekst. Waarom zou je dan niet je uiterste best doen om deze tekst zo vlot mogelijk leesbaar mogelijk te maken. Ik beperk me hier tot enkele praktische dingen waarmee je op een eenvoudige manier aan de slag kan. Dit topic is sterk verwant met het topic <a href="https://frontend.webontwerp.ucll.be/CSS_CRAP">CRAP</a>.</p>
+
+        <section class="leerdoel">
+
+            <ul>
+                <li>Leesbaarheid;</li>
+                <li>regellengte;</li>
+                <li>interlinie;</li>
+                <li>lettergrootte;</li>
+                <li>uitlijning;</li>
+                <li>schreef / schreefloos;</li>
+                <li>lettertypes kiezen en combineren.</li>
+            </ul>
+        </section>
+
+<h2>Typografie en leesbaarheid</h2>
+<h3>Hoe we lezen</h3>
+<p>Een tekst lezen is een ingewikkeld proces. Je denkt misschien dat je letters leest, maar dat is helemaal niet zo. Lees volgende zin eens. “De bnard in de NoeDmtar-e in Prjias, de boeedrme en euudeoewne kdaaehratl van de Fnsare hrtsoodad, heeft zwoat het hlee dak van het goebuw vrseoewt.” Kon je de tekst lezen? In deze zin staat de eerste en laatste letter van elk woord op zijn plaats en zijn de andere letters willekeurig gezet. Je merkt vermoedelijk dat je de tekst nog redelijk kan lezen.</p>
+<p>Dat komt omdat we geen letters lezen, maar woordbeelden. Onze ogen springen in kleine sprongetjes van de ene naar de andere plaats, met af en toe een pauze. <em>Het is de rol van typopgrafie om dat proces zo moeiteloos mogelijk te maken.</em></p>
+<h3>Eenheden</h3>
+<p>Uit wat volgt hieronder zal blijken dat het vaak zinvol is om dozen (alles in CSS is een doos) te meten in termen van hoeveel letters de doos kan bevatten. De <code>em</code> eenheid is (ongeveer) een maat voor de breedte van de hoofdletter ‘M’, de breedste letter in het alfabet. Als je deze pagina op een voldoende groot scherm leest is de maximale breedte van de tekst beperkt tot <code>45em</code>. Dat komt overeen met iets in de buurt van 90 karakters. We zullen in het volgend puntje zien dat dit eerder aan de grote kant is, maar het is een compromis omdat te smalle blokken mij in de problemen brengen met de blokjes code.</p>
+<p>Over het verschil tussen <code>em</code> en <code>rem</code> hadden we reeds in <a href="https://frontend.webontwerp.ucll.be/CSS_boxmodel">het topic boxmodel</a></p>
+
+<h3>Regellengte</h3>
+<p>Om zo vlot mogelijk leesbaar te zijn bevat een regel tekst best iets in de buurt van 70 letters (50–90), spaties inbegrepen. Dat is geen getal dat gebeiteld is in steen, maar het komt erop neer dat te lange regels echt niet OK zijn. Het is heel vermoeiend om tekst te lezen als er teveel letters op één regel staan. Ons oog moet dan een grote sprong maken op het eind van de regel naar het begin van de volgende regel. Dat is de reden waarom kranten werken met kolommen. Elke kolom bevat redelijk weinig letters op één regel, zodat je 's morgens in de trein zonder veel inspanning van onze ogen toch je krant kan lezen. De tekst die je nu leest is eigenlijk te breed (maar dat is een bewust compromis). Misschien maak ik hem toch nog smaller, wie weet …</p>
+<p class="opgepast">Vuistregel: beperk het aantal letters op één regel. Een goed getal is ongeveer twaalf woorden op een regel, wat overeen komt met ongeveer 70 letters. De <code>ch</code> eenheid kan hier mogelijk nuttig zijn: <code>1ch</code> is de breedte van een gemiddelde letter (het getal ‘0’) in het huidige lettertype. Of anders werk je met <code>em</code> om de breedte van containers te beperken. Het ligt trouwens voor de hand om eerder <code>max-width</code> dan <code>width</code> te gebruiken als je responsief wilt werken.</p>
+
+<h3>Lettergrootte</h3>
+<p>Voor de grootte van de letter gebruik je best de <code>rem</code> eenheid. Alles wordt dan relatief berekend t.o.v. de standaardgrootte van de browser. Zo geef je als ontwerper een zekere mate van controle terug aan de bezoeker, want die kan het standaardlettertype groter maken. In CSS gebruik je de eigenschap <code>font-size</code></p>
+
+<h3>Interlinie</h3>
+<p>De interlinie is de afstand tussen twee basislijnen (de denkbeeldige lijn waarop de letters staan). Deze <code>line-height</code> definieer je best met een eenheidsloos getal. Dit getal is een soort vermenigvuldigingsfactor waarmee je de lettergrootte moet vermenigvuldigen.</p>
+<p>De standaardwaarde van deze eigenschap (= die waarde die je zou krijgen als je de eigenschap niet gebruikt in je CSS-bestand) is bij alle browsers eerder aan de kleine kant. Het is een goed idee om de <code>line-height</code> te verhogen in de buurt van 1.5.</p>
+<p>Hieronder vind je drie keer dezelfde alinea. De eerste <code>line-height</code> is te klein, de tweede zit in het juiste gebied, de laatste versie is te groot.</p>
+<section style="background-color:#ddd; padding:1em 3em;">
+<p style="line-height:1.3;margin-bottom: 2em;"><strong><code>line-height: 1.3</code></strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est enim aspernatur fugiat soluta laudantium dolorum harum nobis excepturi accusamus, quibusdam quod eius pariatur inventore nisi deleniti similique perferendis officiis blanditiis a debitis voluptas placeat sed. Veniam impedit odit ad, animi fugiat, quae sit amet maxime temporibus, exercitationem voluptatum id commodi dolorem accusantium? Inventore quasi sapiente necessitatibus quidem ratione. Eos, sunt ab libero, illum quam facere.</p>
+<p class="noindent" style="line-height:1.5;margin-bottom: 2em"><strong><code>line-height: 1.5</code></strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est enim aspernatur fugiat soluta laudantium dolorum harum nobis excepturi accusamus, quibusdam quod eius pariatur inventore nisi deleniti similique perferendis officiis blanditiis a debitis voluptas placeat sed. Veniam impedit odit ad, animi fugiat, quae sit amet maxime temporibus, exercitationem voluptatum id commodi dolorem accusantium? Inventore quasi sapiente necessitatibus quidem ratione. Eos, sunt ab libero, illum quam facere.</p>
+<p class="noindent" style="line-height:1.9;"><strong><code>line-height: 1.8</code></strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est enim aspernatur fugiat soluta laudantium dolorum harum nobis excepturi accusamus, quibusdam quod eius pariatur inventore nisi deleniti similique perferendis officiis blanditiis a debitis voluptas placeat sed. Veniam impedit odit ad, animi fugiat, quae sit amet maxime temporibus, exercitationem voluptatum id commodi dolorem accusantium? Inventore quasi sapiente necessitatibus quidem ratione. Eos, sunt ab libero, illum quam facere.</p>
+</section>
+<p>Bovendien is er een verband tussen <code>line-height</code> en regellengte: hoe langer de regels, hoe groter de afstand ertussen moet worden. In een smalle tekstkolom mogen de regels dus wat dichter tegen elkaar staan. </p>
+
+<h3>Uitlijning</h3>
+<p>De eigenschap <code>text-align</code> regelt de uitlijning: links, rechts, gecentreerd of uitgevuld (‘justify’). De meeste beginners maken de fout om teveel gecentreerd of uitgevuld te kiezen. Gecentreerd kan voor een titel of zo, een gedichtje, maar wordt moeilijk voor hele alinea's. Uitgevuld (dus links en rechts uitgelijnd) kan als de regellengte groot genoeg is. Het is niet bruikbaar voor eerder smalle tekstkolommen. Bekijk volgende erg smalle tekstkolom met <code>text-align: justify</code>. Er ontstaan grote gaten tussen de woorden omdat de browser de woorden niet automatisch kan afbreken.</p>
+<section style="background-color: #ddd;padding:1em;">
+<p style="width: 13em;margin:0 auto;text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga cum asperiores est totam nostrum rem inventore voluptates odio sint excepturi natus illo, iure quaerat facilis expedita. Repellendus iusto perferendis dignissimos.</p>
+</section>
+<p class="opgepast">Kies standaard voor <code>text-align: left</code>. In zeer beperkte mate kan <code>center</code> voor een titel of zo. Blijf ver weg van <code>justify</code>.</p>
+
+<h3>Firefox Developer Tools</h3>
+<p>Firefox heeft in de dev. edition een handig tabblad ‘Lettertype’. Hier kan je spelen met de hierboven genoemde parameters grootte en interlinie (en ook vet / cursief).</p>
+<img src="https://frontend.webontwerp.ucll.be/assets/css/FirefoxLettertype.png" alt="tabblad lettertypen in Firefox dev ed." class="blok">
+
+<h2>Lettertypes</h2>
+<h3>Schreef / schreefloos</h3>
+<p>Heel sterk vereenvoudigd kan je lettertypes opdelen in twee grote categorieën: schreefletters (‘serif’) en schreefloze letters (‘sans serif’):</p>
+<section style="background-color: #ddd; padding:1em 3em;">
+<p style="font-size: 5em;">serif</p>
+<p class="noindent" style="font-size: 5em; font-family:sans-serif">sans-serif</p>
+</section>
+<p>Schreven (serifs) zijn de ‘uitstekende deeltjes’ op het einde van een letter, zoals onderaan bij de letter ‘r’. Denk: dit is de plaats waar de monnik zijn ganzenveer horizontaal hield of waar de steenkapper zijn beitel draaide om de letter te beëindigen.</p>
+
+<section class="taak">
+    <p>In welk soort lettertype is deze cursustekst gezet?</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">De ‘body’ tekst is een schreefletter (Noto Serif). De titels zijn een schreefloze letter (Noto Sans). Alle lettertypen met het woord ‘sans’ in de naam zijn gemakkelijk te herkennen als schreeflozen.</p>
+</section>
+
+
+<h3>Lettertype kiezen</h3>
+<p>Elk lettertype heeft een uitstraling, een sfeer. Bij een site voor kinderen hoort een ander lettertype dan bij een bedrijfssite. Een site met veel tekst zal vermoedelijk een andere letter gebruiken dan een site waar amper tekst op staat. Probeer na te denken over wat je site moet uitstralen en zoek een letter die daarbij past.</p>
+<p>In CSS gebruiken we dan een <em>font stack</em>. Dat werkt als volgt. Nemen we als voorbeeld deze CSS-regel:</p>
+<pre><code>body &lbrace;
+  font-family: "Noto Serif", Georgia, 'Times New Roman', Times, serif;
+&rbrace;</code></pre>
+<p>De browser gaat het lijstje in de font stack af en kiest het eerste lettertype dat beschikbaar is op de computer van de bezoeker. In dit geval wordt eerst "Noto Serif" (met aanhalingstekens, want bevat een spatie) geprobeerd. Dit is een google font die moet geladen worden. Stel dat dat mislukt, dan wordt lettertype 2 geprobeerd: Georgia. Dat is een mooie schreefletter die de meeste mensen (wie iets heeft van Microsoft heeft Georgia) op hun computer staan hebben. Als deze niet aanwezig zou zijn wordt de volgende in het rijtje geprobeerd enz.</p>
+<p class="opgepast">Stel je bij <code>font-family</code> niet tevreden met één lettertype. Voorzie altijd enkele alternatieven en eindig altijd met <code>serif</code> of <code>sans-serif</code>.</p>
+
+<h3>Lettertypes combineren</h3>
+<p>Heel sterk vereenvoudigd kan je stellen dat het niet zo gemakkelijk is om twee lettertypes uit dezelfde familie te combineren, dus twee schreefletters of twee schreefloze letters. Het is veel veiliger om uit elke familie eentje te kiezen. Laat je helpen door designers die mooie combinaties voorstellen. Zoek naar "font pairing google fonts" als je twee google fonts wilt combineren. Voor deze site gebruik ik het paar "Noto Serif" / "Noto Sans".</p>
+
+
+<h3>Cursief, vet, …</h3>
+<p>Nog kort enkele CSS-eigenschappen:</p>
+<pre><code>… &lbrace;
+  font-weight: 700; // 100 = ultradunne letter, 900 = heel dik
+  font-style: italic; // cursief
+  text-transform: capitalize; // zet alles in kapitalen (hoofdletters)
+  letter-spacing: 1px; // voorzie beetje ruimte tussen letters (gebruik zeer voorzichtig!)
+&rbrace;</code></pre>
+
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_typografie/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_selectoren/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS selectoren</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">And what’s really important is the error-handling model for this pattern. If you use a selector that the browser doesn’t understand, the browser will simply skip over that set of rules. It won’t break, it won’t throw an error to the user; it’ll just ignore the whole selector. If you use a property the browser doesn’t understand, that’s fine, it just skips onto the next rule. And if you use a value it doesn’t understand, that’s fine, it just skips onto the next rule again. It doesn’t break.
+It’s such a beautifully simple pattern, and yet immensely powerful. And this is how we get new CSS features all the time. And we can start adding those new CSS features before they’re supported everywhere. It’s the power of simplicity.</span> <br>
+					&mdash; Jeremy Keith
+					
+			</p>
+		</blockquote>
+		<h1>CSS selectoren</h1>
+        <section class="leerdoel">
+
+            <ul>
+                <li>universele selector: *</li>
+                <li>typeselector</li>
+                <li>klasseselector: .</li>
+                <li>id-selector: #</li>
+                <li>nakomelingselector: spatie</li>
+                <li>kindselector: &gt;</li>
+                <li>broer/zus selector: ~</li>
+                <li>opeenvolgende broer/zus selector: +</li>
+                <li>groeperen: ,</li>
+                <li>attribuutselector: []</li>
+                <li>pseudo-elementen: ::before en ::after</li>
+                <li>pseudo-klassen: :hover enz</li>
+            </ul>
+        </section>
+		
+       <h2>Video Web Dev Simplified</h2>
+       <p>In een filmpje van een twintigtal minuten geeft Web Dev Simplified een goed overzicht van de meest gebruikte selectoren. In de commentaar bij deze film kan je een mooi overzicht downloaden als PDF (2,1 MB) ofwel in <a href="https://frontend.webontwerp.ucll.be/assets/css/CSS-Selector-Cheat-Sheet-Light.pdf">lichte versie</a> of in <a href="https://frontend.webontwerp.ucll.be/assets/css/CSS-Selector-Cheat-Sheet-Dark.pdf">donkere versie</a> (ik vind de donkere versie echt wel mooi!).</p>
+
+<section class="taak">
+    <p>In de video maakt Kyle een klein HTML foutje. Alles wat hij toont i.v.m. selectoren blijft wel werken, maar er is toch iets in zijn HTML code dat niet zou valideren. Bekijk eerst onderstaand filmpje. Vind je de fout?</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">Kyle zet op een bepaald moment in zijn <code>ul</code> een <code>span</code> element. Dat is niet toegelaten. In een <code>ul</code> (of <code>ol</code> mogen alleen <code>li</code> elementen staan. In die <code>li</code> zou dan wel een <code>span</code> mogen staan natuurlijk.</p>
+</section>
+
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/l1mER1bV0N0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <h2>Leuke oefening: CSS diner</h2>
+        <section class="taak">
+    <p>Deze oefening is al wat ouder, maar nog steeds wel zinvol om te doen. Ga ervan uit dat er HTML elementen <code>table</code>, <code>apple</code>, <code>orange</code> enz. bestaan. Schrijf nu de juiste selectoren om de juiste dingen te selecteren. Naar het einde toe worden de opgaves redelijk moeilijk. <a href="https://flukeout.github.io/">Ga naar de oefening CSS diner.</a></p>
+</section>
+        <p></p>
+        <p class="noindent"><img src="https://frontend.webontwerp.ucll.be/assets/css/CSSdiner.png" alt=""></p>
+
+        <h2>Ondersteuning van nieuwe selectoren?</h2>
+        <p>CSS als taal breidt voortdurend uit. Designers en developers vragen bepaalde nieuwe functionaliteiten. Die vraag gaat dan naar het W3C die beslissen of iets een ‘recommendation’ wordt. Vervolgens is het aan de browsermakers om die nieuwe eigenschap te implementeren. Er is één bron waar je kan opzoeken welke browsers een eigenschap al ondersteunen <a href="https://caniuse.com/">https://caniuse.com</a>. Aan jou dan op te beslissen of je die nieuwe eigenschap in een productiesite al opneemt …</p>
+    <section class="taak">
+    <p>Een nieuwe selector waar veel mensen zitten op te wachten is <code>:has()</code>. Men noemt dat de ‘relationele pseudoklasse’. Zoek op wat die juist selecteert en waarom dat zo handig zou kunnen zijn. Ga vervolgens naar <a href="https://caniuse.com/">https://caniuse.com</a> en zoek op welke browser dit al ondersteunt.</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">Het nut van deze selector is dat die toelaat om een <em>parent</em> te selecteren op basis van een <em>kind</em>. Zo selecteert <code>a:has(&gt;img)</code> alle <code>a</code> elementen die een <code>img</code> kind bevatten. Voorlopig (februari 2022) ondersteunt alleen safari versie 15.4 deze selector. Benieuwd om te zien hoe snel de andere browers zullen volgen!</p>
+</section>
+
+      <h2>Meer info</h2>
+      <p>Uitgebreide info over selectoren:</p>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">CSS selectors pagina op Mozilla Developer Network</a></li>
+        <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">Lijst met selectoren op W3Schools</a></li>
+      </ul>
+        
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_selectoren/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

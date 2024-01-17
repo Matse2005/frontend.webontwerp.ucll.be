@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_markup/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>HTML markup</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">I was in love with HTML and certain that the whole world was about to learn it, ushering in a new era of DIY media, free expression, peace and democracy and human rights worldwide. That part didn't work out so well, although the kids prefer YouTube to TV, so that's something.</span> <br>
+					&mdash;Jeffrey Zeldman
+					
+			</p>
+		</blockquote>
+		<h1>Tekst voorzien van markup</h1>
+        <section class="leerdoel">
+            <p>In dit deeltje bekijken we ‘semantische’ HTML: elementen met een betekenis. Het is geen volledige opsomming van alle bestaande elementen.</p>
+            <ul>
+                <li>Het meest geschikte element voor je inhoud kiezen;</li>
+                <li>alinea's (paragrafen) en hoofdingen;</li>
+                <li>lijsten;</li>
+                <li>inhoud opdelen in secties;</li>
+                <li>tekstelementen (inline);</li>
+                <li>generische elementen: <code>div</code> en <code>span</code></li>
+                <li>speciale karakters.</li>
+            </ul>
+        </section>
+
+        <h2>Enkele belangrijke concepten</h2>
+        <p>We beginnen dit deel met een video van Kevin Powell (‘5 important HTML concepts for beginners’). De meeste topics die hij aanraakt komt later in dit stuk in meer detail aan bod, maar het is goed om het al eens gehoord en gezien te hebben.</p>
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/HJ0-fUJ-2F0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+		
+        <h2>Alinea's</h2>
+        <p>Een alinea markeer je met een <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p"><code>p</code></a> element (‘paragraaf’). Het bestaat uit een aantal zinnen die bij elkaar horen. Als je een nieuw idee begint, komt er een nieuw <code>p</code> element. Standaard zullen visuele browsers wat ruimte laten tussen verschillende paragrafen. Dat hoeft niet. Je kan ook kiezen voor het laten inspringen van elke paragraaf, behalve de eerste. Dat is het topic van CSS.</p>
+
+        <pre><code>&lt;p&gt;Hypertext Markup Language is een markeertaal. Ze houdt zich bezig 
+met het toevoegen van betekenis en structuur aan de tekst. &lt;/p&gt;
+&lt;p&gt;De vraag hoe iets getoond moet worden is het domein van CSS. 
+Dat bekijken we in een later hoofdstuk.&lt;/p&gt;
+</code></pre>
+
+        <p>Een veel gemaakte beginnersfout is bij het opmaken van een HTML-pagina toch visueel redeneren. Je denkt dan “ik wil wat ruimte creëren tussen deze blokjes tekst” en niet “deze zin begint een nieuw idee, dus qua betekenis moet ik een nieuwe alinea beginnen”. Dit leidt dan vaak tot een foutief gebruik van een regeleinde d.m.v. een <code>br</code> element. Doe dit dus niet:</p>
+        <pre class="fout"><code>&lt;p&gt;Hypertext Markup Language is een markeertaal. Ze houdt zich bezig 
+met het toevoegen van betekenis en structuur aan de tekst. &lt;br&gt;&lt;br&gt; 
+De vraag hoe iets getoond moet worden is het domein van CSS. 
+Dat bekijken we in een later hoofdstuk.&lt;/p&gt;
+</code></pre>
+<p>Dit element is een block-level element dat echter <em>geen andere block-level elementen mag bevatten</em>. In essentie mag een <code>p</code> element dus alleen tekst (en afbeeldingen) bevatten.</p>
+       
+       <h2>Hoofdingen</h2>
+       <p>Je kan maximaal zes niveau's hoofdingen gebruiken: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements"><code>h1</code>, <code>h2</code>, …, <code>h6</code></a></p>
+       <p>Denk bij hoofdingen dat die een soort van inhoudstafel vormen. Bekijk bvb de inhoudstafel van een bijzonder goed boek over web design (Learning Web Design, Jennifer N. Robins, O'Reilly):</p>
+       <img class="blok" src="https://frontend.webontwerp.ucll.be/assets/html/TOC_LWD.png" alt="inhoudstafel boek Learning Web Design">
+       <p>Stel dat we dit boek verspreiden over enkele HTML pagina's. De eerste pagina is “Getting started”, de tweede pagina “HTML for structure” enz. Elke HTML-pagina heeft dan één <code>h1</code>, in dit geval de titel van het boekdeel. De hoofdstukken zouden dan <code>h2</code> elementen worden. De onderdelen hiervan worden <code>h3</code> enz. Je slaat m.a.w. geen niveau over.</p>
+       <p>We herhalen de opmerking uit het vorig stuk. Denk in termen van betekenis, niet in termen van lay-out. Standaard zal een browser een <code>h2</code> groter maken dan een <code>h3</code>, maar zoals je ondertussen weet is vormgeving niet het domein van HTML.</p>
+       <p>Bovenstaande inhoudstafel zou dan volgende HTML-structuur kunnen opleveren:</p>
+       <pre><code>&lt;h1&gt;Part I. Getting Started&lt;/h1&gt;
+&lt;h2&gt;1. Getting Started in Web Design&lt;/h2&gt;
+&lt;h3&gt;Where Do I Start?&lt;/h3&gt;
+&lt;h3&gt;It Takes a Village (Website Creation Roles)&lt;/h3&gt;
+&lt;h3&gt;Gearing Up for Web Design&lt;/h3&gt;
+&lt;h3&gt;What You&#39;ve Learned&lt;/h3&gt;
+&lt;h3&gt;Test Yourself&lt;/h3&gt;
+&lt;h2&gt;2. How the Web Works&lt;/h2&gt;
+&lt;h3&gt;The Internet Versus the Web&lt;/h3&gt;
+…</code></pre>
+
+       <h2>Lijsten</h2>
+       <p>Soms heb je geen behoefte aan een alinea met zinnen, maar wil je gewoon een opsomming maken, al dan niet genummerd. Hiervoor beschikken we in HTML over drie elementen:</p>
+        <dl>
+            <dt>Ongeordende lijst: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul"><code>ul</code></a></dt>
+            <dd>Een opsomming van items waarbij de volgorde niet belangrijk is.</dd>
+            <dt>Geordende lijst: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol"><code>ol</code></a></dt>
+            <dd>De volgorde waarin de items opgesomd worden is wel belangrijk.</dd>
+            <dt>Beschrijvingslijst: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl"><code>dl</code></a></dt>
+            <dd>Een lijst met combinaties van woorden met een uitleg, denk bvb aan een woordenboek. Deze lijst van drie elementen die je nu bekijkt is een beschrijvingslijst.</dd>
+        </dl>
+
+        <div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_m5utjqtp&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=nl&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_dtsr5q67" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+
+
+       <h2>Figure</h2>
+       <p>Je gebruikt een <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure"><code>figure</code></a> element als je een bepaald punt van je inhoud wilt illustreren. Het kan afbeeldingen, een video, een stukje code, tekst, tabel of zo goed als elk soort inhoud bevatten. Bekijk het in elk geval als een deeltje dat op zichzelf kan staan en zonder problemen naar een appendix of zijkant zou kunnen verplaatst worden.</p>
+
+       <p>In een <code>figure</code> element komt typisch een <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption"><code>figcaption</code></a>, een bijschrift dat wat uitleg (zoals bvb bronvermelding) kan bevatten. Onderstaande code genereert de foto met bijschrift die je onder de code terug vindt. De volledige inhoud van <code>figcaption</code> is een vermelding van auteur en een link naar de foto en werd letterlijk gekopieerd van de fotosite https://unsplash.com. Via CSS werd het bijschrift rechts uitgelijnd.</p>
+
+<pre><code>&lt;figure&gt;
+  &lt;img src=&quot;/assets/html/josh-reid-meOFNlRbHmY-unsplash.jpg&quot; 
+    alt=&quot;Foto landschap IJsland&quot;&gt;
+  &lt;figcaption&gt;
+    Photo by &lt;a href=&quot;https://unsplash.com/@joshuadavidreid?utm_source=
+    unsplash&amp;utm_medium=referral&amp;utm_content=
+    creditCopyText&quot;&gt;Josh Reid&lt;/a&gt; on 
+    &lt;a href=&quot;https://unsplash.com/s/photos/iceland?utm_source=
+    unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+       <figure class="fotoMetBijschrift">
+       <img src="https://frontend.webontwerp.ucll.be/assets/html/josh-reid-meOFNlRbHmY-unsplash.jpg" alt="Foto landschap IJsland">
+       <figcaption>Photo by <a href="https://unsplash.com/@joshuadavidreid?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Josh Reid</a> on <a href="https://unsplash.com/s/photos/iceland?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+  </figcaption>
+        </figure>
+
+       <h2 id="flowchart">De inhoud van de pagina organiseren</h2>
+       <img class="blok" src="https://frontend.webontwerp.ucll.be/assets/html/h5d-sectioning-flowchart.png" alt="flowchart om juiste HTML element te kiezen">
+       <h3>Main</h3>
+       <p>Het <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main"><code>main</code></a> element bevat de hoofdinhoud van de pagina, dus geen navigatie, zijdelingse informatie, footers enz. Je verhoogt de toegankelijkheid van je pagina voor mensen die een screenreader (een stuk software dat een pagina kan voorlezen en kan navigeren in en tussen pagina's) gebruiken. Voor deze bezoekers is het heel erg tijdrovend om telkens op een pagina eerst alle navigatie te laten nalezen. Daarom kunnen zij aan hun screenreader vragen om direct naar het <code>main</code> element te springen. Een pagina mag maar één <code>main</code> hebben.</p>
+
+       <h3>Headers en footers</h3>
+       <p>Een <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header"><code>header</code></a> element bevat inleidende informatie die typisch aan het begin van een pagina of nieuwe <code>section</code> of <code>article</code> komt. Er is niet echt een vaste lijst van elementen die hierin mogen komen. Vaak bevat een <code>header</code> de naam van een bedrijf, een logo, de titel van de site, de navigatie, …</p>
+       <p>Analoog bevat een <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer"><code>footer</code></a> informatie die je typisch aan het einde van de pagina of aan het einde van een individueel <code>article</code> of <code>section</code> bevat. Merk trouwens op dat nergens gezegd wordt dat een <code>footer</code> ook effectief onderaan moet staan. Het element kan dingen bevatten zoals juridische informatie, navigatie, auteur, contactinfo enz.</p>
+
+
+       <h3>Section en article</h3>
+       <p>Beide elementen zijn erg verwant aan elkaar. Een <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section"><code>section</code></a> gebruik je om verwante inhoud te groeperen. Een <code>section</code> mag een <code>header</code> en een <code>footer</code> hebben, maar dat hoeft niet. Gewoonlijk bevat het wel minstens één titel (<code>h2</code>, <code>h3</code>, …).</p>
+       <p>Een <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article"><code>article</code></a> doet hetzelfde, met dit verschil: <em>het element moet op zichzelf kunnen staan</em>. Vergelijk het met een artikel in een tijdschrift. Als ik je deze pagina's geef, is dat dan een zinvol geheel dat je kan lezen en begrijpen zonder de rest van het tijdschrift te hebben?</p>
+       <p>Een <code>section</code> kan meerdere <code>article</code> elementen bevatten, maar omgekeerd kan een <code>article</code> ook meerdere <code>section</code> elementen groeperen.</p>
+
+
+       <h3>Aside</h3>
+       <p>Het <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside"><code>aside</code></a> element groepeert inhoud die geen grote band heeft met de hoofdinhoud van de pagina. Typisch gaat het dan over dingen die je ‘in de marge’ (sidebar) zou zetten, maar ook dat hoeft helemaal niet (remember: HTML gaat niet over lay-out, maar wel over structuur). Het is zoals trouwens alle vorige elementen een blok-element.</p>
+
+       <h3>Nav</h3>
+       <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav"><code>Nav</code></a> duidt een belangrijk navigatieblok aan. Het moet echt wel gaan om een uitgebreidere set van links. Eén link zetten we niet in een <code>nav</code>. Een blinde bezoeker kan haar screenreader de instructie ‘ga naar het nav element’ laten uitvoeren, waardoor ze efficiënt naar de hoofdnavigatie kan gaan in een groot HTML document. Het is dus belangrijk dat je je hoofdnavigatie dan ook in een <code>nav</code> element zet.</p>
+      
+       <p>Aangezien de navigatie bestaat uit een lijst van links, is het logisch om die dan ook als een lijst te markeren. Zo ziet de <code>header</code> voor de site die je nu bekijkt er als volgt uit:</p>
+<pre><code>&lt;header&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/home&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/OPO&quot;&gt;OPO&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/tools&quot;&gt;Tools&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/web&quot;&gt;Web?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/HTML_00_menu&quot;&gt;HTML&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/CSS_00_menu&quot;&gt;CSS&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/JS&quot;&gt;JS&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/varia&quot;&gt;Varia&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/links&quot;&gt;Links&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+       <h2>Enkele tekstelementen (inline)</h2>
+       <p>Inline elementen gedragen zich zoals een letter: zolang er plaats is op de regel komt zo'n element na de laatste letter. Als er te weinig plaats is gaat het naar de volgende regel. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements">MDN heeft een goede inleiding en een overzicht van inline elementen</a>. We geven hier enkele voorbeelden van veelgebruikte inline tekst-elementen. Andere inline elementen zoals <code>img</code> komen later aan bod.</p>
+       <h3>Klemtoon en sterke klemtoon</h3>
+       <p>Je gebruikt <code>em</code> voor klemtoon en <code>strong</code> voor sterke klemtoon. Een voorbeeld: “Denk <strong>altijd</strong> na over de <em>betekenis</em> van een element in je code.”. De code voor deze zin is:</p>
+       <pre><code>Denk &lt;strong&gt;altijd&lt;/strong&gt; na over de &lt;em&gt;betekenis&lt;/em&gt; van element in je code.</code></pre>
+       <p class="opgepast">Denk niet dat je nu best deze twee elementen gebruikt om woorden <em>cursief</em> of <strong>vet</strong> te zetten. Dat is eigenlijk naast de kwestie. Denk na over de betekenis: klemtoon en sterke klemtoon. We hadden in deze tekst via CSS ook kunnen kiezen voor een <span style="color:darkgreen">kleurverschil</span>, <span style="font-family: sans-serif;">ander lettertype</span> enz. voor de elementen <code>em</code> en <code>strong</code>. Bedenk ook dit: wat betekenen ‘cursief’ en ’vet’ voor <a href="https://youtu.be/7Rs3YpsnfoI">de screenreader van een blinde gebruiker</a>? Cursief is een visueel kenmerk, terwijl ‘klemtoon’ ook betekenis heeft voor een screenreader (luider of trager spreken bvb.).</p>
+
+       <h3>Datum en tijd</h3>
+       <p>Het principe van ‘betekenis toevoegen’ trekken we ook door naar tijds- en datumaanduidingen. Er bestaat een HTML-element <code>time</code>, met bijhorend attribuut <code>datetime</code> dat je best gebruikt om extra (voor een computer leesbare) informatie toe te voegen.</p>
+       <p>Een voorbeeld: de zin “De jaarlijkse Kwis van de Jin van Scouts Haasrode gaat door in het ontmoetingscentrum van Blanden op <time datetime="2022-02-26T19:30">zaterdag 26 februari 2022 om 19 uur</time>.” heb ik als volgt in de HTML-code van extra betekenis voorzien.</p>
+       <pre><code>De jaarlijkse Kwis van de Jin van Scouts Haasrode gaat door in het ontmoetingscentrum van Blanden 
+op &lt;time datetime=&quot;2022-02-26T19:30&quot;&gt;zaterdag 26 februari 2022 om 19 uur&lt;/time&gt;.</code></pre>
+<p>Ik had dit <code>time</code> element ook kunnen weglaten. Je zou visueel geen enkel verschil merken. Maar nu kan een computer vrij eenvoudig alle time-aanduidingen in een document lezen, verwerken en automatisch toevoegen aan een kalender.</p>
+
+       <h3>Afkortingen</h3>
+<p>De eerste keer dat je een afkorting gebruikt in een wetenschappelijke of technische tekst is het gebruikelijk om die afkorting voluit te schrijven. Hiervoor bestaat in HTML het element <code>abbr</code> (‘abbreviation’). Een voorbeeldzin: “De organisatie <abbr title="World Wide Web Consortium">W3C</abbr> ontwikkelt de <abbr title="HyperText Markup Language">HTML</abbr> standaard.”. Ga eens met je muis over deze twee afkortingen (die standaard door de browser met puntjes onderlijnd worden, maar dat zou ik via CSS kunnen aanpassen).</p>
+<pre><code>De organisatie &lt;abbr title=&quot;World Wide Web Consortium&quot;&gt;W3C&lt;/abbr&gt; ontwikkelt 
+de &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt; standaard.</code></pre>
+
+<section class="taak">
+    <p>Je merkt dat ik probeer zo systematisch mogelijk alle HTML-elementen zoals bvb <code>strong</code> (en verder in de cursustekst ook CSS-eigenschappen, JS-methoden enz.) op een speciale manier op te maken. Zoek eens op in de code, bvb via view source of nog beter, via de developer tools welk HTML-element ik daarvoor gebruik.</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">Een element dat qua betekenis goed aansluit bij wat ik bedoel is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code"><code>code</code></a>. Via enkele CSS-regels zet ik de inhoud van dit element in een ander lettertype, blauwe letters op een  lichtgrijze achtergrond en een rand errond. Die developer tools openen kan door rechts te klikken op het woord of element dat je wilt onderzoeken en dan ‘inspecteren’ te kiezen. Je krijgt dan het Document Object Model (HTML-structuur, zie later) en bijhorende CSS-code te zien.</p>
+</section>
+
+       <h2>Generische elementen: div en span</h2>
+<p>‘Semantische’, betekenisvolle HTML: dat is ons streefdoel. Allemaal goed en wel, maar wat als je gewoon omwille van je lay-out een aantal elementen moet groeperen, maar daar niet direct een betekenis wilt aan toekennen? Hiervoor bestaan twee zogenaamd ‘generische’ elementen: <code>div</code> (blokelement) en <code>span</code> (inline element).</p>
+<p><a href="#flowchart">Bekijk je nog eens de flowchart hierboven?</a>. Daar staat <code>div</code> als allerlaatste keuze op. Bij veel developers is het principe van semantische HTML nog niet doorgedrongen. Daarom zie je veel sites die hoofdzakelijk uit <code>div</code> elementen bestaan. Dat werkt ook en visueel zie je niet direct verschil. Je verliest echter wel veel betekenis, die bvb. omwille van toegankelijkheid voor personen met een handicap belangrijk kan zijn.</p>
+
+       <h3>Div</h3>
+<p>Dit is een blokelement zonder betekenis. Je gebruikt het om andere elementen te groeperen, bvb. omdat dit voor je layout die je met grid hebt gemaakt, beter uitkomt. Zo zie je geregeld in code dingen in de stijl van <code>div class="container"</code> om een bepaald deel van de pagina binnen bepaalde grenzen te krijgen. Meer daarover bij CSS!</p>
+<p class="opgepast">Kijk je eens naar de broncode van <a href="https://www.ucll.be/">http://www.ucll.be</a>? Dat kan bvb door rechts te klikken in Firefox Developer Edition (of een andere browser) en ‘paginabron bekijken’ te kiezen. Bemerkt het hoge aantal <code>div</code> elementen. Dat is typisch voor een site die gegenereerd wordt door een <abbr title="Content Management System">CMS</abbr>, dus aan de serverkant vanuit een databank. Let je voor de site voor dit OPO een beetje op dat dit element de uitzondering moet zijn?</p>
+
+       <h3>Span</h3>
+       <p>Het element <code>span</code> is de inline tegenhanger van <code>div</code>. Het groepeert meestal een aantal letters omdat je er iets speciaals in CSS wilt mee doen, zonder dat er een geschikt element voorhanden is. </p>
+<p>Ik begin elk topic met een (min of meer toepasselijk) citaat. Bekijk de broncode van deze pagina eens. Zoek in deze code bovenaan naar het element <code>blockquote</code> dat voor een voldoende groot citaat het meest toepasselijke element is. Binnen dit element wil ik omwille van stijlredenen (CSS) toch het citaat zelf inpakken in een element. Voor de eenvoud koos ik voor <code>span class="citaat"</code>. Nu ik er trouwens over nadenk, eigenlijk had het element <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q"><code>q</code></a> een betere keuze geweest, want dat element is bedoeld om inline citaten op te maken. Stom, daar had ik dus beter over moeten nadenken …</p>
+<p>Maar deze uitleg bij <code>div</code> en <code>span</code> hierboven brengt mij naadloos bij het volgend puntje: <code>class</code> en <code>id</code> attributen.</p>
+
+       <h3>id en class attributen</h3>
+<p>HTML elementen hebben attributen. Ik gebruik altijd volgende analogie: het HTML element heeft (meestal) inhoud, de letters bvb die in een <code>p</code> zitten. Je kan een element bekijken als een doos, container voor inhoud. Op de doos kan je echter ook een sticker plakken met extra informatie: dat zijn de attributen. Sommige elementen hebben zelfs geen inhoud (zoals <code>img</code>, zie later). Daar zit de informatie eigenlijk alleen in de attributen!</p>
+<p>Twee veelgebruikte attributen zijn <code>class</code> en <code>id</code>. Je mag die bij elk HTML element gebruiken. Het grote verschil is dat een <code>id</code> uniek moet zijn. Per HTML-pagina mag je een welbepaald <code>id</code> maar één keer gebruiken. Een <code>class</code> mag je meerdere keren in hetzelfde HTML-document gebruiken.</p>
+<p>Bij CSS komen we hierop zeker terug, omdat deze twee attributen hier een belangrijke rol spelen.</p>
+
+<section class="taak">
+    <p>Kijk je nog eens naar de broncode van <a href="https://www.ucll.be/">http://www.ucll.be</a>? Scroll wat door de code. Bemerk hoe vaak het <code>class</code> attribuut gebruikt wordt. Dit is zo omdat deze site de filosofie van ‘<a href="https://adamwathan.me/css-utility-classes-and-separation-of-concerns/">CSS via utility classes</a>’ gebruikt. Dit is een techniek die sommige CSS-frameworks gebruiken om bij grotere sites de complexiteit beheersbaar te maken. Voor een kleine site ben ik helemaal geen voorstander van deze filosofie en pas ik ze maar in heel beperkte mate toe in deze site.</p>
+</section>
+
+       <h2>Speciale karakters</h2>
+<p>Soms kan het nodig zijn om een code te gebruiken voor een speciaal karakter. Men spreekt over ‘HTML entities’. Zo'n code begint altijd met een ampersand (‘&amp;’) eindigt met ‘;’.</p>
+<p>Een voorbeeldzin: “De variabele x &lt; 10 &amp; y &gt; 2.”.</p>
+<pre><code>De variabele x &amp;lt; 10 &amp;amp; y &amp;gt; 2.</code></pre>
+<p>Af en toe wil je niet dat iets (bvb 17&nbsp;km/h) in het midden gescheiden wordt op het einde van een regel, dus het getal 17 op het einde van de regel en de eenheid (km/h) aan het begin van de volgende regel. Hiervoor bestaat de entity <code>&amp;nbsp;</code> (<em>non-breaking space</em>).</p>
+<p>Je kan entities vaak zowel met een naam als met een nummer geven. Zo kan bvb het symbool voor plusminus (&plusmn;) maken met <code>&amp;plusmn;</code> of met <code>&amp;#177;</code></p>
+<p>Je vindt op veel plaatsen lange lijsten met HTML-entities, bvb op <a href="https://www.freeformatter.com/html-entities.html">https://www.freeformatter.com/html-entities.html</a></p>
+<section class="taak">
+    <p>Iets wat me nauw aan het hart ligt is het gebruik van juiste aanhalingstekens. Vergelijk volgende twee versies van dezelfde zin:<br>Hij zei "To be or not to be, that's the question". <br>Hij zei “To be or not to be, that's the question”.</p>
+    <p>De eerste zin gebruik het symbool voor seconden ("), terwijl de tweede zin de correcte aan- (“) en afhalingstekens (”) gebruikt. Zoek zelf hoe je deze correcte tekens (en ook de varianten met één aanhalingsteken) kan invoeren.</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">Dit kan op twee manieren. De eerste manier is met entities, nl <code>&amp;ldquo;</code> (lees ‘left double quote’) en <code>&amp;rdquo;</code>. Voor enkele aanhaling vervang je de letter ‘d’ van ‘double’ door de ‘s’ van ’single’. De tweede manier is simpeler, want je kan in UTF-8 (de meest gebruikte karaktercodering) zonder problemen deze tekens rechtstreeks intikken. Zo is op MacOS het teken “ volgende code op een azerty toetsenbord: <code>option</code> + <code>toets 3"</code> en voor ” is het <code>option</code> + <code>shift</code> + <code>toets 3"</code>. Zoek je zelf eens hoe dit op windows kan?</p>
+</section>
+
+
+        <h2>Meer info</h2>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Volledige lijst van alle HTML elementen op Mozilla Developer Network</a></li>
+            <li>Graag eens op een andere manier interactief HTML leren? <a href="https://www.codecademy.com/learn/learn-html">Codecademy heeft een gratis introductie HTML (na registratie)</a>.</li>
+        </ul>
+
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_markup/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

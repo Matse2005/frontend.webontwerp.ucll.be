@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_boxmodel/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS box model</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">I'll be more enthusiastic about encouraging thinking outside the box when there's evidence of any thinking going on inside it.</span> <br>
+					&mdash; Terry Pratchett
+					
+			</p>
+		</blockquote>
+		<h1>CSS box model</h1>
+        <section class="leerdoel">
+
+            <ul>
+                <li>breedte, (hoogte), padding, border, margin;</li>
+                <li>box-sizing, ‘mini reset’;</li>
+                <li>eenheden;</li>
+                <li>speciaal: collapsing margins, negatieve marges;</li>
+                <li>border-radius;</li>
+                <li>box-shadow.</li>
+            </ul>
+        </section>
+
+        <h2>Box model in 8 minuten</h2>
+        <p>In onderstaande video geeft Kyle een kort overzicht van het doosmodel (box model) van CSS. Aangezien alles in CSS een doos is, is het belangrijk dat je dit goed snapt. In de video gaat het over <code>width</code>, <code>height</code>, <code>padding</code>, <code>border</code>, <code>margin</code>, collapsing margins (opgelet: enkel verticaal tussen twee dozen) en de <code>box-sizing</code> eigenschap.</p>
+        <p>Bij deze video hoort een klein ‘cheat sheet’, te downloaden in <a href="https://frontend.webontwerp.ucll.be/assets/css/CSS-Box-Model-Cheat-Sheet-Light.pdf">lichte</a> of <a href="https://frontend.webontwerp.ucll.be/assets/css/CSS-Box-Model-Cheat-Sheet-Dark.pdf">donkere</a> versie (PDF, 1,6 MB).</p>
+        <p>Na de video kom ik nog wat meer in detail op een aantal punten terug.</p>
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/rIO5326FgPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <h2>Eenheden</h2>
+        <p>We gebruikten ondertussen al geregeld de <code>px</code> eenheid. Dat is een gemakkelijke eenheid, met echter één groot nadeel: in de wereld van <abbr title="Responsive Web Design">RWD</abbr> is heel veel vloeibaar en verwacht je dat dingen zich aanpassen aan de beschikbare grootte (van het scherm, de container enz;). De eenheid <code>px</code> maakt alles echter vast. Eenheden zoals <code>%</code> of <code>(r)em</code> zijn veel meer geschikt voor deze taak.</p>
+
+        <p class="opgepast">Hiermee zeg ik niet dat je nooit <code>px</code> mag gebruiken! Maar het heeft ook te maken met het laten schieten van absolute controle en rekening houden met toegankelijkheid. Zo kan je bvb de grootte van het lettertype van een stukje tekst definiëren als <code>font-size: 18px;</code>. Daar is op zich niets mis mee. Als je echter de definitie herschrijft als <code>font-size:1.1rem</code> geef je eigenlijk een stukje controle terug aan de gebruiker: “dit stukje tekst moet getoond worden in een lettergrootte die 1,1 keer zo groot is als de standaardlettergrootte die de gebruiker ingesteld heeft in de voorkeuren van haar browser”. Deze standaardgrootte is gewoonlijk 16px, dus 1,1*16px ligt heel dicht bij 18px. Maar mogelijk wordt je site bekeken door iemand die niet zo goed ziet en in de browservoorkeuren het standaarlettertype een stuk groter gezet heeft. </p>
+
+        <table>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>em</code>
+                                    </td>
+                                    <td>Lettergrootte van het element</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ex</code>
+                                    </td>
+                                    <td>hoogte van de kleine letters</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>cap</code>
+                                    </td>
+                                    <td>hoogte van de hoofdletters</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ch</code>
+                                    </td>
+                                    <td>Gemiddelde breedte van een letter (‘0’)</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>rem</code>
+                                    </td>
+                                    <td>Lettergrootte van het root element</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>vw</code>
+                                    </td>
+                                    <td>1% van de viewport's breedte</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>vh</code>
+                                    </td>
+                                    <td>1% van de viewport's hoogte</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>vmin</code>
+                                    </td>
+                                    <td>1% van de kleinste afmeting (b / h) van de viewport</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>vmax</code>
+                                    </td>
+                                    <td>1% van de grootste afmeting van de viewport</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>%</code>
+                                    </td>
+                                    <td>percentage, altijd t.o.v. een andere grootheid</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+        <p>Kevin Powell heeft naar goede gewoonte een overzichtelijk filmpje met heel veel goed advies over welke eenheid je nu juist gebruikt.</p>
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/N5wpD9Ov_To" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <h2>em vs rem?</h2>
+        <p>Een vraag die veel studenten stellen: wat is nu juist het verschil tussen <code>em</code> en <code>rem</code>? Kevin geeft eerst in een klein filmpje een use case waar <code>em</code> te verkiezen kan zijn boven <code>rem</code>. Onder het filmpje volgt een kleine oefening die laat zien hoe lettergroottes in <code>em</code> en <code>rem</code> kunnen verschillen.</p>
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/ZjiJIIL60GI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <section class="taak">
+    <p>Gegeven volgend stukje code. Voor het gemak hebben we de CSS in het <code>style</code> element van <code>head</code> gezet (je weet dat dat niet de voorkeursmethode is, hee?). Zo hebben we maar één bestand nodig om deze oefening te maken.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Verschil em / rem&lt;/title&gt;
+    &lt;style&gt;
+        section &lbrace;
+            font-size: 2rem; /* wat met em? */
+        &rbrace;
+
+        p &lbrace;
+            font-size: 1.5rem; /* verander in em */
+        &rbrace;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;section&gt;
+        &lt;p&gt;Lorem ipsum dolor sit.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>   
+<p>Veronderstel dat het standaardlettertype van de browser 16px groot is. Beantwoord nu volgende vragen:</p>
+<ol>
+    <li>Hoe groot (px) zal de <code>font-size</code> van de tekst in de <code>p</code> zijn?</li>
+    <li>Vervang nu twee keer de eenheid <code>rem</code> door <code>em</code>. Hoe groot is de tekst nu?</li>
+</ol>
+    <button>Toon / verberg oplossing</button>
+    <div class="oplossing">
+    <ol>
+        <li>De inhoud van <code>p</code> wordt getoond in 1.5rem = 1.5 * 16px = 24px. Je kan dit in de developer tools nakijken door de <em>berekende</em> waarde op te vragen.<br><img src="https://frontend.webontwerp.ucll.be/assets/css/re-rem.png" alt="in de developer tools van Firefox Dev edition zie je in het tabblad berekend de berekende waarden"></li>
+        <li>Als je <code>em</code> gebruikt, wordt het een heel stuk moeilijker. De tekst in het <code>p</code> element krijgt een grootte van 1,5 keer de normale grootte die er hier zou gekozen zijn als deze CSS-regel over <code>p</code> niet zou gestaan hebben, dus de lettergrootte van de <code>section</code>. Volgens de CSS is de lettergrootte van de <code>section</code> 2 keer de lettergrootte die er normaal zou gestaan hebben, dus 2 keer de grootte van de letters in <code>body</code>, dus 2 * 16px = 32 px. Voor het element <code>p</code> geeft de berekening dus een <code>font-size</code> van 1.5 * 2 * 16px = 48px. Dergelijke berekeningen zijn erg vervelend en dus kiest men meestal voor de eenheid <code>rem</code> om lettergrootte aan te geven.</li>
+    </ol>
+    </div>
+</section>
+
+		
+        <h2>Breedte en hoogte</h2>
+        <p>Bovenop wat er hierboven in het filmpje over het box model verteld is over <code>width</code> en <code>height</code>nog deze twee opmerkingen:</p>
+        <ol>
+            <li>De berekeningen worden een heel stuk eenvoudiger als je volgende CSS-regel boven aan je stijlblad schrijft: <code>* &lbrace;box-sizing: border-box&rbrace;</code></li>
+            <li>Zoals Kevin Powell ook al aangeeft: moet je echt de hoogte van een doos bepalen? Waarom niet automatisch: hoe meer inhoud er in die doos komt, des te hoger zal ze worden. Als je zelf de hoogte bepaalt, loop je het risico op <em>overflow</em>. Als je dan toch een hoogte moet instellen, is het vaak veiliger om <code>min-height</code> te gebruiken.</li>
+        </ol>
+
+
+        <h2>Padding / margin</h2>
+        <p>Een veelgebruikte toepassing van <code>padding</code> is zorgen dat letters nooit tot tegen de rand van een doos komen. Je kan dit natuurlijk ook bereiken met <code>margin</code>, maar vaak is het gemakkelijker om in je element wat witruimte te voorzien met <code>padding</code></p>
+
+        <h2 style="border: 2px solid #0f0;">Border</h2>
+        <p style="border: 2px solid #f00;">Randen rond doosjes zijn vaak niet zo mooi. Als je met uitlijning of een achtergrondkleur werkt, zien mensen automatisch randen zonder dat je die expliciet tekent.</p>
+        <p style="border: 2px solid #00F">Tijdens het ontwerpen is het vaak wel een goed idee om je randen zichtbaar te maken. Liefst zelfs in opzichtige kleuren (voor deze drie dozen <code>h2</code> en twee keer <code>p</code> zijn volgende kleuren gebruikt: <code>#0f0</code>, <code>#f00</code> en <code>#00f</code>). Zo zie je tot waar de verschillende elementen gaan. Een handige CSS-afkorting in Emmet is hier <code>bd</code> gevolgd door tab-toets of enter. Deze afkorting geeft als resultaat: <code>border: 1px solid #000;</code>. Het volstaat dan om één of meer nullen in deze kleurcode voor zwart te veranderen in ‘F’ om een felrode, -groene, … kleur te bekomen.</p>
+
+
+        <h2>Box drop shadows</h2>
+        <p>Met de <code>box-shadow</code> CSS-eigenschap kan je een zogenaamde ‘drop shadow’ bij een doos maken, zodat je de indruk krijgt dat dat element lichtjes boven het blad zweeft. <a href="https://css-tricks.com/almanac/properties/b/box-shadow/">CSS-tricks heeft een goede uitleg over <code>box-shadow</code>.</a></p>
+        <p class="opgepast">De eigenschap <code>box-shadow</code> (ook <code>text-shadow</code> trouwens, samen met nog wel wat dingen … ik kijk naar jou <code>border-radius</code>) is één van die eigenschappen waar beginnende developers / ontwerpers zich nogal eens aan vergrijpen (ik pleit mee schuldig, het blokje waar je nu naar kijkt heeft een schaduw …). Als je dit gebruikt, doe het dan met mate. Hou je in! Niets zo lelijk als een opzichtige drop shadow.</p>
+        
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_boxmodel/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

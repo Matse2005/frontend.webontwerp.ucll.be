@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_RWD/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS Responsive Web Design</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">A light went off in my head. <em>Responsive</em> felt right for what I was trying to describe: layouts that would just <em>know</em> the best way to fit on a user’s screen. A user wouldn’t have to tap or click on anything to get the best design for their laptop or smartphone; rather, the design could fluidly adapt to the space available. It’d just <em>respond</em>.</span> <br>
+					&mdash;Ethan Marcotte
+					
+			</p>
+		</blockquote>
+		<h1>CSS Responsive Web Design</h1>
+        <section class="leerdoel">
+
+            <ul>
+                <li>Belang van Responsive Web Design;</li>
+                <li>relatief werken;</li>
+                <li><code>img</code> zich laten aanpassen aan container;</li>
+                <li><code>@media</code> queries;</li>
+                <li><code>meta viewport.</code></li>
+            </ul>
+        </section>
+
+        <h2>Inleiding</h2>
+<p class="opgepast">Dit topic is waarschijnlijk het belangrijkst in heel dit OPO. Eén van de basisuitgangspunten is dat we ontwerpen voor iedereen, onafhankelijk van handicap (toegankelijkheid), toestel, besturingssysteem, enz. Het is onze plicht als front-end developer om zoveel mogelijk mensen toe te laten een site / app zonder moeilijkheden te gebruiken. Iemand legde in dit verband de term ‘RWD’ uit als ‘Responsible (verantwoordelijk) Web Design’.</p>
+
+<h2>Steve Jobs 2007</h2>
+<p>In 2007 stelt Steve Jobs de eerste iPhone voor. De webdesign wereld zou nooit meer dezelfde zijn.</p>
+<img class="blok" src="https://frontend.webontwerp.ucll.be/assets/css/jobs-iphone.jpeg" alt="Steve Jobs stelt nieuwe iPhone voor">
+<p> De iPhone was niet de eerste smartphone, maar het was een gemakkelijk te gebruiken ding. Essentieel in de visie van Jobs was dat er een degelijke browser aanwezig was: Safari.</p>
+<p>Kort na deze voorstelling waren we met een aantal collega's web van UCLL (toen nog KHLeuven) op een tweedaagse webdesign conferentie in Londen. Twee boeiende dagen met 7 sprekers per dag die je meenamen in boeiende nieuwe evoluties. Er ging geen lezing voorbij of de spreker maakte een verwijzing naar de iPhone en hoe dit toestel een impact ging hebben op front-end development, wat nadien ook gebleken is.</p>
+
+<h2>Ethan Marcotte 2010</h2>
+<p>In 2010 schreef Ethan Marcotte voor <a href="https://alistapart.com/article/responsive-web-design/">A List Apart</a> een invloedrijk artikel waarin hij een nieuwe term lanceerde: “Responsive Web Design”. In dit artikel gebruikt hij drie technieken om responsief te werken:</p>
+<ul>
+    <li>Werk zoveel mogelijk flexibel, dus eerder met <code>%</code> dan vast (met <code>px</code>).</li>
+    <li>Zorg dat afbeeldingen de volledige breedte van hun container vullen m.b.v. <code>max-width: 100%</code></li>
+    <li>Gebruik <code>@media</code> queries om bij bepaalde schermafmetingen CSS aan te passen.</li>
+</ul>
+
+<h3>Flexibel werken</h3>
+<p>Vroeger – voor RWD – werden ontwerpen meestal in pixels gemaakt. Dikwijls was de pagina 960 pixels groot (zie bvb <a href="https://960.gs/">https://960.gs</a>, gek dat dit nog bestaat …). Dat was logisch want de meest courante schermafmeting was 1024 px. Het getal 960 heeft superveel delers en kon dus gebruikt worden voor 3, 4, 5, 6, 8, 12, … kolommen. En toen kwamen smartphones.</p>
+<p>Een deel van de oplossing ligt in het afstappen van de px als meest gebruikte eenheid. Werken met procenten (<code>%</code>) of ‘fraction’ eenheden bij grids (<code>fr</code>) maakt dat een ontwerp zich gemakkelijker kan aanpassen aan de beschikbare grootte.</p>
+
+
+<h3>Afbeeldingen zich laten schalen</h3>
+<p>Om een afbeelding zich in beperkte mate te laten aanpassen aan de container waarin ze zit, kan je volgende heel eenvoudige regel gebruiken:</p>
+<pre><code>img &lbrace;
+  max-width: 100%;
+&rbrace;</code></pre>
+<p>De <code>img</code> zal nu automatisch kleiner worden als de container waarin ze zich bevindt ook verkleint. De maximale grootte van de afbeelding is wel beperkt tot het aantal pixels breedte van de afbeelding zelf. Een foto van 600px breedte, zal in een container van 800px toch maar 600px breed zijn.</p>
+<p>Snap je dat dit toch eigenlijk wel een probleem is voor afbeeldingen die erg klein worden? Je laadt eerst een afbeelding met heel veel pixels, en dan wordt die heel verkleind weergegeven in de browser. Dat is niet erg efficiënt. Er bestaat een nieuwe manier om hiermee om te gaan en dat is gebruik maken van <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">‘echte responsieve afbeeldingen’</a>. Wie een uitdaging zoekt voor de eigen site: graag! Het behoort niet tot de standaardtopics voor dit OPO, maar ik zou het wel fijn vinden als je dit toch probeert te implementeren in jouw site.</p>
+
+
+<h3>@media queries</h3>
+<p>Een <code>@media</code> query is vergelijkbaar met een <code>if</code> uit sommige andere programmeertalen. Een klein voorbeeld:</p>
+<pre><code>@media (min-width: 30em) &lbrace;
+  body &lbrace;
+    font-size: 1.1rem;
+  &rbrace;
+&rbrace;</code></pre>
+<p>Deze regel zegt: “als de viewport minstens 30em breed is, dan mag je de CSS-regels in dit blok toepassen”. Mogelijk overschrijven deze CSS-regels waarden die erboven al gedefinieerd waren. In dit geval zal voor grotere schermen (vanaf 30em) de lettergrootte aangepast worden naar <code>1.1rem</code>.</p>
+<p class="opgepast">Tip: eerst definieer je in je CSS altijd de ‘gewone’ regels. Daaronder komen de ‘speciale gevallen’ m.b.v. een media query. Als je dus – zoals ik zelf probeer toe te passen – ‘mobile first’ werkt, dan staat bovenaan in je CSS alles voor een klein scherm (wat in principe veel gemakkelijker om te lay-outen is dan een groot scherm). Onder deze CSS-code staan dan mogelijk meerdere @media queries die steeds specialer worden. In dit geval dus: voor steeds grotere viewports.</p>
+
+<h2>Nieuwe technieken</h2>
+<p>CSS is niet blijven stilstaan sinds 2010. CSS staat trouwens nooit stil … We hebben ondertussen heel wat meer mogelijkheden die toen nog niet bestonden: flex, grid, CSS functies zoals <code>min()</code>, <code>max()</code>, <code>clamp()</code> enz.</p>
+
+<h2>Responsive Design Made Easy</h2>
+<p>In volgend filmpje van 42 minuten geeft Kevin Powell een mooie demo i.v.m. responsief werken. Hij vertrekt van een tekening (gemaakt in een programma zoals Figma) van het eindresultaat, bedenkt dan de HTML (structuur) en vult tenslotte stapsgewijs de CSS in.</p>
+
+<div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/bn-DQCifeQQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<h2>Meta viewport</h2>
+<section class="opgepast">
+<p>Iets heel kleins, maar erg belangrijk. Zorg ervoor dat volgende regel in de <code>head</code> van je HTML-bestand staat. Deze regel zegt aan de browser van een smartphone “gelieve niet te liegen over je breedte, maar geef de echte breedte van het scherm zodat de site zich hieraan kan aanpassen”. Toen de eerste iPhone uitkwam in 2007 waren de meeste sites ontworpen voor een breedte van 960 pixels. Apple liet dat toestel liegen over zijn breedte en deed alsof de breedte 980 pixels was, zodat de meeste sites van toen netjes op het scherm pasten. Gebruikers konden daarna zoomen om de tekst toch op het klein scherm te kunnen lezen.</p>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
+<p>Als je deze regel vergeet en test in de <a href="https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode">‘responsive design view’ van de developer tools van Firefox</a>, zal het daar lijken alsof je site zich netjes aanpast aan alle breedtes van smartphones. Op een echte smartphone krijg je echter de desktopversie te zien.</p></section>
+
+
+<h2>Responsive page from start to finish</h2>
+<p>Studenten vragen vaak “Hoe begin je aan zoiets?”. Hopelijk heb je wel al door dat je een site niet maakt door Visual Studio Code op te starten. Belangrijker is om eerst een <em>plan</em> te maken. <em>Een blad papier en een potlood zijn een ideaal startpunt. Schets!</em> Teken een versie voor klein scherm. Wat kan er gebeuren als je meer plaats ter beschikking hebt op een groter scherm? Denk dan na over de grote blokken en hoe je ze gaat positioneren en opdelen in kleinere structuren.</p>
+<p>Als uitsmijter van dit topic nog een laatste keer Kevin, met een langere film (twee uur dit keer). Vertrekkend van een tekening codeert hij volledig <em>mobile first</em> de pagina, met redelijk wat gebruik van de <code>flex</code> eigenschap.</p>
+<div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/zyNhxN6sToM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_RWD/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="nl">
+  
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_intro/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+    <!--     <link rel="stylesheet" href="/assets/highlight/styles/vs2015.min.css" />
+    <script src="/assets/highlight/highlight.min.js" is:inline></script>
+    <script is:inline>
+      hljs.highlightAll();
+    </script> -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <title>CSS intro</title>
+  </head>
+
+  <body>
+    <header id="top">
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+            <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+    <blockquote>
+      <p>
+        <span class="citaat">CSS doesn't have to be difficult, so long as you take the time to
+          really understand it's key, foundational concepts — concepts like the
+          CSS box model, the different types of CSS rules you can use, how
+          cascading works, and a few other components. With the basics under
+          your belt, CSS becomes a lot easier to use. And it can even be a whole
+          lot of fun, too!</span>
+        <br>
+        &mdash; Geoff ‘Ten Ton’
+      </p>
+    </blockquote>
+    <h1>CSS intro</h1>
+    <section class="leerdoel">
+      <ul>
+        <li>CSS = Cascading Style Sheets;</li>
+        <li>regels, selectoren, declaratie, eigenschap, waarde;</li>
+        <li>CSS koppelen aan HTML;</li>
+        <li>overerving;</li>
+        <li>nakomeling-, class-, id-selector;</li>
+        <li>de cascade en specificiteit;</li>
+        <li>developer tools.</li>
+      </ul>
+    </section>
+
+    <h2>Functie van CSS</h2>
+    <p>
+      CSS is een <em>declaratieve</em> programmeertaal die beschrijft <em>hoe</em> een HTML-document moet getoond worden in de browser. Waar komt een bepaald
+      element op een pagina te staan? In welk lettertype? Hoe groot? Welke voorgrond-
+      en achtergrondkleur? In een raster?
+    </p>
+
+    <p>
+      Veel studenten sukkelen met CSS omdat ze nooit de moeite nemen om de taal
+      voldoende te snappen. Na veel prutsen met eigenschappen, waarden,
+      gekopieerde code van alle mogelijke bronnen komt er dan een resultaat dat
+      min of meer voldoet aan wat er gewenst was, maar dat bij de minste
+      verandering als een kaartenhuisje in elkaar stuikt.
+    </p>
+
+    <p>
+      Dit stuk probeert enkele basisbegrippen duidelijk voor te stellen. Neem er
+      je tijd voor, experimenteer, lees artikels en bekijk filmpjes (liefst de
+      goede en niet verouderde artikels).
+    </p>
+
+    <section>
+      <div class="content">
+        <h5>CSS&nbsp;is&nbsp;leuk!</h5>
+        <h5>CSS&nbsp;is&nbsp;leuk!</h5>
+      </div>
+    </section>
+
+    <h2>Why is CSS so weird?</h2>
+    <p>
+      Dit filmpje op Mozilla Developer (auteur: Miriam Suzanne) legt heel goed
+      uit waarom CSS zo anders is dan andere programmeertalen. Wie weet komt dit
+      filmpje iets te vroeg in deze cursustekst. Maar bekijk het nu al eens en
+      kom er later (als je wat meer CSS toegepast hebt in je site) op terug.
+    </p>
+    <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/aHUtMbJw8iA?si=c70fYsoc5oPqH76f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+    <h2>CSS-regel</h2>
+    <p>
+      Een stijlblad bestaat uit één of meer stijlinstructies (‘CSS regels’) die
+      beschrijven hoe een element moet getoond worden. Een CSS regel <em>selecteert</em> een element en <em>declareert</em> hoe het er moet uitzien. Een voorbeeld
+      van een CSS regel:
+    </p>
+    <pre><code>body &lbrace;
+    font-family: georgia, serif;
+    color: #000;
+&rbrace;</code></pre>
+    <p>
+      Spaties, nieuwe regels, inspringen zijn onbelangrijk voor de browser, maar
+      zorgen wel dat je CSS bestand leesbaar is. De meeste developers schrijven
+      hun CSS zoals hierboven getoond, met spaties, accolades en inspringen waar
+      het in dit voorbeeld staat. Enkele begrippen:
+    </p>
+    <dl>
+      <dt>Selector</dt>
+      <dd>Deze regel selecteert het <code>body</code> element;</dd>
+      <dt>Declaratieblok</dt>
+      <dd>alles tussen beide accolades &lbrace; … &rbrace;;</dd>
+      <dt>Eigenschap</dt>
+      <dd>
+        <code>font-family</code> en <code>color</code> zijn eigenschappen;
+      </dd>
+      <dt>Waarde</dt>
+      <dd>
+        <code>georgia, serif</code> en <code>#000</code> zijn de waarden voor beide
+        eigenschappen.
+      </dd>
+    </dl>
+    <p>
+      Gewoonlijk schrijft men één declaratie per regel. Tussen twee declaraties
+      moet altijd een ‘;’ staan. Strikt genomen moet er dus na #000 geen ‘;’
+      geschreven worden, maar de meeste developers doen dat wel.
+    </p>
+    <p>
+      Er bestaat software (bvb als extensie in VS Code) om een CSS bestand zo
+      klein mogelijk te maken, de zogenaamde ‘minifiers’. De <em>geminifieerde</em> versie van bovenstaande CSS zou er zo kunnen uitzien:
+    </p>
+    <pre><code>body&lbrace;font-family:georgia,serif;color:#000&rbrace;</code></pre>
+
+    <h2>CSS koppelen aan HTML</h2>
+    <p>
+      Er zijn drie manieren (vier als je injectie via <abbr title="JavaScript">JS</abbr> meerekent) om CSS te koppelen aan HTML. <strong>Voor je project moet je de eerste manier gebruiken, dus via één extern
+        stijlbestand.</strong>
+    </p>
+
+    <h3>Extern stijlbestand</h3>
+    <p>
+      De voorkeursmethode is om alle stijlinformatie in één extern bestand te
+      steken. Dit bestand wordt gedeeld door alle HTML-pagina's. Eenmaal het
+      geladen is (bij het laden van de eerste HTML-pagina) staat het op de harde
+      schijf van je bezoeker en hoeft het dus voor de volgende HTML-pagina's
+      niet meer gedownload te worden. Dit belangrijk mechanisme heet ‘caching’.
+      Het versnelt de browse-ervaring aanzienlijk.
+    </p>
+    <p>
+      Je linkt een CSS-bestand aan een HTML-pagina d.m.v. het <code>link</code> element,
+      dat in de <code>head</code> van het document moet staan. De volgende code linkt
+      het bestand ‘stijlblad.css’ (dat in dezelfde map staat als het huidig document)
+      aan het huidige HTML-document.
+    </p>
+    <pre><code>&lt;html&gt;
+&lt;head&gt;
+  …
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;stijlblad.css&quot;&gt;
+  …
+&lt;/head&gt;
+&lt;body&gt;
+  …</code></pre>
+    <p>
+      <strong>Deze manier van werken heeft het groot voordeel dat de HTML en de CSS
+        gescheiden worden.</strong> Als je hele site gebruik maakt van één CSS-bestand, dan zal ze automatisch
+      meer consistent zijn: alle titels zullen er bvb op alle pagina's hetzelfde
+      uitzien. En als je toch een lay-outaanpassing wilt doen aan die titels, dan
+      hoef je maar op één plaats te kijken en iets te wijzigen.
+    </p>
+
+    <h3>Embedded stijlblad</h3>
+    <p>
+      Soms kan het nuttig zijn om alle stijlinformatie in het HTML-document zelf
+      te zetten, bvb. als je maar één bestand wilt doorsturen naar iemand met
+      een beperkte opmaak. Je kan deze CSS dan in het <code>style</code> element
+      in de <code>head</code> zetten:
+    </p>
+    <pre><code>&lt;html&gt;
+&lt;head&gt;
+  …
+  &lt;style&gt;
+    body &lbrace;
+        font-family: georgia, serif;
+        color: #000;
+    &rbrace;
+  &lt;/style&gt;
+  …
+&lt;/head&gt;
+&lt;body&gt;
+  …</code></pre>
+
+    <h3>Inline stijlinformatie</h3>
+    <p>
+      Heel uitzonderlijk kan je bij één heel specifiek element stijlinformatie
+      toevoegen via het <code>style</code>
+      <em>attribuut</em> van dat element zelf:
+    </p>
+    <pre><code>&lt;h1 style=&quot;color: red&quot;&gt;Mijn titel&lt;/h1&gt;</code></pre>
+    <p>
+      Dit is zelden een goed idee, omdat je op deze manier de inhoud en
+      structuur (HTML) mengt met de vormgeving (CSS). We houden beide liefst zo
+      gescheiden mogelijk. Gebruik deze inline CSS dus in heel specifieke
+      gevallen.
+    </p>
+
+    <h2>Over ouders en kinderen</h2>
+    <p>
+      Bij HTML spreken we over ouders en kinderen, over (stam)bomen,
+      familierelaties … Veel (niet alle!) eigenschappen worden overgeërfd van
+      ouder op kind enz. Bekijken we eens <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family">de documentatie op Mozilla Developer Network i.v.m. de eigenschap <code>font-family</code></a>. Als je op deze pagina een beetje naar beneden scrollt, zie je:
+    </p>
+    <img class="blok" src="https://frontend.webontwerp.ucll.be/assets/css/MDN_font-family.png" alt="font-family wordt overgeërfd van ouder op kind">
+    <p>
+      De eigenschap <code>font-family</code> wordt dus wel degelijk overgeërfd van
+      ouder op kind, kleinkind enz. Dat is een goede reden om je meest gebruikte
+      lettertype in <code>body</code> te declareren, vermits de volledige inhoud
+      van je pagina in <code>body</code> zit.
+    </p>
+
+    <section class="taak">
+      <p>
+        Onderzoek (bvb via de MDN developer pagina's waar we hierboven al aan
+        refereerden) of de eigenschappen <code>background-color</code> en <code>color</code> wordt overgeërfd.
+      </p>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        De eigenschap <code>color</code> wordt overgeërfd van ouder op kind, <code>background-color</code> echter wordt niet overgeërfd. De illusie dat kinderen toch dezelfde achtergrondkleur
+        hebben als hun ouders is eenvoudig te verklaren doordat de standaardwaarde
+        (‘default’) voor de achtergrondkleur de waarde <code>transparent</code> (doorschijnend)
+        is.
+      </p>
+    </section>
+
+    <h2>Enkele soorten selectoren</h2>
+    <p>
+      We komen verder in een apart stuk nog terug op selectoren. Hieronder krijg
+      je een drietal types van selectoren omdat we die nodig hebben om het
+      begrip cascade en specificiteit uit te leggen.
+    </p>
+    <h3>Nakomelingselector (spatie)</h3>
+    <p>
+      De nakomelingselector (‘descendant selector’) gebruik je door twee of meer
+      HTML elementen te combineren met een <strong>spatie</strong> ertussen. Een
+      voorbeeld: volgende CSS-regel zegt dat alle <code>p</code> elementen die in
+      <code>main</code> zitten links moeten uitgelijnd worden. Paragrafen die bvb.
+      enkel in een <code>footer</code> te vinden zijn, gehoorzamen niet aan deze
+      regel.
+    </p>
+    <pre><code>main p &lbrace;
+    text-align: left;
+&rbrace;</code></pre>
+
+    <h3>Class-selector (.)</h3>
+    <p>
+      In een HTML document kan je het attribuut <code>class</code> gebruiken. Je
+      mag dezelfde klassenaam meerdere keren in hetzelfde document gebruiken. Stel
+      dat je in je pagina een alinea hebt die als betekenis heeft dat het over een
+      belangrijke update gaat, dan zou je in het HTML-bestand die <code>p</code>
+      als attribuut <code>class="update"</code> kunnen geven. Zo zou ik de aandacht
+      kunnen trekken op deze nieuwe alinea (update: door Corona is het restaurant
+      gesloten) door er een rood randje rond te trekken.
+    </p>
+    <pre><code>p.update &lbrace;
+    border: 1px solid red;
+&rbrace;</code></pre>
+    <p>
+      Belangrijke opmerking: geef klassenamen op basis van <em>betekenis</em> en
+      niet op basis van vormgeving. Doe dus dit niet:
+    </p>
+    <pre class="fout"><code>&lt;p class=&quot;rode-rand&quot;&gt;Ons restaurant is gesloten omwille van Corona.&lt;/p&gt;</code></pre>
+    <p>Dit is semantisch (qua betekenis) veel beter:</p>
+    <pre><code>&lt;p class=&quot;update&quot;&gt;Ons restaurant is gesloten omwille van Corona.&lt;/p&gt;</code></pre>
+
+    <p>
+      I.p.v. <code>p.update</code> had je ook als selector <code>.update</code> kunnen
+      gebruiken. Het verschil is dat deze laatste versie <em>alle</em> HTML elementen
+      selecteert met <code>class = "update"</code>. De eerste versie selecteert
+      alleen alinea's met die klasse.
+    </p>
+
+    <h3>ID-selector (#)</h3>
+    <p>
+      De ID-selector doet hetzelfde als de klasseselector, met dit verschil: je
+      mag een bepaald ID maar één keer gebruiken in hetzelfde HTML-document. We
+      kunnen het voorbeeld van hierboven herhalen. Op voorwaarde dat er maar één
+      HTML-element is met dit ID, zouden we in HTML kunnen schrijven:
+    </p>
+    <pre><code>&lt;p id=&quot;update&quot;&gt;Ons restaurant is gesloten omwille van Corona.&lt;/p&gt;</code></pre>
+    <p>
+      De CSS om rond deze unieke alinea een rood randje te zetten wordt dan:
+    </p>
+    <pre><code>p#update &lbrace;
+    border: 1px solid red;
+&rbrace;</code></pre>
+    <p>
+      Zelfde opmerking als bij de klasseselector: we hadden in CSS ook <code>#update</code> kunnen schrijven i.p.v. <code>p#update</code>. Aangezien dit ID uniek
+      moet zijn, maakt dit hier geen enkel verschil, behalve op het gebied van
+      specificiteit, maar dat is voor volgend stukje.
+    </p>
+
+    <h2>De cascade en specificiteit</h2>
+    <p>
+      De ‘C’ van CSS staat voor ‘cascade’ (waterval). Het is een niet zo
+      eenvoudig systeem dat regelt wat er moet gebeuren als er <em>tegenstrijdige regels</em> zijn. Die tegenstrijdigheid kan komen doordat CSS kan komen van de browser,
+      de gebruiker zelf of van de developer of designer die de pagina maakte. En
+      zelfs binnen de CSS die de developer schreef, kunnen er verschillende CSS-regels
+      van toepassing zijn op een HTML-element. Welke regel haalt het dan? Daarover
+      gaat de cascade en specificiteit.
+    </p>
+
+    <p>
+      Onderstaand filmpje geeft een goed overzicht, zonder te fel in detail te
+      gaan. <em>Het is belangrijk dat je dit principe goed probeert te snappen</em>. Je kan uit de cascade veel voordeel halen (het is een essentieel
+      onderdeel van de taal!) en je zal sneller fouten of onverwachte resultaten
+      kunnen opspeuren in je eigen code.
+    </p>
+    <div class="iframewrapper">
+      <iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/TjMlfWpw7E0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <p>
+      <a href="https://stuffandnonsense.co.uk/archives/css_specificity_wars.html">Om specificiteit uit te leggen gebruikte Welsh designer Andy Clarke een
+        Star Wars metafoor</a>. HTML elementen in de selector zijn <em>stormtroopers</em>. Twee
+      stormtroopers winnen van één. Een klasse is een <em>Darth Maul</em>. Darth
+      Maul wint van gelijk hoeveel stormtroopers. Een ID is <em>Darth Vader</em>. Die is natuurlijk nog veel sterker. Een style attribuut (‘The Emperor’)
+      wint van al het vorige. Een <em>Death Star</em> (!important achter een CSS
+      eigenschap met waarde zetten) is het allersterkste. Deze <code>!important</code> toevoeging heb je zelden nodig.
+    </p>
+
+    <img class="blok" src="https://frontend.webontwerp.ucll.be/assets/css/css-specificity-wars.png" alt="Specificiteit met Star Wars figuurtjes">
+
+    <section class="taak">
+      <p>
+        Gegeven onderstaande code. Voor de eenvoud staat de CSS in de <code>head</code> van het document. Welke kleur krijgen beide paragrafen?
+      </p>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot;&gt;
+&lt;head&gt;
+  &lt;title&gt;specificiteit&lt;/title&gt;
+  &lt;style&gt;
+    body &lbrace;
+      color: black;
+    &rbrace;
+
+    #container &lbrace;
+      color: green;
+    &rbrace;
+
+    main p &lbrace;
+      color: red;
+    &rbrace;
+
+    p.update &lbrace;
+      color: rebeccapurple;
+    &rbrace;
+
+    p &lbrace;
+      color: blue;
+    &rbrace;
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+      &lt;main&gt;
+        &lt;p&gt;Dit is de eerste alinea.&lt;/p&gt;
+        &lt;p class=&quot;update&quot;&gt;Dit is de tweede alinea.&lt;/p&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <button>Toon / verberg oplossing</button>
+      <div class="oplossing">
+        <p>
+          De eerste <code>p</code> wordt <span style="color:red">rood</span>, de
+          tweede krijgt de kleur <a href="http://www.zeldman.com/2014/06/10/the-color-purple/" style="color:rebeccapurple">‘rebeccapurple’</a>. De meest gemaakte fout is dat mensen redeneren dat <code>#container</code> toch veel specifieker is dan al de rest en dat alles dus <span style="color: green;">groen</span> zal worden.
+        </p>
+        <p>
+          Dat klopt echter niet. Overerving wordt pas bekeken als er geen enkele
+          regel van toepassing is op het element in kwestie. Concreet: als er
+          geen enkele regel van toepassing zou zijn op de <code>p</code> elementen,
+          dan zouden we overerving bekijken omdat de <code>color</code> eigenschap
+          overgeërfd wordt. Dat hoeft echter niet in dit voorbeeld omdat er drie
+          CSS-regels i.v.m. kleur van toepassing zijn op de alinea's:
+        </p>
+        <ul>
+          <li>
+            Voor de eerste alinea heeft de selector <code>main p</code> een grotere
+            specificiteit dan de selector <code>p</code> (ook al staat die laatste
+            lager in de CSS), dus de kleur <span style="color:red">rood</span> wordt
+            toegepast.
+          </li>
+          <li>
+            De tweede alinea heeft een klasseselector die van toepassing is, nl. <code>p.update</code>, dus die is specifieker dan de andere twee selectoren die op deze
+            alinea van toepassing zijn. De kleur wordt dus <span style="color:rebeccapurple">‘rebeccapurple’</span>.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <h2>Oefening op specificiteit</h2>
+    <p>
+      Specificiteit van selectoren is zo'n topic waar veel developers mee
+      worstelen. Eén mogelijke oplossing is het probleem helemaal negeren door
+      elke component in je pagina een unieke <code>span</code> mee te geven of door
+      alles met inline styles te doen. Maar dan schakel je dit stukje van de cascade
+      uit dat net ook in je voordeel kan werken.
+    </p>
+    <p>
+      Daarom deze oefening: <a href="http://css-specificity.smnarnold.com/?level=tag-vs-class">CSS specificity, gemaakt door Simon Arnold</a>. Het kost niet meer dan tien minuten om de twintig puzzeltjes op te
+      lossen. Je zal gegarandeerd iets bijleren als je ze maakt.
+    </p>
+
+    <h2>Developer tools</h2>
+    <p>
+      Elke browser heeft ‘developer tools’ die je kan activeren door op een
+      pagina rechts te klikken en ‘inspecteren’ te kiezen. Het maakt dus niet
+      uit in welke browser je dat doen. We legden al uit in een vorig stuk dat
+      we voor dit OPO altijd de developer tools van Firefox developer edition
+      zullen gebruiken.
+    </p>
+    <p>
+      Een pagina bekijken in de developer tools kan je veel inzicht verschaffen
+      over hoe de CSS in combinatie met de HTML (en de JS) werkt. Waarom geeft
+      een CSS-regel die je schreef niet het gewenste resultaat? Bekijk het in de
+      developer tools. Waarom heeft een bepaald element niet de gewenste
+      afmetingen of staat het op een onverwachte plaats? De developer tools zijn
+      je allerbeste vriend!
+    </p>
+    <p>
+      Onderstaande youtubefilm toont de developer tools van Firefox in actie om
+      te bekijken hoe de cascade werkt.
+    </p>
+
+    <div class="iframewrapper">
+      <iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/Sp9ZfSvpf7A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <section class="taak">
+      <p>
+        Bovenaan dit document staat een CSS-animatie ‘CSS is leuk!’. Gebruik de
+        developer tools om de animatieduur af te lezen.
+      </p>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        Klik rechts op de animatie. In de HTML-code links merk je dat dit een <code>div class="content"</code> is. Deze <code>div</code> bevat twee <code>h5</code> elementen. Klik op
+        het tweede <code>h5</code> element. In de CSS-kolom in de dev.tools lees
+        je nu af dat de animatie oneindig doorloopt met een duurtijd van 3s.
+      </p>
+    </section>
+  </main>
+    <footer>
+      <div class="container">
+        <p>
+          <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2023 — Jan Van Hee
+        </p>
+        <p><a href="#top">&uarr; Naar top</a></p>
+      </div>
+    </footer>
+    <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+  </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_intro/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_validatie/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>HTML afbeeldingen</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+    <blockquote>
+			<p>
+				<span class="citaat">Now when we look at new things added to HMTL, new features, new browser APIs, what we tend to ask, of course, is: how well does it work?
+How well does this thing do what it claims it’s going to do? That’s an excellent question to ask whenever you’re evaluating a new technology or tool. But I don’t think it’s the most important question. I think it’s just as important to ask: how well does it fail?</span> <br>
+				&mdash;Jeremy Keith
+					
+			</p>
+		</blockquote>
+		<h1>HTML validatie</h1>
+      <section class="leerdoel">
+            <ul>
+              <li>Streefdoel: valide code;</li>
+              <li><a href="https://html5.validator.nu/">https://html5.validator.nu</a> of alternatief <a href="https://validator.w3.org/">https://validator.w3.org</a>;</li>
+              <li>uitgewerkt voorbeeld (probeer eerst zelf).</li>
+            </ul>
+      </section>
+
+<h2>HTML-code laten nakijken.</h2>  
+<p>Je typt een <abbr title="Uniform Resource Identifier">URI</abbr> in. De browser vraagt dan aan de webserver het gevraagde HTML-bestand. Dit bestand wordt dan gelezen door de browser en verwerkt tot een boomstructuur (ouders, kinderen, …). Maar wat als deze ontvangen HTML-code fouten bevat omdat de front-end developer die ze schreef niet aandachtig was of het niet belangrijk vond? </p>
+<p>Browsers zijn zeer complexe stukken software, o.a. omdat een browser probeert om foute HTML-code zo goed mogelijk te interpreteren. Mogelijk zie je zelfs aan de uiteindelijke lay-out van de pagina op het scherm niet dat er iets fout was. Maar het is evengoed mogelijk dat er heel wat mis loopt met de lay-out.</p>
+
+<p class="opgepast">HTML-code laten nakijken kan eenvoudig door een stuk software, <em>validator</em> genaamd. Die kan je wijzen op dingen die niet toegelaten zijn, op een stomme typfout, op een element dat niet correct afgesloten is enz. Het is natuurlijk perfect mogelijk om rommelcode te schrijven die geen fouten bevat. Maar het zou een basishouding van elke developer moeten zijn om code zoveel mogelijk te testen. Zeker als het zo eenvoudig is, zoals in het geval van de HTML-validator. <strong>Vooraleer je voor dit OPO je code afgeeft, kijk je dus elke pagina in de HTML-validator na op fouten!</strong></p>
+
+
+<h2>Een uitgewerkt voorbeeld</h2>	
+<section class="taak">
+    <p>Bekijk onderstaande code. Ze bevat een aantal HTML-fouten. Vind je ze allemaal? Onder de code tonen we in een filmpje hoe we te werk gaan in de HTML-validator. Via ‘Toon&nbsp;/&nbsp;verberg oplossing’ kan je zelf al beknopt controleren of je alle fouten terugvond.</p>
+    <button>Toon / verberg oplossing</button>
+    <section class="oplossing">
+    <ul>
+      <li>Stomme typfout in de sluittag van <code>head</code>;</li>
+      <li>elke <code>head</code> moet verplicht een <code>title</code> hebben;</li>
+      <li>een <code>ul</code> mag alleen <code>li</code> elementen bevatten, de <code>p</code> moet dus weg;</li>
+      <li>elke <code>img</code> moet verplicht een <code>alt</code> attribuut hebben (desnoods leeg);</li>
+      <li>de validator houdt niet van het attribuut <code>loading</code> in de Google-iframe, dus verwijder dit;</li>
+      <li>er is een waarschuwing (‘warning’) dat de <code>section</code> geen titel heeft, maar dat is dus geen fout;</li>
+      <li>de <code>body</code> is niet netjes afgesloten, wat geen fout is (maar wel slechte programmeerpraktijk).</li>
+    </ul>
+    </section>
+</section>
+
+<pre><code>&lt;html lang=&quot;nl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;/haed&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;HTML met syntaxisfouten&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;ul&gt;
+        &lt;p&gt;Er zijn heel wat dingen die fout kunnen lopen:&lt;/p&gt;
+        &lt;li&gt;typfout in de naam van een element;&lt;/li&gt;
+        &lt;li&gt;elementen vergeten te sluiten;&lt;/li&gt;
+        &lt;li&gt;enz&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;Laat daarom je code altijd nakijken door een stuk software dat weet 
+      wat er kan en moet in HTML: een validator. We gebruiken die van 
+      &lt;a href=&quot;https://html5.validator.nu&quot;&gt;html5.validator.nu&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;img/foto2.jpg&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;Je vindt UCLL Campus proximus in Haasrode.&lt;/p&gt;
+      &lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.
+      193996470273!2d4.7258333163305615!3d50.
+      84609176665782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+      1!3m3!1m2!1s0x47c166ba515fdd4d%3A0xb2dba6fd812b1730!2s
+      Hogeschool%20UCLL%20-%20Campus%20Proximus!5e0!3m2!1snl!
+      2sbe!4v1642955623429!5m2!1snl!2sbe&quot; width=&quot;600&quot; height=&quot;450&quot; style=&quot;border:0;&quot; 
+      allowfullscreen=&quot;&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/html&gt;</code></pre>
+
+<p class="opgepast">Update 10 maart 2022: Enkele dagen geleden lag de validator die ik in onderstaand filmpje gebruik (<a href="https://html5.validator.nu/">https://html5.validator.nu</a>) uit. Ondertussen is de dienst terug, maar is er een belangrijke aanpassing gebeurd: je kan nu <em>enkel nog online files</em> valideren met behulp van de URL. Copy / paste in een tekstvak lukt dus niet meer. Er zijn twee mogelijke oplossingen: ofwel zet je altijd eerst je HTML bestand online en valideert het zo, ofwel gebruik je de alternatieve (en even goede) validator van het W3C: <a href="https://validator.w3.org/">https://validator.w3.org</a></p>
+        
+<div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_mbkim5dy&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_alpggsi5" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>       
+
+<h2>Valideer!</h2>
+<p>Streef naar foutloze code. Een goed beginpunt is codevalidatie. Dat kan zowel voor HTML als later voor CSS. <em>Valide code is geen synoniem voor goede code</em>. Het is niet moeilijk om valide code te schrijven die inhoudelijk (semantisch) niet OK is. Zo is het bvb perfect mogelijk om een hele site te maken met in <code>body</code> voor de lay-out enkel het <code>div</code> element. Maar of dat een goed idee is …</p>
+<section class="opgepast"><p>Zullen we er een hoofdregel van maken? <strong>Voor dit OPO geef je gevalideerde code af</strong>. Code (laten) nakijken is iets dat je geregeld doet en dat een belangrijk onderdeel van je workflow moet worden. Het is niet omdat je code vorige week in orde was, dat dat nu na enkele toevoegingen nog zo is.</p> 
+<p>In dit verband een kleine waarschuwing voor iets wat ik geregeld hoor. Een student heeft een site met alle code gevalideerd. Vlak voor de deadline moet er nog iets klein toegevoegd of verbeterd worden. Vaak vindt men het dan niet meer de moeite om nog een keertje te valideren. Een fout is echter zo snel gemaakt. Daarom: <strong>maak van validatie en testing in het algemeen het laatste wat je doet vooraleer een site in productie gaat</strong>.</p></section>
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_validatie/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

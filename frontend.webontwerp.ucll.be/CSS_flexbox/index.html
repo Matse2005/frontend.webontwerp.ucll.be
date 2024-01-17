@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_flexbox/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS box model</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Flexbox is for one dimensional layout. A row OR a column. Grid is for two dimensional layout. Rows AND columns.</span> <br>
+					&mdash; Rachel Andrew
+					
+			</p>
+		</blockquote>
+		<h1>CSS flexbox module</h1>
+        <section class="leerdoel">
+
+            <ul>
+                <li>flex container / kinderen;</li>
+                <li>hoofdas / nevenas;</li>
+                <li>uitlijnen volgens beide assen;</li>
+                <li><code>flex-grow</code>, <code>flex-shrink</code>, <code>flex-basis;</code></li>
+                <li><code>flex-wrap.</code></li>
+            </ul>
+        </section>
+
+        <h2>Learn flexbox the easy way</h2>
+        <p>Voor deskundige uitleg over flex gaan we weer te rade bij Kevin Powell. Hij heeft meer dan één video over flexbox, want over deze module valt heel wat te vertellen. Het beste overzicht geeft onderstaand filmpje van 34 minuten.</p>
+
+        <p>Wat moet je weten om deze uitleg te kunnen volgen:</p>
+        <ul>
+            <li>Met de eigenschap <code>display: flex</code> maak je een element tot een <em>flex-container</em>. De directe <em>kinderen</em> (dus niet kleinkinderen enz) van dit element worden dan <em>flex items</em>. </li>
+            <li>Bij flex spreekt men over een <em>hoofdas</em> en een <em>nevenas</em>. De standaardoptie is <code>flex-direction: row</code> en dat betekent dat de horizontale richting de hoofdas is en de verticale as de nevenas.</li>
+            <li>In de uitleg heeft Kevin het op een bepaald moment over een <code>@media</code> regel. Op zich niet zo moeilijk om te begrijpen, maar dit is het onderwerp van één van de laatste topics van de module CSS, nl. <abbr title="Responsive Web Design">RWD</abbr>.</li>
+            <li>Het duidelijkste grafische overzicht over alle mogelijkheden van flexbox vind je op <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>. Dit overzicht bestaat grotendeels uit twee kolommen. Alles in de linkerkolom gaat over de flex-container (het ouderelement). De rechterkolom beschrijft de eigenschappen van de flex items (de kinderen): <br><img src="https://frontend.webontwerp.ucll.be/assets/css/flex_csstricks.png" alt="cheat sheet over flex op css-tricks"></li>
+        </ul>
+
+        <div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/u044iM9xsWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+        <h2>Waarvoor flex gebruiken?</h2>
+        <p>De site die je nu bekijkt gebruikt o.a. flex voor:</p>
+        <ul>
+            <li>Navigatie: zeker als je je site wilt maken voor alle groottes van schermen, biedt flex heel wat voordelen voor de lijst die een nav in essentie is. Op grote schermen kunnen die items naast elkaar, op kleinere schermen is een lay-out in een kolom misschien handiger.</li>
+            <li>Ook de navigatie binnen een blok (HTML, CSS, JS) met de foto's waarop een woord staat is met flex gedaan. Dit had ook met <code>display: grid</code> gerealiseerd kunnen worden, maar ik koos voor de oplossing met flex en <code>flex-wrap: wrap</code>.</li>
+        </ul>
+
+        <p class="opgepast">Je vindt veel sites met een uitleg hoe je de items in de navigatie naast elkaar kan krijgen met <code>float</code> of <code>inline-block</code>. Dat is helemaal niet fout en werkt ook nu nog. <em>Maar het is wel erg verouderd</em>. Voor de site die je als project maakt, gaan we ervan uit dat je voor de <code>ul</code> in de <code>nav</code> gebruik maakt van <code>display: flex</code>.</p>
+
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_flexbox/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

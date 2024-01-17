@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_form/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>HTML form</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+            <p>
+                <span class="citaat">Visually group related labels and fields. Labels should be
+                    close to the fields they describe (immediately above the
+                    field for mobile and shorter desktop forms, or next to the
+                    field for extremely long desktop forms). Avoid ambiguous
+                    spacing, where labels are equidistant from multiple fields,
+                    and make sure to include the label attribute for screen
+                    readers. If your form asks about two different topics,
+                    section it into two separate groups of fields (and tag the
+                    groups for screen readers).</span>
+                <br>
+                &mdash;Kathryn Whitenton
+            </p>
+        </blockquote>
+        <h1>Formulieren</h1>
+        <section class="leerdoel">
+            <ul>
+                <li>Elementen <code>form</code> en <code>input</code>;</li>
+                <li>overzicht input types;</li>
+                <li>belang van <code>label</code>;</li>
+                <li>enkele vuistregels voor een goed formulier</li>
+            </ul>
+        </section>
+
+        <h2>Het form element</h2>
+        <p>
+            Kyle van ‘Web Dev Simplified’ geeft een mooi overzicht van de
+            mogelijkheden van forms. Je zal waarschijnlijk niet elk type <code>input</code> dat hij demonstreert nodig hebben, maar het is wel goed om te weten
+            dat die dingen bestaan.
+        </p>
+        <p>
+            Wat ik zo goed als nooit zou doen is een <code>reset</code> knop voorzien
+            onder een formulier. Dat is zelden of nooit nuttig en is bijzonder frustrerend
+            voor een gebruiker die deze knop per ongeluk indrukt en dan vaststelt
+            dat alles wat ingevuld was, verdwenen is.
+        </p>
+
+        <div class="iframewrapper">
+            <iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/fNcJuPIZ2WE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <h2>Form usability</h2>
+        <p>
+            <em>Usability</em> of <em>bruikbaarheid</em> onderzoekt hoe mensen technologie
+            gebruiken, welke hinderpalen ze daarbij ontmoeten en wat jij als developer
+            / designer daar kan doen. Ik vat even <a href="https://www.nngroup.com/articles/web-form-design/">het artikel ‘Website Forms Usability: Top 10 Recommendations’</a> van Kathryne Whitenton samen.
+        </p>
+
+        <ol>
+            <li>
+                Hou het kort. Niemand vult graag een formulier in. Een formulier
+                met 3 velden is beter dan één met 10.
+            </li>
+            <li>Groepeer bij elkaar horende labels en inputvelden.</li>
+            <li>
+                Zet je velden liefst in één kolom. Formulieren verspreid over
+                meerdere kolommen zijn moeilijker om in te vullen.
+            </li>
+            <li>Zorg voor een logische volgorde.</li>
+            <li>
+                <a href="https://www.smashingmagazine.com/2018/06/placeholder-attribute/">Gebruik geen <em>placeholder</em> tekst</a>, tenzij waar dat echt nuttig is (zelden!).
+            </li>
+            <li>
+                Probeer via de lengte van een inputveld weer te geven hoeveel
+                input je verwacht. Een Belgische postcode bevat 4 karakters.
+                Waarom zou je dan een inputveld voorzien dat 30 karakters kan
+                bevatten?
+            </li>
+            <li>
+                Maak het onderscheid tussen optionele en verplichte velden
+                duidelijk.
+            </li>
+            <li>
+                Als er voorwaarden zijn voor een veld (bvb. wachtwoord moet
+                minstens voldoen aan …), maak die dan op voorhand duidelijk.
+            </li>
+            <li>Vermijd een ‘reset’ knop.</li>
+            <li>
+                En als het dan toch fout loopt: zorg voor duidelijke
+                foutmeldingen.
+            </li>
+        </ol>
+    </main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_form/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

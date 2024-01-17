@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_tabellen/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>HTML tabellen</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Tables can be beautiful but they are not works of art. Instead of painting and decorating them, design tables for your reader.</span> <br>
+					&mdash;Richard Rutter
+					
+			</p>
+		</blockquote>
+		<h1>Tabellen</h1>
+        <section class="leerdoel">
+            <ul>
+            <li>Voorstellen van data (uurrooster, menu, openingsuren, kalender, stand in een competitie enz</li>
+            <li><code>table</code>, <code>thead</code>, <code>tbody</code>, <code>tfoot</code> </li>
+            <li>rijen (<code>tr</code>) met daarin cellen (<code>td</code>)</li>
+            <li>cellen samennemen met <code>rowspan</code> en <code>colspan</code></li>
+            <li>verouderde attributen (vervangen door CSS zie film)</li>
+            </ul>
+        </section>
+
+        <h2>Intro</h2>
+        <p>Dit stukje HTML kan je zonder problemen overslaan en er pas op terugkomen als je ergens in je site / app data in een tabel moet presenteren. <em>Tabellen maken is altijd veel werk en het vereist heel wat code</em>, maar soms dwingt je data je om ze voor te stellen in tabelvorm. Tabellen <em>responsief</em> maken (zie later RWD bij CSS) is bovendien een hele uitdaging!</p>
+
+        <h2>Wanneer een tabel gebruiken?</h2>	
+<p><img src="https://frontend.webontwerp.ucll.be/assets/html/killerwebsites.jpeg" width="200" height="250" alt="bookcover creating killer websites 1997" class="links">Het oudste boek in mijn verzameling van HTML, CSS en JS boeken is er eentje dat ik me niet zie weggooien (wat ik wel al dikwijls deed met verouderde boeken …): David Siegel's “Creating Killer Web Sites” uit 1997.</p>
+<p>CSS bestond nog niet. HTML was heel beperkt. Het maken van een website was een pijnlijk proces dat ondermeer van volgende technieken gebruik maakte:</p>
+<ul>
+        <li>Om een blokje naar rechts of onder te verschuiven (<code>margin</code> bestond nog niet!) gebruikte je een transparante afbeelding van 1 pixel op 1 pixel. Deze <code>img</code> kon je dan uitrekken met de attributen <code>width</code> of <code>height</code>.</li>
+        <li>Een wat moeilijker lay-out werd in stukken geknipt (soms letterlijk in photoshop). Elk van deze blokjes werd dan een cel in een tabel. Pech als je iets wou veranderen, want dan moest je het hele proces opnieuw doorlopen.</li>
+</ul>
+<p>De dagen dat HTML-tabellen gebruikt werden voor lay-outredenen zijn gelukkig voorbij. Gebruik nu enkel een tabel voor … euh … <em>tabelinformatie</em>. Denk hierbij aan een uurrooster, menu, uitslagen van een competitie enz.</p>
+<p>Student Sander maakte een overzicht van zijn doelpunten als spits:</p>
+<img src="https://frontend.webontwerp.ucll.be/assets/html/voetbalresultaten.png" alt="voetbalresultaten horen in een tabel" class="blok">
+<p>Een <code>table</code> is het juiste element voor dit soort van informatie. We zien later in CSS <em>grids</em>, maar dat is iets anders. Een grid is een lay-outmechanisme in CSS waarmee je blokjes in rijen en kolommen kan plaatsen. <em>Een HTML-tabel heeft echter semantiek, betekenis</em>. Alle info in één rij betekent iets en hoort qua betekenis samen. Zo zie je in de bovenstaande tabel dat 2018 voor Sander als spits een productief jaar was, met 35 doelpunten in 30 wedstrijden. Ook als je één kolom bekijkt, heb je betekenisvolle informatie.</p>
+<p>Een screenreader van een blinde bezoeker kan deze betekenis in rijen en kolommen voorlezen.</p>
+
+        
+<h2>Table element</h2>
+<p>Volgend filmpje valt uiteen in twee delen: eerst wordt de opbouw van een tabel in HTML uitgelegd. De maker zegt verschillende keren hoe bepaalde dingen in HTML kunnen gedaan worden (met attributen), maar dat die verouderd (‘deprecated’) zijn en dat we dat nu in CSS doen. Halverwege het filmpje werkt hij een voorbeeld uit en daar komt wel wat CSS bij kijken. Dat deel kan je dus eerst overslaan als je CSS nog niet bekeken hebt.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">Een goed overzicht over het <code>table</code> element vind je op Mozilla Developer Network.</a></p>
+<div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/IGBRYTpgyg4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_tabellen/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

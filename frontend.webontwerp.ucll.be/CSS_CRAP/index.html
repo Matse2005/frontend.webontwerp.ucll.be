@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_CRAP/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS vormgeving: CRAP</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Design is not just what it looks like and feels like. Design is how it works.</span> <br>
+					&mdash; Steve Jobs (1955–2011)
+					
+			</p>
+		</blockquote>
+		<h1>Grafische vormgeving</h1>
+        <p>Onze IT opleidingen (graduaat programmeren en bachelor toegepaste informatica) zijn totaal niet grafisch gericht. Maar je moet natuurlijk wel een eenvoudige statische site maken en wil toch dat dat er mooi uitziet. Of later in je opleiding moet je een webapp of mobiele applicatie maken. Die mooi maken heeft niet alleen te maken met esthetische kwaliteiten, maar ook met de bruikbaarheid, de usability van je site of app.</p>
+        <p>In dit deel probeer ik je vier eenvoudige principes mee te geven die je kan gebruiken om de layout van je site te verbeteren. Hopelijk maak je dankzij deze vier principes een site die CRAPpy is!</p>
+        <section class="leerdoel">
+<p>Een presentatie over CRAP, gevolgd door een toepassing op een pagina:</p>
+            <ul>
+            <li>Nabijheid</li>
+            <li>Uitlijning</li>
+            <li>Herhaling</li>
+            <li>Contrast</li>
+            <li>Kleuren</li>
+            <li>Typografie, o.a. Google fonts</li>
+                
+            </ul>
+        </section>
+
+<h2>Lesopname CRAP en typografie</h2>
+        <p>Volgend filmpje van een uur is een lesopname (december 2021) over deze CRAP principes en een klein stukje over kleur. Na ongeveer 25 minuten volgt een praktische toepassing waar deze principes worden toegepast. Eindigen doe ik met een demo over hoe je Google fonts kan kiezen en implementeren.</p>
+        <p>De opname ‘is wat ze is’. Het is live, met alle versprekingen en haperingen erbij. De klank valt een paar keer gedurende enkele seconden weg, maar ik denk wel dat het geheel voldoende duidelijk blijft.</p>
+        <p>Ons videoplatform Kaltura zorgt wel voor erg veel compressie van de opname. Als je de opname vergroot, zou het toch voldoende moeten zijn om de code te kunnen lezen. Onder het filmpje toon ik de uiteindelijke HTML- en CSS code</p>
+        <div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_z6xac4x4&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=nl&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_s81fe31n" width="640" height="360" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+
+        <h2>Code gebruikt in de lesopname</h2>
+        <h3>HTML code</h3>
+        <p>We gebruiken deze HTML:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;stijl.css&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt; 
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt; 
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;title&gt;CRAP&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav class=&quot;container&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;IJsland&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Zandwoestijnen&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;hier&quot;&gt;&lt;a href=&quot;#&quot;&gt;Gletsjers&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Vulkanen&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Warmwaterbronnen&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;figure class=&quot;container&quot;&gt;
+      &lt;img src=&quot;img/bg.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;/figure&gt;
+    &lt;section class=&quot;container&quot;&gt;
+      &lt;h1&gt;Rondreizen op IJsland&lt;/h1&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam itaque perferendis blanditiis voluptatem, deleniti quas eaque cum culpa ad adipisci autem exercitationem rerum veritatis. Ex, tempora doloribus molestiae ad, hic dolore reiciendis eveniet, necessitatibus nulla reprehenderit corrupti accusamus adipisci cupiditate. Iusto id eos quibusdam odit! Voluptatum nisi dolor autem alias, nobis laboriosam fugiat magnam, veniam nemo dignissimos ullam? Ipsum dignissimos, corrupti, doloremque velit aliquam perspiciatis, quod praesentium odio beatae alias natus asperiores nam id recusandae eveniet? Qui laudantium sint odit cupiditate consectetur praesentium officiis numquam repellat aliquid accusamus necessitatibus explicabo nemo doloremque impedit recusandae, animi dolor quae officia.  Porro earum vel alias, exercitationem unde esse vitae asperiores. Quia iste esse explicabo culpa, saepe impedit? Blanditiis et eum in accusamus, aut maxime nostrum facilis? Distinctio quae minus unde saepe aperiam eos cupiditate repudiandae non officia quidem tenetur, voluptatibus autem totam rerum sunt, esse vero voluptatem porro.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section id=&quot;hoogtepunten&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;article&gt;
+            &lt;h3&gt;
+              Reykjavik
+            &lt;/h3&gt;
+            &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque laboriuae adipisci assumenda repellat corrupti hic alias, molestiae reiciendis quos quidem quis suscipit. Sed quas placeat quidem minus.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Geysir&lt;/h3&gt;
+            &lt;p&gt;Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam amet debitis placeat, quidem minus temporibus pariatur cum assumenda, alias ipsum necessitatibus molestiae magni et ad, expedita voluptatem eos accusamus quae!&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Jökulsarlon&lt;/h3&gt;
+            &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum accusantium illo, harum perspiciatis incidunt fuga facilis eaque in odit temporibur? Natus sapiente veritatis, labore provident impedit optio ipsam.&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;section class=&quot;container&quot;&gt;
+      &lt;h2&gt;Dit is een hele lange titel die mogelijk meer dan één volledige regel nodig heeft&lt;/h2&gt;
+      &lt;p&gt;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos magnam, blanditiis voluptatem sit error harum enim nesciunt culpa in nemo unde fugit perferendis doloremque excepturi, consequatur molestias mollitia! Ab incidunt repellendus eos numquam dolorum perspiciatis, labore laborum reprehenderit nisi exercitationem veniam magnam nulla aspernatur iste quis dolorem odit illum harum blanditiis inventore nam! Tempore rerum fugit libero amet est tempora adipisci, minima quod quasi ipsa dolore odit asperiores voluptates necessitatibus dolorum deserunt, incidunt, officia sapiente doloremque cumque officiis saepe sit facilis. Perferendis deserunt magni natus animi. Dolore, quos quas error rerum modi quasi cumque! Laboriosam odio repellat recusandae excepturi iste.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section class=&quot;container fotos&quot;&gt;
+      &lt;figure&gt;&lt;img src=&quot;img/jeep.jpg&quot; alt=&quot;&quot;&gt;&lt;/figure&gt;
+      &lt;figure&gt;&lt;img src=&quot;img/meer.jpg&quot; alt=&quot;&quot;&gt;&lt;/figure&gt;
+      &lt;figure&gt;&lt;img src=&quot;img/waterval.jpg&quot; alt=&quot;&quot;&gt;&lt;/figure&gt;
+    &lt;/section&gt;
+    &lt;section class=&quot;container&quot;&gt;
+      &lt;h3&gt;Een kortere titel&lt;/h3&gt;
+      &lt;p&gt;Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit perspiciatis quia architecto adipisci ipsum, quo neque sint natus nihil, quam dolor animi sapiente repellat tempora voluptate repudiandae iusto. Temporibus id tempore quo in esse excepturi odio qui et perspiciatis.  Deleniti animi molestias quae quasi pariatur quaerat earum quo? Nemo, excepturi tenetur incidunt aliquid at delectus hic voluptas eligendi, alias dolore veritatis reiciendis aliquam eius non facere officia qui fugiat voluptates?&lt;/p&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ad iusto dignissimos, eos cupiditate quod reiciendis reprehenderit sit. Ut reiciendis voluptatum quidem iure numquam natus facilis consectetur aliquam fugit incidunt magni minus quis ab eligendi eveniet, eaque quisquam aliquid tenetur soluta obcaecati vero recusandae ipsa omnis? Illum debitis corporis deleniti!&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+
+
+<h3>CSS code</h3>
+<p>De uiteindelijke CSS code na de CRAP-aanpassingen en de aanpassingen qua typografie wordt:</p>
+<pre><code>* &#123;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+&#125;
+
+body &#123; 
+    line-height: 1.6;
+    font-family: 'Merriweather', georgia, serif;
+&#125;
+
+.container &#123;
+    max-width: 50em;
+    margin: 0 auto;
+&#125;
+
+header &#123;
+    background-color: #111;
+&#125;
+
+nav ul &#123;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    align-items: flex-end;
+&#125;
+
+nav ul li &#123;
+    padding: 0 1rem;
+    padding-bottom: 7px;
+&#125;
+
+nav ul li:first-child &#123;
+    font-size: 2rem;
+    margin-right: auto;
+    padding-left: 0;
+    padding-bottom: 0;
+&#125;
+
+nav ul li:last-child &#123;
+    padding-right: 0;
+&#125;
+
+nav a &#123;
+    text-decoration: none;
+    vertical-align: bottom;
+    color: #fff;
+&#125;
+
+figure img &#123;
+    max-width: 100%;
+&#125;
+
+#hoogtepunten &#123;
+    background-color: #111;
+    color: #fff;
+&#125;
+
+#hoogtepunten .container &#123;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    padding: 3em 0;
+&#125;
+
+#hoogtepunten .container article &#123;
+    flex-basis: 33%;
+&#125;
+
+section.fotos &#123;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+&#125;
+
+.fotos figure &#123;
+    flex-basis: 32%;
+    flex-shrink: 1;
+&#125;
+
+main &gt; .container, main &gt; #hoogtepunten &#123;
+    margin-bottom: 3em;
+&#125;
+
+h1 &#123;
+    font-size: 3.5rem;
+&#125;
+
+h2 &#123;
+    font-size: 2.6rem;
+&#125;
+
+h3 &#123;
+    font-size: 2rem;
+&#125;
+
+h1, h2, h3, h4 &#123;
+    line-height: 1.1;
+    margin-bottom: 0.3em;
+    color: #514F8C;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-weight: 700;
+&#125;
+
+#hoogtepunten &#123;
+    background-color:#334003;
+    color: #D7D7D9
+&#125;
+
+#hoogtepunten h3 &#123;
+    color: #fff;
+&#125;
+
+nav a &#123;
+    color: #888c04;
+&#125;
+
+nav .hier a &#123;
+    color: #d7d7d9;
+&#125;
+
+nav a:hover &#123;
+    color: #fff;
+&#125;
+</code></pre>
+
+        
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_CRAP/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_sass/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS preprocessor Sass</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+    <blockquote>
+      <p>
+        <span class="citaat">CSS features are often more powerful than the Sass equivalents. A
+          somewhat obvious example: CSS variables (custom properties) exist at
+          runtime and can change dynamically, whereas Sass variables only exist
+          at build time. This static nature of Sass used to be considered a
+          "limitation", but here's the thing: just because CSS is adding
+          features that used to be exclusive to Sass doesn't mean we need to go
+          all in one and stop using the other. Once we realize their
+          differences, we can use them together to get the best of both worlds.</span>
+        <br>
+        &mdash; Mayank
+      </p>
+    </blockquote>
+    <h1>Syntactically Awesome Style Sheets</h1>
+    <section class="leerdoel">
+      <ul>
+        <li>CSS preprocessor</li>
+        <li>Sass compileren naar CSS</li>
+        <li>.sass of .scss</li>
+        <li>nesting</li>
+        <li>variabelen</li>
+        <li>partials</li>
+      </ul>
+    </section>
+
+    <p class="opgepast">
+      Sass is een verplicht onderdeel in de cursus front-end development bij de
+      bachelor Toegepaste informatica. Het is <em>geen</em> verplichting in het OPO
+      front-end basis van het graduaat programmeren. Vanzelfsprekend mag je het daar
+      wel gebruiken.
+    </p>
+
+    <h2>CSS preprocessor</h2>
+    <p>
+      Developers die samenwerken aan een grote site komen al snel in de
+      problemen. Hoe werk je met vele mensen samen aan de CSS van een site? Hoe
+      zorg je dat de code <em>onderhoudbaar</em> en <em>schaalbaar</em> is? Hoe vermijd
+      je <em>herhaling van code</em> in CSS?
+    </p>
+    <p>
+      Een studentensite heeft gewoonlijk enkele honderden regels code. Maar hoe
+      hou je een overzicht over duizenden regels CSS?
+    </p>
+    <p>
+      Al snel kwamen developers met oplossingen. Eén mogelijke oplossing is
+      gebruik maken van een CSS preprocessor. De ‘pre’ slaat op het feit dat er
+      iets <em>vooraf gaat aan de CSS</em>. Je schrijft een soort code die moet
+      geconverteerd (‘gecompileerd’) worden naar CSS. De browser begrijpt immers
+      alleen CSS, dus dat is uiteindelijk wat je moet gebruiken.
+    </p>
+    <p>
+      Deze preprocessors breiden a.h.w. CSS uit met extra eigenschappen. In dit
+      deel bekijken we de preprocessor Sass. Er zijn er ook andere (e.g.
+      ‘Less’), maar Sass is waarschijnlijk wel de meest gebruikte. Die breidt
+      CSS uit met nesting, variabelen, functies, mixins, partials enz. In deze
+      korte inleiding bekijken we een beperkt aantal topics en focussen we
+      vooral op de dingen die ook voor een relatief kleine site (zoals die die
+      we van jou verwachten) nuttig kunnen zijn.
+    </p>
+    <p>
+      Je vindt uitgebreide documentatie over Sass op <a href="https://sass-lang.com/">https://sass-lang.com</a>. Sass is zeer krachtig, maar we zullen ons in deze inleidende cursus tot
+      de basis beperken: <em>nesting</em>, <em>variabelen</em> en <em>partials</em>.
+    </p>
+    <p>
+      Je vindt trouwens behoorlijk wat artikels of video's met als titel “Is
+      Sass still relevant in 2022” (of een ander jaar). We durven deze vraag
+      —voorlopig— met een voorzichtige ‘ja’ beantwoorden. CSS wordt echter
+      steeds krachtiger. Zo hebben we nu in CSS al de beschikking over
+      variabelen (‘custom properties’). CSS krijgt steeds meer functions.
+      Nesting zal waarschijnlijk in 2023 in standaard CSS mogelijk worden enz.
+      Wie weet wordt CSS zo krachtig dat een preprocessor over enkele jaren niet
+      meer nodig is?
+    </p>
+
+    <h2>Sass compileren naar CSS</h2>
+    <p>
+      <em>Een browser begrijpt geen Sass-code, enkel CSS.</em> We hebben dus een
+      manier nodig om Sass om te zetten naar CSS. Dat kan op verschillende manieren.
+      Enkele van die manieren gebruiken zogenaamde ‘build tools’ (Webpack, Parcel,
+      …) wat buiten het bestek van deze cursus valt. Er is gelukkig een eenvoudige
+      manier in VS Code: gebruik maken van een extensie.
+    </p>
+    <p>
+      Installeer in VS Code de extensie ‘Live Sass compiler’ van <strong>Glenn Marks</strong>. Opgepast, er is ook een meer populaire (oude) extensie met dezelfde
+      naam, gemaakt door Ritwick Dey. Deze extensie is echter verouderd. Glenn
+      Marks heeft de code van Ritwick Dey als basis genomen en daarop verder
+      gewerkt.
+    </p>
+    <p class="noindent">
+      <img src="https://frontend.webontwerp.ucll.be/assets/css/LiveSassCompiler.png" alt="download de extensie Live Sass Compiler in VS Code">
+    </p>
+    <h2>Notatie: .scss</h2>
+    <p>
+      Vooraleer we kunnen beginnen, nog één ding. Er zijn twee mogelijke
+      syntaxen (notaties) voor Sass. We kiezen voor de meest gebruikte: <strong>.scss</strong>. Deze notatie heeft het voordeel dat je alles kan blijven noteren zoals
+      je dat gewoon bent in CSS (met accolades). Alle voorbeelden hieronder zijn
+      in deze versie van Sass genoteerd.
+    </p>
+
+    <p>
+      Hoog tijd om Sass in werking te zien. Bekijk van onderstaande video <strong>
+        het begin tot tijdstip 8:34
+      </strong>. Daarna komen mixins en dat topic is geen leerstof voor dit
+      inleidend OPO. De extensie ‘Live Sass Compiler’ die Kevin Powell hier
+      toont is de oude versie (zie boven).
+    </p>
+    <div class="iframewrapper">
+      <iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/g1kF45K-q7o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <h2>Nesting</h2>
+    <p>Een klassiek stukje CSS i.v.m. de navigatie kan er zo uitzien:</p>
+    <pre><code>nav &lbrace;
+    max-width: 40em;
+&rbrace;
+        
+nav ul &lbrace;
+    display: flex;
+    flex-direction: row;
+&rbrace;
+    
+nav ul li &lbrace;
+    padding: 0.5em 1em;
+&rbrace;</code></pre>
+
+    <p>
+      Het gaat hier dus over een <code>nav</code> element, een <code>ul</code> die
+      in een <code>nav</code> zit en een <code>li</code> in een <code>ul</code> in
+      een <code>nav</code>. We noemen dat ‘elementen nesten’. In sass (.scss
+      syntax zoals hierboven afgesproken) kan deze code er als volgt uitzien:
+    </p>
+    <pre><code>nav &lbrace;
+    max-width: 40em;
+
+    ul &lbrace;
+        display: flex;
+        flex-direction: row;
+
+        li &lbrace;
+            padding: 0.5em 1em;
+        &rbrace;
+    &rbrace;
+&rbrace;</code></pre>
+
+    <p>
+      In dit verband een opmerking: er is niets mis met de laatste selector <code>nav ul li</code>. De meeste mensen raden echter aan om niet teveel elementen te noteren
+      in een selector. De selector <code>nav li</code> is vermoedelijk voldoende.
+      De specificiteit is eentje lager: (0, 0, 2) i.p.v. (0, 0, 3) maar dat maakt
+      meestal niets uit. Volgende Sass code is hiermee equivalent:
+    </p>
+    <pre><code>nav &lbrace;
+    max-width: 40em;
+        
+    ul &lbrace;
+        display: flex;
+        flex-direction: row;
+    &rbrace;
+        
+    li &lbrace;
+        padding: 0.5em 1em;
+    &rbrace;
+&rbrace;</code></pre>
+
+    <h2>Ouderselector &amp; (‘parent selector’)</h2>
+    <p>
+      Er is een speciale rol weggelegd voor de <em>ampersand</em> (‘&amp;’) in Sass.
+      Met dit teken <em>verwijs je naar de selector één niveau hoger</em>, net
+      buiten de accolades &lbrace;&rbrace;. We tonen een klein voorbeeld om dit
+      te verduidelijken. De &amp; wordt in dit voorbeeld op drie manieren
+      gebruikt:
+    </p>
+    <ol>
+      <li>een class toevoegen;</li>
+      <li>een pseudoclass toevoegen (bvb :hover);</li>
+      <li>een nieuwe element vooraan de huidige selector toevoegen.</li>
+    </ol>
+    <pre><code>nav &lbrace;
+    padding:0.5em 0;
+
+    ul &lbrace;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+    &rbrace;
+
+    li &lbrace;
+        flex-basis: 25%;
+
+        &.hier &lbrace;  /* 1. hier zal de & vervangen worden door li */
+            background-color: orange;
+        &rbrace;
+    &rbrace;
+
+    a &lbrace;
+        text-decoration: none;
+
+        &:hover &lbrace;  /* 2. zo kan je een pseudoclass toekennen aan de parent a */
+            text-decoration: underline;
+        &rbrace;
+    &rbrace;
+
+    footer & &lbrace;  /* 3. & wordt hier vervangen door de parent nav */
+        padding: 0;
+    &rbrace;
+&rbrace;</code></pre>
+
+    <p>Deze Sass-code geeft volgend resultaat:</p>
+    <pre><code>nav &lbrace;
+    padding: 0.5em 0;
+  &rbrace;
+nav ul &lbrace;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+&rbrace;
+nav li &lbrace;
+    flex-basis: 25%;
+&rbrace;
+nav li.hier &lbrace; /* 1. class toegevoegd */
+    background-color: orange;
+&rbrace;
+nav a &lbrace;
+    text-decoration: none;
+&rbrace;
+nav a:hover &lbrace; /* 2. pseudoclass */
+    text-decoration: underline;
+&rbrace;
+footer nav &lbrace; /* 3. nav in footer */
+    padding: 0;
+&rbrace;</code></pre>
+
+    <p>
+      Een klein nadeel van het gebruik van &amp; is dat je mogelijk wat
+      moeilijker kan zijn om in je .scss bestand te <em>zoeken</em> naar bvb. <code>li.hier</code>. Deze zoekterm ga je in dit bestand niet vinden, want er staat enkel <code>&.hier</code>.
+    </p>
+
+    <h2>Media queries nesten</h2>
+    <p>
+      Je kan nesting in Sass ook toepassen op media queries. Dat vergt een
+      beetje een andere kijk op je CSS. Ik heb mijn @media regels graag helemaal
+      onderaan mijn CSS bestand. Sass heeft echter <em>
+        een meer componentgerichte kijk
+      </em> op CSS en dan is er wel iets voor te zeggen om de @media regels in het
+      element te zetten waarop ze van toepassing zijn. Dat geeft dan wel wat meer
+      herhaling in de uiteindelijke CSS code (heel wat dezelfde @media), maar die
+      herhalingen kunnen door een CSS postprocessor (ja, die bestaan dus ook!) eruit
+      gehaald worden door dingen te groeperen.
+    </p>
+    <p>
+      Ook hier weer een voorbeeld. Ik wil de <code>font-size</code> van mijn <code>h1</code> 3em groot maken, behalve als de breedte van de pagina onder de 30em zakt.
+      In dat geval wordt dit lettertype maar 2em groot. Dat kan als volgt in Sass:
+    </p>
+    <pre><code>h1 &lbrace;
+    font-size: 3em;
+
+    @media (max-width: 30em) &lbrace;
+        font-size:2em;
+    &rbrace;
+&rbrace;</code></pre>
+
+    <p>Deze code wordt door de preprocessor vertaald naar volgende CSS:</p>
+    <pre><code>h1 &lbrace;
+    font-size: 3em;
+  &rbrace;
+@media (max-width: 30em) &lbrace;
+    h1 &lbrace;
+      font-size: 2em;
+    &rbrace;
+&rbrace;</code></pre>
+
+    <h2>Variabelen</h2>
+    <p>
+      Al van bij het onstaan van de taal CSS klonk de roep van de developers <em>
+        “geef ons variabelen in CSS, zoals in vele andere programmeertalen!”
+      </em>. Niet verwonderlijk dus dat Sass in dat gat sprong en het gebruik
+      van variabelen mogelijk maakte. Een simpel voorbeeld als illustratie:
+    </p>
+    <pre><code>$hoofdkleur: #25e309;
+$secundairekleur: #56002a;
+$afronding: 4px;
+
+body &lbrace;
+    color: $hoofdkleur;
+&rbrace;
+
+h1,
+h2,
+h3 &lbrace;
+    color: $secundairekleur;
+    border-radius: $afronding;
+&rbrace;</code></pre>
+    <p>Je kan wel raden wat de resulterende CSS wordt?</p>
+    <pre><code>body &lbrace;
+  color: #25e309;
+&rbrace;
+
+h1,
+h2,
+h3 &lbrace;
+  color: #56002a;
+  border-radius: 4px;
+&rbrace;</code></pre>
+
+    <p>
+      In dit verband toch even opmerken dat CSS ondertussen native een soort van
+      variabelen heeft. Zie het deeltje ‘Custom Properties’ in de pagina <a href="https://frontend.webontwerp.ucll.be/CSS_kleuren/index.html#5">CSS kleuren en achtergrond</a>. Beide systemen (Sass variabelen en CSS custom properties) hebben hun
+      voor- en nadelen en kunnen naast elkaar bestaan. Je kiest zelf wat je
+      gebruikt.
+    </p>
+
+    <h2>CSS splitsen in meerdere bestanden</h2>
+    <p>
+      Voor je het beseft bevat je CSS-bestand verschillende honderden regels
+      code. Tenzij je geregeld je code reorganiseerde en opkuiste is er veel
+      kans dat die honderden regels een … mesthoop zijn. Je kan natuurlijk je
+      CSS-code opsplitsen in verschillende deelbestanden en die allemaal <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">
+        met de CSS regel <code>@import</code> inladen
+      </a>. Dat verhoogt echter het aantal requests naar de browser, want elk
+      deelbestand moet apart aangevraagd worden aan de server. Aangezien (op
+      smartphone) elke request een paar honderd milliseconden tijd vergt, gaat
+      er daardoor dus veel tijd verloren. Eén CSS-bestand verdient dus de
+      voorkeur boven meerdere deelbestanden!
+    </p>
+    <p>
+      Sass heeft hiervoor een oplossing: <em>partials</em>. Het principe is
+      eenvoudig: <em>
+        je splitst je grote CSS-bestand in kleinere stukjes die je dan
+        samenbrengt met @use of @forward
+      </em> (@import zie je soms nog gebruikt worden, maar dat is verouderd). De
+      details kunnen best wel complex worden omwille van namespacing enz. We proberen
+      het principe hieronder zo eenvoudig mogelijk voor te stellen.
+    </p>
+    <p>
+      Het hoofdbestand (stijl.scss) van de cursussite die je nu leest ziet er zo
+      uit:
+    </p>
+    <pre><code>@use 'basis';
+@use 'header';
+@use 'main/main';
+@use 'main/quote';
+@use 'main/typografie';
+@use 'main/code';
+@use 'main/video';
+@use 'main/subnav';
+@use 'main/kaders';
+@use 'main/CSSfun';
+@use 'footer';</code></pre>
+    <p>
+      De <em>bestandsstructuur</em> (screenshot uit VS Code) ziet er als volgt uit:
+    </p>
+    <p>
+      <img src="https://frontend.webontwerp.ucll.be/assets/css/sass_partials.png" width="300" alt="mapje styles bevat stijl.scss en dan aantal bestanden die allemaal beginnen met underscore">
+    </p>
+    <p>
+      Merk op dat <em>
+        al deze deelbestanden (‘partials’) beginnen met een underscore (_).
+      </em> Dit karakter geeft aan de Sass compiler de boodschap dat deze bestanden
+      niet omgezet moeten worden naar CSS. <em>Alleen het hoofdbestand (dat alle deelbestanden importeert met @use)
+        wordt gecompileerd naar CSS</em>.
+    </p>
+    <p>
+      Kevin Powell geeft een mooie inleiding op @use en @forward. Je zal merken
+      dat het al snel redelijk moeilijk wordt omwille van de <em>namespacing</em>. Tussen haakjes, de extensie ‘Live Sass Compiler’ (Glenn Marks)
+      ondersteunt wel deze nieuwe syntaxis.
+    </p>
+    <div class="iframewrapper">
+      <iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/CR-a8upNjJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <h2>Meer geavanceerde topics</h2>
+    <p>
+      Sass kan nog zoveel meer: mixins, functions, loops enz. Gebruik deze
+      dingen gerust als jouw specifieke situatie daar baat zou bij hebben. <em>
+        Ze vallen in elk geval buiten het bestek van deze inleiding.
+      </em>
+    </p>
+  </main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_sass/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

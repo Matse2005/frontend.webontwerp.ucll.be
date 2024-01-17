@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_events/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>JS events</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">I am more and more convinced that our happiness or unhappiness depends more on the way we meet the events of life than on the nature of those events themselves.</span> <br>
+					&mdash;Alexander Humboldt (1769–1859)
+					
+			</p>
+		</blockquote>
+		<h1>Events in JS</h1>
+		<p>Een gebeurtenis (we zullen vaak de Engelse benaming ‘event’ gebruiken) is bvb. op een knop klikken, een toets indrukken, met de muis naar boven bewegen, de rechtermuisknop indrukken, een CSS-animatie bereikt haar einde enz. Kort gezegd is een <em>event</em> een signaal dat er iets gebeurd is. In dit hoofdstukje bekijken we hoe je via JS kan <em>reageren op een event</em>.</p>
+		<p>Om te reageren op een gebeurtenis ken je een <em>event handler</em> (letterlijk: ‘gebeurtenisafhandelaar’) toe, die dan een functie uitvoert. Er zijn verschillende manieren om met event handlers te werken. We bekijken eerst enkele wat oudere methoden en tenslotte de betere methode <code>addEventListener()</code>.</p>
+    <p>Volgend filmpje toont de manier van werken, hoe je alles zelf kan uittesten in je editor / browser. ‘Event listeners’ worden pas naar het einde van deze pagina uitgelegd, dus even geduld als je nog niet alle details begrijpt bij het bekijken van de film.</p>
+    <div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_xhl0p39k&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_19npxvta" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+
+		<h2>Oude manier 1: via een HTML-attribuut</h2>
+		<p id="alineUitlijning">Bij wijze van voorbeeld maken we een knop die bij elke klik de uitlijning van deze aline verandert van links naar rechts en omgekeerd. Probeer de knop eerst uit! De code en de uitleg volgen onderaan.</p>
+
+		<button onclick="lijnUit()">Lijn alinea hierboven rechts / links uit</button>
+
+		<p>De HTML-code van die eerste alinea en de knop eronder ziet er zo uit:</p>
+<pre><code>&lt;p id=&quot;alineUitlijning&quot;&gt;Bij wijze van voorbeeld maken we een knop die … onderaan.&lt;/p&gt;
+&lt;button onclick=&quot;lijnUit()&quot;&gt;Lijn alinea hierboven rechts / links uit&lt;/button&gt;</code></pre>
+<p>In het JS bestand dat we in elke pagina van deze site laden, staat volgende code. Deze code voegt via een <code>toggle()</code> de klasse ‘tekst-rechts’ toe als ze er nog niet staat, en haalt ze weg als deze klasse wel al bestaat op het element.</p>
+<pre><code>function lijnUit() &lbrace;
+  document.querySelector("#alineUitlijning").classList.toggle("tekst-rechts");
+&rbrace;</code></pre>
+<section class="taak">
+    <p>Om die knop te doen werken moet er natuurlijk nog één ding ergens in de code toegevoegd worden. Een idee <em>wat</em> je <em>waar</em> nog moet aanvullen?</p>
+    <button>Toon / verberg oplossing</button>
+    <section class="oplossing">
+      <p>Het CSS-bestand moet uitgebreid worden met de stijlregels die voor deze nieuwe klasse van toepassing zijn, dus voegen we het volgende toe aan het stijlblad. De default uitlijning is <code>text-align: left;</code>, dus die hoeven we niet in CSS expliciet te noteren.</p>
+<pre><code>.tekst-rechts &lbrace;
+  text-align: right;
+&rbrace;</code></pre>
+    </section>
+</section>
+<p>Deze event handlers via een HTML-attribuut zoals <code>onclick</code> laten niet toe om meerdere events te koppelen aan één element. Bovendien mengen ze het <em>gedrag van een element (JS) met de structuur en betekenis</em> (HTML). Om die reden zouden we je voorstellen om het afhandelen van gebeurtenissen <strong>niet</strong> op deze manier te doen. Je ziet deze manier van werken nog vaak in oude code terugkomen.</p>
+
+<h2>Oude manier 2: via een DOM-eigenschap</h2>
+<p id="teller">0</p>
+<p class="noindent">De tweede (wat oudere) manier om met event handlers te werken is via een DOM-eigenschap. We illustreren dit even met een kleine teller. Elke keer als je met de muis over de teller links gaat, wordt die met 1 verhoogd. Je vindt de benodigde code hieronder.</p>
+<p>Dit keer hoeven we in de HTML geen attribuut toe te voegen dat begint met ‘on…’. Alles gebeurt in JS. De teller is een gewone alinea met een uniek <code>id="teller"</code> en via CSS is het lettertype groter gezet, met grijze achtergrond, links gefloat enz.</p>
+<p>De JS-code zorgt voor de event handler en de verhoog-functie. Het event <code>onmouseover</code> wordt afgevuurd (zo heet dat in het Engels: ‘an event fires’) als de muis van buiten het object over het object beweegt.</p>
+<pre><code>let eventTeller = document.querySelector("#teller");
+eventTeller.onmouseover = function() &lbrace;
+  let getal = eventTeller.innerText;
+  getal++;
+  eventTeller.innerText = getal;
+  if (getal === 10) &lbrace;
+    eventTeller.onmouseover = null;
+  &rbrace;
+&rbrace;</code></pre>
+
+<section class="taak">
+    <p>Kan je aan de hand van de JS-code verklaren wat er gebeurt als je meer dan 10 keer over de teller-alinea gaat?</p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">Op het moment dat de variabele <code>getal</code> de waarde 10 bereikt, wordt de eigenschap <code>onmouseover</code> van het object <code>eventTeller</code> op de waarde <code>null</code> gezet. Dit verwijdert de event handler.</p>
+</section>
+
+<h2>Moderne manier: eventListeners</h2>
+<p>Beide vorige manieren (via een HTML-attribuut dat begint met ‘on…’ of via een DOM-eigenschap met een gelijkaardige naam) laten niet toe dat je aan hetzelfde event meerdere event handlers koppelt.</p>
+<p>Het gebruik van <code>eventListener(event, handler)</code> lost dit probleem op. Ook hier werken we een klein voorbeeldje uit. Een eenvoudige typografische basisregel luidt: regels mogen niet te lang zijn, want dan wordt lezen heel vermoeiend. Een prima gebied is een regellengte tussen 60 en 90 karakters (spaties inbegrepen). We maken hier een klein formulier met alleen een text input field. Je kan in dit formulier tekst typen of een tekst inplakken en dan wordt het aantal karakters geteld.</p>
+ <form action="#">
+  <label for="regel">Plak hieronder 1 regel tekst of typ zelf in het veld:</label>
+  <input id="regel" type="text" size="100">
+</form>
+<p class="groot">0</p>
+<p>In de vorige secties zagen we al enkele events: onclick en onmouseover. Er zijn er echter meer dan 100. <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Scroll eens door de lange lijst op MDN</a>. Dit voorbeeld gebruikt het <code>input</code> event. Niet alle events beginnen dus met ‘on…’. Dit event vuurt af als de <code>value</code> van een <code>input</code>, <code>select</code> of <code>textarea</code> HTML-element verandert, wat dus gebeurt elke keer als we in het <code>input</code> element van het <code>form</code> een letter toevoegen. Dit is de HTML-code van dit voorbeeld:</p>
+<pre><code>&lt;form&gt;
+  &lt;label for=&quot;regel&quot;&gt;Plak hieronder 1 regel tekst of typ zelf in het veld:&lt;/label&gt;
+  &lt;input id=&quot;regel&quot; type=&quot;text&quot; size=&quot;100&quot;&gt;
+&lt;/form&gt;</code></pre>
+<p>De bijhorende JS-code koppelt een <code>eventListener()</code> aan het <code>input</code> element in het formulier, nl een <code>input</code> event. Als dit event afvuurt wordt de functie <code>telLetters</code> uitgevoerd, die de <code>length</code> eigenschap toepast op de <code>value</code> eigenschap van het inputveld. Dat getal is dan de inhoud van <code>p class="groot"</code></p>
+<pre><code>let regel = document.querySelector('#regel');
+regel.addEventListener('input',telLetters);
+
+function telLetters() &lbrace;
+  let lengte = regel.value.length;
+  document.querySelector('p.groot').innerText = lengte;
+&rbrace;</code></pre>
+<p>Met de methode <code>removeEventListener()</code> verwijder je de event handler.</p>
+
+<h2>Het event object</h2>
+<p>Vaak willen we om een event goed te kunnen afhandelen meer informatie over de gebeurtenis. Niet alleen ‘er is een toetst ingedrukt’, maar ook ‘welke toets?’. De muis staat over het element, maar op welke coördinaten juist?</p>
+<p>Als een event gebeurt maakt de browser een <em>event object</em>. Dit object bevat details i.v.m. het event en wordt als een argument meegegeven met de event handler.</p>
+<p>Zoals altijd leggen we een nieuw concept uit met een klein praktisch voorbeeld. Onderstaande <code>div</code> is een vierkant van 255 op 255 pixels. Voor dit specifieke voorbeeld maakten we gebruik van het <code>style</code> attribuut, omdat dit voorbeeld uniek is en het eigenlijk geen zin heeft om deze code in het stijlblad van de hele site op te nemen. <em>Beweeg met de muiscursor over het vierkant</em>. Code en uitleg komen onder de figuur.</p>
+<div id="kleurVlak" style="width:255px;height:255px;margin:10px auto;background-color:#ccc;"></div>
+<p>De HTML-code (en specifieke CSS voor deze lege div) is eenvoudig:</p>
+<pre><code>&lt;div id=&quot;kleurVlak&quot; style=&quot;width:255px;height:255px;margin:10px auto;background-color:#ccc;&quot;&gt;&lt;/div&gt;</code></pre>
+<p>De JS-code maakt een <code>mousemove</code> eventListener vast aan de <code>div</code>. Telkens als de muis bewogen wordt in het vierkant, vuurt het event af en wordt de functie <code>bepaalKleur()</code> uitgevoerd. Deze functie krijgt als parameter het event object, dat we de naam <code>e</code> gaven, mee. Dit event object bevat details over het event, o.a. de coördinaten van de muispointer t.o.v. het vierkant: <code>offsetX</code> en <code>offsetY</code>. De linkerbovenhoek van het vierkant heeft coördinaten (0, 0), rechtsonder is (255, 255). Deze twee getallen worden dan als rood- en groenwaarde in een RGB-kleur gestopt. Deze kleur wordt dan toegekend als achtergrondkleur voor het vierkant. Bovendien wordt een string met deze informatie in de <code>div</code> toegevoegd.</p>
+<pre><code>let kleurDiv = document.querySelector("#kleurVlak");
+kleurDiv.addEventListener('mousemove',bepaalkleur);
+
+function bepaalkleur(e) &lbrace; // e bevat nu alle details van het event
+  let rood = e.offsetX; // t.o.v. linkerkant van de div
+  let groen = e.offsetY; // t.o.v. de bovenkant van de div
+  kleurDiv.innerText = ' rood: ' + rood + ' en groen: ' + groen;
+  let kleur = 'rgb(' + rood + ',' + groen + ',' + '0)';
+  kleurDiv.style.backgroundColor = kleur;
+&rbrace;</code></pre>
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_events/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

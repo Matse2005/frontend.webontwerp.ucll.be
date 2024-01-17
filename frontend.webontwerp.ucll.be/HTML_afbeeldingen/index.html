@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_afbeeldingen/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>HTML afbeeldingen</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Your equipment DOES NOT affect the quality of your image. The less time and effort you spend worrying about your equipment the more time and effort you can spend creating great images. The right equipment just makes it easier, faster or more convenient for you to get the results you need.</span> <br>
+					&mdash;Ken Rockwel, Your Camera Does Not Matter, 2005
+					
+			</p>
+		</blockquote>
+		<h1>Afbeeldingen</h1>
+        <section class="leerdoel">
+            <ul>
+              <li>Verschil bitmap – vector;</li>
+              <li>het <code>img</code> element;</li>
+              <li>attribuut <code>src</code>;</li>
+              <li>belang van het <code>alt</code> attribuut;</li>
+              <li>al dan niet <code>width</code> en <code>height</code>;</li>
+              <li>gebruik van SVG.</li>
+            </ul>
+        </section>
+		
+        <h2>Afbeeldingsformaten</h2>
+        <p>Er zijn twee soorten afbeeldingen: bitmaps en vectorafbeeldingen. Een <em>bitmap</em> (of rasterafbeelding) is een verzameling puntjes van verschillende kleur. Een foto is altijd een bitmap. Als je voldoende inzoomt, krijg je de individuele pixels te zien.</p>
+        <p>Een <em>vectorafbeelding</em> is een afbeelding die bestaat uit wiskundige krommen. Je kan er blijven op inzoomen. De afbeelding blijft haar kwaliteit behouden.</p>
+<section class="taak">
+    <p></p><p>Hieronder vind je twee keer dezelfde afbeelding (bron: https://www.svgcrown.com/download.php?category=home&amp;id=43). Zoom zelf in je browser om te bepalen welke van beide de bitmap en welke de vectorafbeelding is. </p>
+    <button>Toon / verberg oplossing</button>
+    <p class="oplossing">De bovenste afbeelding is een PNG en dus een bitmap. Ze is 114 KB groot. De onderste is een SVG en dus een vector. Aangezien een vectorafbeelding eigenlijk helemaal beschreven is in tekstvorm is ze veel kleiner: slechts 31 KB. </p>
+</section>
+
+        
+        <p><img src="https://frontend.webontwerp.ucll.be/assets/html/43.png" alt=""></p>
+        <p><img src="https://frontend.webontwerp.ucll.be/assets/html/43.svg" alt=""></p>
+
+
+        <h3>Bitmapafbeelding</h3>
+        <p>Als een vectorafbeelding zoveel kleiner is als een bitmap en bovendien oneindig scherp blijft bij inzoomen, waarom gebruiken we dan niet altijd vectorafbeeldingen? De reden is simpel: foto's zijn eigenlijk per definitie altijd bitmaps.</p>
+        <p>De meest geschikte bitmapformaten voor het web zijn:</p>
+<ul>
+  <li><abbr title="Portable Network Graphics">PNG</abbr>: geschikt voor kleinere afbeeldingen, logo's, tekeningen, kan ook transparantie in een afbeelding aan.</li>
+  <li>JPG (<abbr title="Joint Photographic Experts Group">JPEG</abbr>): het basisformaat voor foto's.</li>
+  <li>WebP: formaat dat alle vorige zou kunnen vervangen, ondersteuning in Safari nog niet universeel.</li>
+  <li>GIF: grotendeels verouderd en vervangen door PNG, behalve voor kleine animaties.</li>
+</ul>
+
+<h3>Vectorafbeelding</h3>
+<p>Voor vectorafbeeldingen is het standaarformaat op het web <abbr title="Scalable Vector Graphics">SVG</abbr>. Een SVG is een wiskundige tekstbeschrijving van een figuur, opgebouwd uit punten, lijnstukken, cirkels, enz. Als voorbeeld: een opgevulde rechthoek met afgeronde hoeken. Onder de figuur vind je de SVG-code van deze figuur (bron: W3schools.com). Die code is hier trouwens in de HTML-pagina zelf gezet (doe eens een ‘toon paginabron’ in je browser of inspecteer de HTML-code van deze pagina).</p>
+<p><svg width="400" height="180">
+  <rect x="50" y="20" rx="20" ry="20" width="150" height="150" style="fill:red;stroke:black;stroke-width:5;opacity:0.5"></rect>
+  Sorry, your browser does not support inline SVG.
+</svg></p>
+
+<pre><code>&lt;svg width=&quot;400&quot; height=&quot;180&quot;&gt;
+  &lt;rect x=&quot;50&quot; y=&quot;20&quot; rx=&quot;20&quot; ry=&quot;20&quot; width=&quot;150&quot; height=&quot;150&quot; 
+      style=&quot;fill:red;stroke:black;stroke-width:5;opacity:0.5&quot; /&gt;
+&lt;/svg&gt;</code></pre>
+<p>Aangezien SVG-afbeeldingen inline in HTML-code kunnen verwerkt worden, kan je ze manipuleren met JavaScript, bvb. om animaties te maken.</p>
+
+        <h2>Het img element</h2>
+<p>Het <code>img</code> element is een <em>leeg</em> element. Je schrijft dus niet <code>&lt;img&gt;…&lt;/img&gt;</code>. Alle informatie staat in de attributen: <code>&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;</code></p>
+
+        <h3>Locatie: src attribuut</h3>
+<p>Het attribuut <code>src</code> bevat de locatie van het afbeeldingsbestand. Dat kan een relatief adres zijn zoals <code>&lt;img src=&quot;../img/foto.jpg&quot; alt=&quot;&quot;&gt;</code>. De twee puntjes betekenen ‘spring uit de map waar het huidig HTML-bestand in zit’. Op dit niveau (eentje hoger dus dan het niveau van het HTML-bestand) zou er een mapje ‘img’ moeten zijn. Deze map bevat dan het gevraagde bestand ‘foto.jpg’.</p>
+<p>De <code>src</code> kan ook een absoluut adres bevatten, zoals <code>src="https://eenbedrijf.be/afb/foto1.jpg"</code>. Opgepast: dit heet ‘hot linking’ en wordt gelijkgesteld met kopiëren wat betreft het auteursrecht.</p>
+<p class="opgepast">Voor dit OPO maak je een statische website. We verwachten dat je <strong>het auteursrecht respecteert</strong>. Dat komt neer op ofwel je eigen foto gebruiken, ofwel toestemming vragen aan de auteur, ofwel gebruik maken van foto's met een licentie die toelaat om ze te gebruiken (zie ook <a href="https://frontend.webontwerp.ucll.be/HTML_basispg">een eerder topic ‘basisdocument’</a>).</p>
+
+
+        <h3>Alternatieve tekst: alt attribuut</h3>
+<p>Het tweede verplichte attribuut is <code>alt</code>. Je geeft hier alternatieve tekst op die kan voorgelezen worden door een screenreader van een slechtziende bezoeker. Probeer jezelf voor te stellen wat het betekent om enkel naar sites te kunnen luisteren en doe dan je best om een zo zinvol mogelijke alternatieve tekst te bedenken. <a href="https://www.anysurfer.be/nl/documentatie/artikels/detail/tekstalternatieven">Op de pagina van Anysurfer vind je een goed overzicht van hoe je goede alt-tekst kan schrijven</a>.</p>
+<p>Een afbeelding die puur versiering is en geen enkele inhoud toevoegt moet nog steeds een <code>alt=""</code> krijgen, maar je laat de inhoud van het attribuut leeg.</p>
+
+        <h3>Afmetingen: width en height.</h3>
+<p>Vroeger was het simpel: elke <code>img</code> heeft ook een <code>width</code> en <code>height</code> attribuut. De waarde van die twee attributen wordt altijd in pixels genoteerd (maar je schrijft niet ‘px’ zoals dat wel moet in CSS). Dus iets in de stijl van <code>&lt;img src=&quot;img/vulkaan.jpg&quot; width=&quot;800&quot; heigth=&quot;500&quot; alt=&quot;vulkaan Eyjafjallajökull&quot;&gt;</code>. Die twee afmetingen zijn nuttig, want zo weet de browser al – nog voor de afbeelding zelf door de server aangeleverd is – hoeveel plaats hij moet voorzien bij het berekenen wat waar op het scherm moet komen.</p>
+<p>Toen kwam <abbr title="Responsive Web Design">RWD</abbr> (zie later bij CSS) en wilden we afbeeldingen die zich konden aanpassen qua grootte aan de beschikbare ruimte in hun container. </p>
+<p>Er zijn veel meningen over al dan niet <code>width</code> en <code>height</code> voorzien. Ik zou vereenvoudigend het volgende stellen: als je afbeelding met zekerheid altijd een vaste grootte heeft, gebruik dan beide attributen in HTML. Als dat niet zo is, dan beschrijven we de breedte (en evt. de hoogte, maar meestal volstaat de breedte) liever in CSS.</p>
+
+        <h2>SVG afbeeldingen</h2>
+<p>Een SVG kan zowel een extern bestand zijn, als in de HTML-code zelf (‘inline’ noemt men dat dan) gezet worden. Hierboven gaven we al een voorbeeld van beide manieren.</p>
+        <h3>Embedded met het img element</h3>
+<p>Het <code>img</code> element kan niet alleen naar .png en .jpg (e.a.) verwijzen, maar ook naar een SVG-bestand. Dit is bvb. het icoontje dat ik gebruik om aan te geven dat je een opdracht moet doen: <img src="https://frontend.webontwerp.ucll.be/assets/person-svgrepo-com.svg" alt="doe deze opdracht">. De code die hiervoor gebruik is:</p>
+<pre><code>&lt;img src=&quot;/assets/person-svgrepo-com.svg&quot; alt=&quot;doe deze opdracht&quot;&gt;</code></pre>
+<p>Het grote voordeel van een extern bestand is dat dit na de eerste keer laden op de computer van de gebruiker (in de <em>browser cache</em>) staat. Alle volgende plaatsen waar deze afbeelding nodig is, hoeft er geen <em>request</em> meer naar de server gestuurd te worden.</p>
+
+        <h3>Inline in de HTML-code</h3>
+<p>Voor niet al te grote afbeeldingen kan je ook de code van de SVG zelf in de HTML zetten m.b.v. <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg">het element <code>svg</code></a>. Ik kan hetzelfde figuurtje ook tonen via dit element: <svg width="30" height="30" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.0976562,0,0,0.0976562,0,2)">
+        <path d="M332.64,64.58C313.18,43.57 286,32 256,32C225.84,32 198.57,43.5 179.2,64.38C159.62,85.49 150.08,114.18 152.32,145.16C156.76,206.28 203.27,256 256,256C308.73,256 355.16,206.29 359.67,145.18C361.94,114.48 352.34,85.85 332.64,64.58Z" style="fill:rgb(0,0,170);fill-rule:nonzero;"></path>
+    </g>
+    <g transform="matrix(0.0976562,0,0,0.0976562,0,2)">
+        <path d="M432,480L80,480C70.675,480.121 61.777,476.029 55.8,468.87C49.3,461.1 46.68,450.49 48.62,439.76C57.06,392.94 83.4,353.61 124.8,326C161.58,301.49 208.17,288 256,288C303.83,288 350.42,301.5 387.2,326C428.6,353.6 454.94,392.93 463.38,439.75C465.32,450.48 462.7,461.09 456.2,468.86C450.225,476.022 441.326,480.119 432,480Z" style="fill:rgb(0,0,170);fill-rule:nonzero;"></path>
+    </g>
+</svg>. Ziet er hetzelfde uit, niet? De HTML-code maakt dit keer geen gebruik van <code>img</code>, maar van <code>svg</code>.</p>
+<pre><code>&lt;svg width=&quot;30&quot; height=&quot;30&quot; viewBox=&quot;0 0 50 50&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xml:space=&quot;preserve&quot; xmlns:serif=&quot;http://www.serif.com/&quot; style=&quot;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;&quot;&gt;
+    &lt;g transform=&quot;matrix(0.0976562,0,0,0.0976562,0,2)&quot;&gt;
+        &lt;path d=&quot;M332.64,64.58C313.18,43.57 286,32 256,32C225.84,32 198.57,43.5 179.2,64.38C159.62,85.49 150.08,114.18 152.32,145.16C156.76,206.28 203.27,256 256,256C308.73,256 355.16,206.29 359.67,145.18C361.94,114.48 352.34,85.85 332.64,64.58Z&quot; style=&quot;fill:rgb(0,0,170);fill-rule:nonzero;&quot;/&gt;
+    &lt;/g&gt;
+    &lt;g transform=&quot;matrix(0.0976562,0,0,0.0976562,0,2)&quot;&gt;
+        &lt;path d=&quot;M432,480L80,480C70.675,480.121 61.777,476.029 55.8,468.87C49.3,461.1 46.68,450.49 48.62,439.76C57.06,392.94 83.4,353.61 124.8,326C161.58,301.49 208.17,288 256,288C303.83,288 350.42,301.5 387.2,326C428.6,353.6 454.94,392.93 463.38,439.75C465.32,450.48 462.7,461.09 456.2,468.86C450.225,476.022 441.326,480.119 432,480Z&quot; style=&quot;fill:rgb(0,0,170);fill-rule:nonzero;&quot;/&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+<p>Het nadeel van deze manier van werken is dat deze afbeelding niet in de cache kan opgenomen worden. Als je deze afbeelding twintig keer nodig hebt in één site, moet deze code effectief 20 keer geladen worden.</p>
+<p>Maar dat is meteen ook het grote voordeel: er hoeft voor zo'n inline <code>svg</code> geen request gestuurd te worden naar de server. Zo'n request zorgt voor vertraging, zeker op mobiel. Daarom probeert men voor een snelle site het aantal requests te beperken.</p>
+<p>Nog een voordeel van inline SVG is dat je deze code kan manipuleren met JS.</p>
+
+        <h3>Embedded met het object element</h3>
+<p>Er is nog een derde mogelijkheid om SVG te gebruiken, nl <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object">het <code>object</code> element</a>. We gaan hier echter niet op in. </p>
+        
+
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_afbeeldingen/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

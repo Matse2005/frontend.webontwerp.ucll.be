@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_intro/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>JS intro</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Java is to JavaScript as ham is to hamster.</span> <br>
+					&mdash;Jeremy Keith 
+					
+			</p>
+		</blockquote>
+		
+	<h1>Inleiding JavaScript (JS)</h1>
+	<h2>Wat is JS?</h2>
+	<p>JS is een programmeertaal die ingebouwd zit in elke browser en interactie met een webpagina mogelijk maakt. Vroeger was de taal een client-side scripting taal, wat wil zeggen dat ze dus enkel in de browser werkte. Nu kan je JS (via Node) ook op een server draaien. Je hebt dus niet noodzakelijk nog een browser nodig. </p>
+	<p>In deze beperkte kennismaking voor dit OPO zullen we ons beperken tot JS in de browser. In het vervolgOPO zul je meer van nabij met JS te maken krijgen. Ik beperk me hier liever tot je laten aanvoelen wat er mogelijk is met JS aan de hand van enkele voorbeelden. </p>
+	<p>JS is een scriptingtaal. De browser ontvangt een script (kan zowel in de HTML-code zelf staan als een extern bestand zijn), leest en ontcijfert het (‘parsing’). Daarna converteert de JS-engine van de browser het script naar machinetaal en voert het uit. Je zou denken dat JS door het scriptingkarakter een trage taal is, maar dat is helemaal niet meer het geval.</p>
+	<p>Onderstaande ‘sketch’ (gemaakt in een JS framework p5JS) berekent 60 keer per seconde (fps) de afstand van 150 objecten tot de 149 andere. Als deze afstand binnen een bepaalde grens ligt, wordt er een verbindingslijn getekend die des te feller is naarmate de afstand tussen beide kleiner is.</p>
+	<p>In de linkerbovenhoek zie je een getal. Haalt je browser de 60 fps? Dat kan sterk afhangen van browser tot browser. Op mijn computer is Safari de snelste, gevolgd door chrome / edge en tenslotte firefox (die zelfs geen 30 fps haalt).</p>
+
+	<iframe src="https://frontend.webontwerp.ucll.be/assets/js/connecties.html" width="750" height="750"></iframe>
+	<p>Just for fun: hieronder vind je de code voor deze sketch:</p>
+	<pre><code>
+let particles = []
+const particleAantal = 150 // mag natuurlijk ook met let of var
+const minDist = 120
+const vmax = 2
+const maxstraal = 4
+
+function setup () &lbrace;
+  createCanvas(750, 750)
+&rbrace;
+
+function draw () &lbrace;
+  background(8, 90, 215)
+  fill(255)
+  text(Math.round(frameRate()), 20, 20)
+  strokeWeight(2)
+
+  for (let i = particles.length - 1; i &gt;= 0; i--) &lbrace;
+    particles[i].update() // bereken nieuwe positie aan de hand van huidige positie en snelheid
+    particles[i].toon() // teken het i-de partikel als een kleine cirkel
+    if (particles[i].positie.x &gt; width || particles[i].positie.x &lt; 0 || particles[i].positie.y &gt; height || particles[i].positie.y &lt; 0) &lbrace;
+      particles.splice(i, 1) // verwijder element uit array want partikel is buiten window
+    &rbrace;
+  &rbrace;
+
+  while (particles.length &lt; particleAantal) &lbrace;
+    particles.push(new Particle()) // maak nieuwe partikels aan tot het aantal = particleAantal
+  &rbrace;
+
+  noFill()
+  for (let i = particles.length - 1; i &gt;= 0; i--) &lbrace;
+    let p1 = particles[i]
+    for (let j = particles.length - 1; j &gt;= 0; j--) &lbrace;
+      if (i !== j) &lbrace; // enkel twee verschillende partikels vergelijken
+        let p2 = particles[j]
+        let d = abs(dist(p1.positie.x, p1.positie.y, p2.positie.x, p2.positie.y))
+        if (d &lt;= minDist) &lbrace; // partikel i en j zijn dicht genoeg bij elkaar om lijnstuk te tekenen
+          stroke(255, map(d, 0, minDist, 100, 0))
+          line(p1.positie.x, p1.positie.y, p2.positie.x, p2.positie.y)
+        &rbrace;
+      &rbrace;
+    &rbrace;
+  &rbrace;
+&rbrace;
+
+// Constructor voor nieuw particle object
+function Particle () &lbrace;
+  this.positie = createVector(random(0, width), random(0, height))
+  this.snelheid = createVector(random(-vmax, vmax), random(-vmax, vmax))
+  this.straal = random(1, maxstraal)
+&rbrace;
+
+// had ook binnen de constructor kunnen staan met this.update()
+Particle.prototype.update = function () &lbrace;
+  this.positie.add(this.snelheid)
+&rbrace;
+
+// had ook binnen constructor kunnen staan met this.toon()
+Particle.prototype.toon = function () &lbrace;
+  noStroke()
+  fill(255)
+  circle(this.positie.x, this.positie.y, this.straal)
+&rbrace;
+</code></pre>
+
+	<h2>Wat kan JS doen?</h2>
+	<p>Op de site die je nu leest gebruik ik JS voor:</p>
+	<ul>
+		<li>Het automatisch nummeren van alle titels <code>h2</code> en <code>h3</code>; </li>
+		<li>bijhouden op welke pagina we zijn in de navigatie, zodat CSS de oranje kleur kan toepassen via een <code>class</code>;</li>
+		<li>het tonen en verbergen van het antwoord bij een kleine oefening.</li>
+	</ul>
+	<p>Dat zijn drie voorbeelden van heel kleine scriptjes (vaak slechts enkele tientallen regels lang. De sketch hierboven met de 150 partikels maakt gebruik van het framework <a href="https://p5js.org/">p5JS</a>, dat gemakkelijk uit 100.000 regels JS code bestaat.</p>
+	<p>De editor die we voorstelden om te gebruiken (Visual Studio Code, zie tools) is volledig in HTML, CSS en JS geschreven. Wat je waarschijnlijk niet besefte bij het eerder gebruik van VS Code is dat je eigenlijk in een webpagina bezig bent (via een framework dat <a href="https://www.electronjs.org/">electron</a> heet)!</p>
+
+
+<h2>Hoe tik ik JS code in en voer ik die uit?</h2>
+<p>Code invoeren doe je via een IDE en Visual Studio Code (die je nu vermoedelijk al gebruikt) is een heel goede keuze om dat te doen.</p>
+<p>Uitvoeren kan op verschillende manieren. We zullen ons hier beperken tot de browser, meer bepaald de console uit de developer tools.</p>
+<p>Je opent de developer tools door rechts te klikken op een vrije ruimte in een webpagina en ‘inspecteren’ te kiezen. Klik dan op het tabblad ‘Console’. Dit wordt de omgeving waarin we JS kunnen uittesten. Type nu in deze console <code>console.log('hallo wereld')</code> en bevestig met enter.</p>
+<p>Normaal gezien zullen we code intikken in VS code. De plaats om op zoek te gaan naar fouten, uitvoer te bekijken enz is echter wel deze console. Als je script niet naar behoren werkt, is dit dus de eerste plaats waar je op zoek gaat naar foutboodschappen.</p>
+<img src="https://frontend.webontwerp.ucll.be/assets/js/console.png" alt="" class="blok">
+
+<h2>JS koppelen aan HTML</h2>
+<p>Het is een goede gewoonte om je JS-code in een apart bestand (of meerdere bestanden als je modulair wilt werken) te zetten, met de extensie .js (of .mjs in het geval van modules). Je laadt dit bestand met het <code>script</code> element in HTML. Dat kan in de <code>head</code> van het HTML-document ofwel in <code>body</code>, meestal vlak voor de sluittag <code>&lt;/body&gt;</code>.</p>
+<p>Het voordeel van het onderaan de <code>body</code> te zetten is dat eerst de volledige HTML geladen wordt. Je kan echter in de <code>head</code> iets soortgelijks bereiken door gebruik te maken van het <code>defer</code> attribuut. Dit vertelt de browser dat er moet gewacht worden met het <em>uitvoeren</em> van het JS-script tot het volledige HTML-bestand verwerkt (‘geparsed’) is.</p>
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_intro/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

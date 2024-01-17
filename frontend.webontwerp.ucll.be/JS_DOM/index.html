@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_DOM/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>JS DOM</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+    <blockquote>
+      <p>
+        <span class="citaat">JavaScript is the duct tape of the internet.</span>
+        <br>
+        &mdash;Charlie Campbell
+      </p>
+    </blockquote>
+    <h1>Het Document Object Model</h1>
+    <p>
+      Opnieuw een langere pagina, gebaseerd op <a href="https://javascript.info/">javascript.info</a> en op lessen van de voorbije jaren. We wisselen tekst en code af met filmpjes,
+      omdat het soms belangrijk is dat je ziet hoe je in de console werkt. Mijn doel
+      hier is je een basis meegeven van hoe JS in de browser werkt en tonen wat het
+      kan. Het is maar een heel kleine overzicht, waarbij ik me zeer sterk beperk
+      tot enkele voorbeelden die de principes illustreren. Bij de uitwerking van
+      je eigen functies kan je bijna niet anders dan dingen opzoeken.
+    </p>
+    <h2>Browser omgeving</h2>
+    <p>
+      JS is ontwikkeld voor gebruik binnen een browser. Het is dan ook logisch
+      dat er heel wat dingen in de taal nauw verbonden zijn met de browser. Het
+      centrale globale object in de browser is <code>window</code>. Probeer bvb.
+      volgende code in de console om de hoogte van het browservenster op te
+      vragen. Maak daarna het venster iets kleiner en voer de code terug uit in
+      de console.
+    </p>
+    <pre><code>console.log(window.innerHeight);</code></pre>
+    <p>
+      Het Document Object Model (DOM) is een voorstelling van alle inhoud van
+      een pagina als objecten waarvan je heel wat gegevens kan opvragen of
+      veranderen. Het object <code>document</code> is het startpunt om met het DOM
+      te werken. De rest van deze pagina gaat helemaal over het DOM.
+    </p>
+
+    <h2>DOM boom</h2>
+    <p>
+      Ik wil dit verhaal zo concreet mogelijk proberen te brengen via een
+      voorbeeld. We beperken ons tot het illustreren van enkele principes. Als
+      goede developer zal je zelf andere dingen moeten opzoeken, bvb. <a href="https://frontend.webontwerp.ucll.be/JS_bronnen">in enkele van de geciteerde bronnen</a>. Het vertrekpunt is volgend HTML-bestand:
+    </p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;DOM&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Het Document Object Model&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;belangrijk online&quot;&gt;&lt;a href=&quot;https://javascript.info/&quot;&gt;Javascript.info&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;https://exploringjs.com/impatient-js/&quot;&gt;JavaScript for impatient programmers&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;https://eloquentjavascript.net&quot;&gt;Eloquent JavaScript&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;h2&gt;Javascript en de browser&lt;/h2&gt;
+    &lt;p&gt;JS is oorspronkelijk gemaakt om in de browser uitgevoerd te worden.&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;patroon.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+    &lt;h3&gt;DOM&lt;/h3&gt;
+    &lt;p class=&quot;belangrijk&quot;&gt;Het &lt;abbr title=&quot;Document Oject Model&quot;&gt;DOM&lt;/abbr&gt; is een voorstelling van een pagina als een boomstructuur met:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;ouders&lt;/li&gt;
+      &lt;li&gt;kinderen&lt;/li&gt;
+      &lt;li&gt;broers / zussen&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Events&lt;/h3&gt;
+    &lt;p&gt;Via JS kunnen we reageren op een gebeurtenis, zoals het klikken op een knop.&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>
+      Dit bestand kan er in een browser (met enkel de standaard stijl van de
+      browser zelf) als volgt uitzien:
+    </p>
+    <img src="https://frontend.webontwerp.ucll.be/assets/js/DOM-startbestand.png" alt="basisdocument met enkel styling van browser" class="blok">
+    <p>
+      Dit HTML-document wordt geladen door de browser, die er een
+      boomvoorstelling (<em>tree</em>) van maakt. De wortel (<em>root</em>) is
+      het element <code>html</code>. Dat element heeft twee kinderen (takken): <code>head</code> en <code>body</code>. Deze familierelaties benadrukten we reeds in beide
+      delen HTML en CSS.
+    </p>
+    <p>
+      In feite moeten we de uitleg in wat volgt wat vereenvoudigen. De
+      boomstructuur bestaat namelijk uit knopen (<em>nodes</em>). De
+      HTML-elementen waar we hierboven over spraken zijn zogenaamde <em>‘element nodes’</em>. Zo is er in de code een elementknoop <code>h1</code>. Deze knoop bevat
+      een tekstknoop (<em>‘text node’</em>) met als inhoud de string "Het
+      Document Object Model". To zover is alles eenvoudig …
+    </p>
+    <p>
+      Wat de zaken wel een beetje bemoeilijkt, is dat de ‘enters’ (nieuwe lijn
+      symbolen) op het einde van een regel in de HTML-code ook <em>nodes</em> zijn.
+      Die tekstknopen zijn meestal niet erg interessant om iets mee te doen. In het
+      vervolg van deze tekst zullen we altijd naar de elementknopen en hun inhoud
+      verwijzen. Trouwens, alles in de HTML-code is een deel van het DOM. Een commentaar
+      in HTML (tussen &lt;!-- en --&gt;) is in het DOM een <em>comment node</em>
+      en als zodanig ook door JS te bereiken.
+    </p>
+    <p>
+      De developer tools van de browser tonen je deze DOM grafisch. De
+      vervelende tekstknooppunten die overeenkomen met het nieuwe lijn symbool
+      worden meestal niet getoond in dit overzicht. Je kan de driehoekjes voor
+      de elementen open of dicht klikken.
+    </p>
+    <img src="https://frontend.webontwerp.ucll.be/assets/js/DOM-inspector.png" alt="Visuele weergave van het DOM in de developer tools" class="blok">
+
+    <h2>Wandelen door de DOM boom</h2>
+    <p>
+      Met ‘wandelen door een boom’ wordt bedoeld: ga naar specifieke elementen,
+      zoek hun kinderen, kleinkinderen, ouders, broer / zus, grootouders enz.
+      Een belangrijk onderscheid (ook in CSS trouwens) is het verschil tussen
+      kind (<em>child</em>) en nakomeling (<em>descendant</em>)
+    </p>
+    <section class="taak">
+      <p>
+        In CSS bestaat de kindselector (<em>child selector</em>) en de
+        nakomelingselector (<em>descendant selector</em>). Weet je nog welke dit
+        zijn? Zoek eventueel even op.
+      </p>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        De meestgebruikte in CSS is de nakomelingselector: de spatie. Zo
+        betekent de selector <code>main ul</code> “alle elementen <code>ul</code> die ergens in <code>main</code> zitten, mogelijk verschillende niveau's
+        diep”. Als je de spatie vervangt door een &gt; wordt de betekenis strenger.
+        Zo betekent <code>main &gt; ul</code> “alle elementen <code>ul</code> die
+        een direct kind zijn van het element <code>main</code>”.
+      </p>
+    </section>
+    <p>
+      De stamvader van de familiestamboom is het <code>document</code> object in
+      JS. Dit element heeft heel veel eigenschappen en methodes, bvb. <code>document.body</code> om het element <code>body</code> te selecteren, of <code>document.head</code> voor het <code>head</code> element.
+    </p>
+    <p>
+      We kunnen nu op zoek gaan <em>child nodes</em>, <em>parent nodes</em> enz.
+      Maar zoals hierboven uitgelegd vinden we dan ook de niet zo interessante nieuwe
+      lijn symbolen als tekstknopen. Ook commentaarknopen vinden we zo, maar ook
+      die zijn meestal niet zo interessant. We beperken ons dus liever tot het zoeken
+      naar <em>elementen</em>.
+    </p>
+
+    <div class="iframewrapper kaltura">
+      <iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_hr6pbulf&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_ic37pj2g" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+    </div>
+
+    <h3>Kinderen</h3>
+    <p>
+      De eigenschap <code>children</code> geeft van een elementknoop alle kinderen
+      weer. Het resultaat is een zogenaamde <em>collection</em>. Dat is iets wat
+      lijkt op een array (maar het niet is) en waarvan je alle elementen kan
+      aflopen, de lengte kan bepalen enz.
+    </p>
+    <p>
+      In het volgende voorbeeld vragen we van <code>document</code> de eigenschap
+      <code>body</code> op, en van dit element vragen we de eigenschap <code>children</code>. Je kan dus met de <em>punt-notatie</em> heel wat eigenschappen aan elkaar
+      knopen. Een beetje verrassend geeft deze eigenschap aan dat er vier kinderen
+      van body zijn, terwijl er duidelijk maar drie in de code staan. Het vierde
+      kind (met nummer 3, want een collection begint bij het element 0) is echter
+      een <code>div</code> die door een VS Code extensie automatisch toegevoegd werd
+      aan mijn code.
+    </p>
+    <pre><code>document.body.children;
+// geeft: HTMLCollection &lbrace; 
+//	0: header, 
+//	1: main, 
+//	2: footer, 
+//	3: div#ConnectiveDocSignExtentionInstalled, 
+//	length: 4, … &rbrace;
+</code></pre>
+    <section class="taak">
+      <p>Wat is het resultaat van volgende regel JS?</p>
+      <pre><code>document.body.children[1].children.length;</code></pre>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        Het resultaat is het getal 8. Het kind met nummer 1 is het element <code>main</code>. Dit element heeft 8 kinderen.
+      </p>
+    </section>
+
+    <p>
+      Je kan via <code>firstElementChild</code> (merk op dat men in JS altijd <em><a href="https://nl.wikipedia.org/wiki/CamelCase">camel case</a>
+      </em> gebruikt) en <code>lastElementChild</code> het eerste en laatste kind
+      element van een ander element opvragen.
+    </p>
+    <section class="taak">
+      <p>Welk element wordt geselecteerd door volgende JS code:</p>
+      <pre><code>document.body.children[0].lastElementChild;</code></pre>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        Deze regel selecteert het element <code>nav</code>. Het kind van <code>body</code> met nummer 0 is <code>header</code>. Het element <code>header</code> heeft
+        twee kinderen. Het laatste kind van dit element is <code>nav</code>.
+      </p>
+    </section>
+
+    <h3>Broer / zus</h3>
+    <p>
+      Het Nederlands heeft geen vertaling voor het Engelse ‘sibling’. We moeten
+      dit woord omschrijven door ‘broer / zus’. Elementen die dezelfde ouder
+      hebben zijn <em>siblings</em>. Met <code>previousElementSibling</code> selecteer
+      je het element dat vlak boven het huidige element staat en dat hetzelfde ouderelement
+      heeft. De eigenschap <code>nextElementSibling</code> doet dan hetzelfde voor
+      de broer of zus vlak onder het huidige element.
+    </p>
+
+    <section class="taak">
+      <p>Welk element is het resultaat van:</p>
+      <pre><code>document.head.children[1].nextElementSibling;</code></pre>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        <code>title</code>: het kind van <code>head</code> met nummer 1 is het tweede
+        kind (<code>meta name="viewport" …</code>). De <em>sibling</em> die daarop
+        volgt is het element <code>title</code>.
+      </p>
+    </section>
+
+    <h2>Zoeken naar elementen in de DOM</h2>
+    <p>
+      We kunnen nu in het DOM <em>stamboomgewijs wandelen</em> van ouder naar kind
+      en omgekeerd. Echt handig is dat natuurlijk niet. Er moet een snellere manier
+      bestaan om een bepaald element uit het DOM te selecteren. Die manieren (meervoud)
+      bestaan natuurlijk.
+    </p>
+
+    <div class="iframewrapper kaltura">
+      <iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_47tjmrlr&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_2wmxltjv" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+    </div>
+
+    <h3>getElementById()</h3>
+    <p>
+      Luie developers of zij die niet de moeite nemen om CSS grondig te leren
+      kennen geven elk HTML element een apart <code>id</code>. Met de <em>methode</em>
+      <code>document.getElementById("…")</code> kan je dan elk element dat een <code>id</code> attribuut heeft, selecteren. Die (ver)oude(rde) methode werkt nog steeds,
+      maar ik vind het veel interessanter om je te leren werken met <code>querySelector()</code>
+    </p>
+
+    <h3>querySelector()</h3>
+    <p>
+      Je weet dat we <a href="https://frontend.webontwerp.ucll.be/CSS_selectoren">in CSS heel specifieke selectoren kunnen gebruiken</a> om een element van stijl te voorzien. Dat is de basis voor de krachtige methode
+      <code>document.querySelector("…")</code> die tussen haakjes elke CSS selector
+      als argument (in de vorm van een string) kan nemen. Enkele voorbeelden, toegepast
+      op het document dat hierboven beschreven is:
+    </p>
+    <pre><code>document.querySelector("nav"); // selecteert het enige nav element
+document.querySelector("main ul"); // selecteert alleen de ul in main
+document.querySelector('img[src="patroon.jpg"]') // selecteer de img met het gewenste attribuut
+document.querySelector("#kalender") // element met id kalender (is hier niet, dus geeft null)
+</code></pre>
+    <p>
+      Aan het laatste voorbeeld kan je zien dat de methode <code>getElementById()</code> niet meer nodig is, want je kan gebruik maken van de methode <code>querySelector("#…")</code> die veel meer mogelijkheden heeft.
+    </p>
+
+    <h3>querySelectorAll()</h3>
+    <p>
+      Wat als er meerdere elementen voldoen aan de selector in <code>querySelector()</code>? Dan geeft de methode als resultaat het <em>eerste</em> element terug.
+    </p>
+    <p>
+      Vaak wil je echter effectief <em>alle</em> elementen die voldoen aan de selector,
+      omdat je met al deze elementen iets wilt doen via een JS script. In dit geval
+      gebruik je <code>querySelectorAll("…")</code>. Deze methode geeft een <em>collection</em> terug. Je kan dan een specifiek element eruit pikken met <code>[getal]</code>. Of je schrijft een lus om alle elementen uit de collection één voor één
+      te selecteren.
+    </p>
+    <pre><code>document.querySelectorAll("main &gt; h2");
+// selecteert alle h2 elementen die kind zijn van main</code></pre>
+    <section class="taak">
+      <p>
+        Eén van de scripts die ik gebruik in deze site staat hieronder. Ontleed
+        de code en zoek uit wat ze juist doet.
+      </p>
+      <pre><code>let alleTitels = document.querySelectorAll('h2, h3');
+let h2Teller = 1;
+let h3Teller = 1;
+for (let i = 1; i &lt;= alleTitels.length; i++)&lbrace;
+  if (alleTitels[i-1].localName === 'h2') &lbrace;
+    h3Teller = 1;
+    alleTitels[i-1].innerText = h2Teller + " " + alleTitels[i-1].innerText;
+    h2Teller++;
+  &rbrace; else &lbrace;
+    alleTitels[i-1].innerText = h2Teller-1 + "." + h3Teller + " " + alleTitels[i-1].innerText;
+    h3Teller++;
+  &rbrace;
+&rbrace;</code></pre>
+      <button>Toon / verberg oplossing</button>
+      <p class="oplossing">
+        Ik had geen zin om in deze tekst alle titels (alleen die van niveau h2
+        en h3) manueel te nummeren. Als je dan een titel tussenvoegt, moet je
+        alle nummers aanpassen. Dat kan gemakkelijk geautomatiseerd worden! De
+        code selecteert alle <code>h2</code> en <code>h3</code> elementen in een
+        collection met de naam <code>alleTitels</code>. Een lus gaat dan alle
+        elementen in deze collection af en berekent het nummer (zowel h2- als
+        h3-nummer) dat aan de titel moet voorafgaan. Met de eigenschap <code>innerText</code> wordt dan dit nummer vooraan toegevoegd aan de huidige titel.
+      </p>
+    </section>
+
+    <h3>Andere methoden</h3>
+    <p>
+      Er zijn nog heel wat andere manieren om elementen te selecteren, maar
+      eigenlijk zijn ze niet nodig omdat ze allemaal vervangen zijn door <code>querySelector()</code> en <code>querySelectorAll()</code>. Je ziet ze af en toe nog wel in
+      (oudere) scripts: <code>getElementsByTagName()</code>, <code>getElementsByClassName()</code> en <code>getElementsByName()</code>.
+    </p>
+    <p>Niet gebruiken!</p>
+
+    <h2>Attributen en waarden</h2>
+    <p>
+      HTML-elementen kunnen meerdere attributen hebben. Een <code>a</code> element
+      heeft een <code>href</code> attribuut. Een <code>img</code> heeft altijd een
+      attribuut <code>src</code>. Voor styling kunnen <code>class</code> attributen
+      handig zijn enz.
+    </p>
+    <p>
+      Enkele mogelijke methoden om attributen op te vragen, aan te passen, … van
+      een element:
+    </p>
+    <ul>
+      <li>
+        <code>element.hasAttribute(naam)</code>: heeft dit element het gevraagde
+        attribuut ‘naam’?
+      </li>
+      <li>
+        <code>element.getAttribute(naam)</code>: geef de waarde van het
+        attribuut ‘naam’ van dit element.
+      </li>
+      <li>
+        <code>element.setAttribute(naam, waarde)</code>: ken de waarde toe aan
+        het attribuut.
+      </li>
+      <li>
+        <code>element.removeAttribute(naam)</code>: verwijder attribuut ‘naam’.
+      </li>
+    </ul>
+    <p>Een voorbeeld op het gekende HTML-document:</p>
+    <pre><code>document.head.firstElementChild.hasAttribute("charset"); // geeft true
+document.querySelector("html").getAttribute("lang") // geeft "nl"</code></pre>
+
+    <div class="iframewrapper kaltura">
+      <iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_byq3kl50&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_8ed8frb7" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+    </div>
+
+    <h2>Tekst in een element veranderen</h2>
+    <p>
+      Je merkte misschien al dat ons voorbeeld HTML-document een leeg element <code>footer</code> bevat. Het staat wel in de code, maar zonder inhoud. Inhoud toevoegen kan
+      op verschillende manieren. We tonen er twee.
+    </p>
+    <p>
+      De eerste methode (<code>innerText</code>) is geschikt als je enkel tekst
+      wilt toevoegen. Onderstaande code zorgt voor de tekst ‘&copy; 2022’ in de
+      footer:
+    </p>
+    <pre><code>document.querySelector("footer").innerText = "&amp;copy; 2022"</code></pre>
+
+    Als de inhoud die je wilt toevoegen ook HTML-elementen bevat, moet je de <code>innerHTML</code> eigenschap gebruiken:
+    <pre><code>document.querySelector("footer").innerHTML = "tekst die &lt;strong&gt;belangrijk&lt;/strong&gt; is"</code></pre>
+
+    <h2>Een element toevoegen / verwijderen</h2>
+    <p>
+      De <code>nav</code> in het voorbeeld HTML-document bevat drie links naar JS
+      boeken of sites. Stel dat we een vierde bron willen toevoegen. Ik wil bvb.
+      graag wat reclame maken voor mijn cursus algoritmisch denken (voor Toegepaste
+      informatica) m.b.v. P5JS, te vinden op <a href="https://u0012047.webontwerp.ucll.be/algo/">https://u0012047.webontwerp.ucll.be/algo/</a>. Dit toevoegen aan de navigatie gaat in een aantal stappen.
+    </p>
+
+    <h3>Een nieuw element aanmaken</h3>
+    <p>
+      Het doel is dus om volgend HTML-element aan te maken met een bepaalde
+      klasse en inhoud:
+    </p>
+    <pre><code>&lt;li class=&quot;promo&quot;&gt;
+  &lt;a href=&quot;https://u0012047.webontwerp.ucll.be/algo/&quot;&gt;Algoritmisch denken m.b.v. P5JS&lt;/a&gt;
+&lt;/li&gt;</code></pre>
+    <p>Dat kan als volgt:</p>
+    <pre><code>let algoLink = document.createElement('li');
+// maak een nieuw li element en stop dat in variabele algoLink
+
+algoLink.className = 'promo';
+// geef dit element class="promo"
+
+algoLink.innerHTML = &#39;&lt;a href=&quot;https://u0012047.webontwerp.ucll.be/algo/&quot;&gt;Cursus Algo Ti&lt;/a&gt;&#39;
+// vul dit li element met inhoud
+</code></pre>
+
+    <h3>Een element toevoegen aan het DOM</h3>
+    <p>
+      Het nieuwe element is aangemaakt, de klasse is toegekend en het element
+      kreeg inhoud. Nu moet het op de juiste plaats aan het DOM toegevoegd
+      worden. We maken hiervoor gebruik van de methode <code>insertAdjacentElement</code> (of de varianten <code>insertAdjacentHTML</code> en <code>insertAdjacentText</code>).
+    </p>
+    <p>
+      De methode <code>huidigEl.insertAdjacentElement(plaats, element)</code> verwacht
+      twee parameters:
+    </p>
+    <ul>
+      <li>
+        plaats: waar wordt het nieuwe element toegevoegd gezien t.o.v. huidigEl?
+        Er zijn vier mogelijkheden: <ul>
+          <li>
+            <code>'beforebegin'</code>: voeg element vlak voor huidigEl toe;
+          </li>
+          <li>
+            <code>'afterbegin'</code>: voeg element in huidigEl in, helemaal in
+            het begin;
+          </li>
+          <li>
+            <code>'beforeend'</code>: voeg element in huidigEl in, helemaal op
+            het einde;
+          </li>
+          <li><code>'afterend'</code>: voeg element vlak na huidigEl in.</li>
+        </ul>
+      </li>
+      <li>
+        element: het nieuwe toe te voegen element (dat we al klaargemaakt hebben
+        in de vorig stap).
+      </li>
+    </ul>
+    <p>
+      Hier willen we deze nieuwe vierde navigatielink toevoegen aan de <code>ul</code> die in <code>nav</code> staat, en wel als laatste item. De keuze voor <code>'beforeend'</code> ligt dus voor de hand:
+    </p>
+    <pre><code>let navLijst = document.querySelector('nav ul');
+// pak het referentie element vast en geeft het een naam
+
+navLijst.insertAdjacentElement('beforeend', algoLink);
+// voeg het nieuwe li element op het einde van de ul toe
+</code></pre>
+
+    <h3>Een knoop verwijderen</h3>
+    <p>
+      Je verwijdert een knoop (node) met de methode <code>remove()</code>. We
+      geven een klein voorbeeldje: verwijder de tweede <code>li</code> in het <code>nav</code> element.
+    </p>
+    <pre><code>document.querySelector('nav li:nth-child(2)').remove()
+// de li die een tweede kind is van een ander element en
+// in het element nav staat (als nakomeling) wordt verwijderd</code></pre>
+
+    <h2>Style en class</h2>
+    <p>
+      Ik wil de titel <code>h2</code> in een andere kleur met een gewijzigde achtergrond
+      weergeven. De voorkeursmethode zou dan zijn om dat in het extern CSS-bestand
+      aan te passen. Het kan echter ook in het <code>style</code> attribuut van dit
+      element <code>h2</code>. Hopelijk weet je ondertussen dat je dan altijd
+      kiest voor een wijziging in het extern stijlbestand! JS heeft eveneens
+      twee manieren om stijl te veranderen die met het bovenstaande te
+      vergelijken zijn: <code>style</code> en <code>class</code> toevoegen. Je kiest
+      indien mogelijk altijd voor de tweede mogelijkheid.
+    </p>
+
+    <h3>De style eigenschap in JS: zelden gebruiken!</h3>
+    <p>
+      Je weet ondertussen hoe het gaat? Pak het juiste element vast en wijzig
+      dan een eigenschap ervan. Ondanks het feit dat <em>
+        dit niet de voorkeursmethode is
+      </em>, laat ik toch even zien hoe het kan:
+    </p>
+    <pre><code>let titel2 = document.querySelector(h2);
+// er is maar één h2, dus eenvoudige selectie
+
+titel2.style.color = '#fff';
+// tekstkleur wordt wit
+
+titel2.style.backgroundColor = '#333';
+// achtergrondkleur donkergrijs, let op schrijfwijze backgroundColor
+
+titel2.style.padding = '10px';
+// tekst kwam wat te dicht tegen de rand, dus voorzie wat padding
+</code></pre>
+    <p>
+      Merk op dat de CSS-eigenschap <code>background-color</code> heet. Het JS-equivalent
+      laat altijd het streepje weg en gebruikt ‘camel case’: <code>backgroundColor</code>.
+    </p>
+
+    <h3>Klasses toevoegen: voorkeursmethode</h3>
+    <p>
+      De <code>h2</code> aanpassen kan veel beter in het CSS-bestand gebeuren. We
+      voegen eerst volgende code toe aan het CSS-bestand. <em>Denk ook even na over een zinvolle klassenaam!</em>
+    </p>
+    <pre><code>h2.donker &lbrace;
+  color: #fff;
+  background-color: #333;
+  padding: 10px;
+&rbrace;</code></pre>
+    <p>
+      De stijlaanpassing zit dus in het document waar ze thuis hoort: het
+      CSS-bestand. Nu moeten we enkel nog de juiste klasse toevoegen aan het
+      element:
+    </p>
+    <pre><code>let titel2 = document.querySelector('h2');
+titel2.classList.add('donker');
+titel2.classList.contains('donker') // geeft true als resultaat
+</code></pre>
+    <p>De eigenschap <code>classList</code> heeft volgende methoden:</p>
+    <ul>
+      <li>
+        <code>add() / remove()</code>: voegt de klasse toe of verwijdert ze;
+      </li>
+      <li>
+        <code>toggle()</code>: bijzonder nuttig, voegt de klasse toe als ze nog
+        niet bestaat, anders verwijdert ze;
+      </li>
+      <li><code>contains()</code>: bevat dit de klasse, geeft true / false.</li>
+    </ul>
+    <div class="iframewrapper kaltura">
+      <iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_pvoa7j24&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_tc5qt7ii" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+    </div>
+  </main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/JS_DOM/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_float_pos/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>CSS float en position</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Float like a butterfly, sting like a bee.</span> <br>
+					&mdash;Muhammad Ali
+					
+			</p>
+		</blockquote>
+		<h1>CSS float en position eigenschappen</h1>
+        <section class="leerdoel">
+
+            <ul>
+                <li>Float, position: niet meer zo belangrijk;</li>
+                <li><code>float</code>;</li>
+                <li>belang van <code>margin</code> rond een float;</li>
+                <li><code>clear</code></li>
+                <li><code>position: absolute</code> en <code>position: relative.</code></li>
+            </ul>
+        </section>
+
+        <h2>Belang in CSS</h2>
+        <p>Tot enkele jaren geleden namen <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float"><code>float</code></a> en <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position"><code>position</code></a> een belangrijke plaats in in een cursus CSS. Sinds kort beschikken we echter over veel betere manieren om een lay-out in CSS te implementeren (<code>flex</code> en <code>grid</code>, daarom dat die ook eerder uitgelegd werden). Voor specifieke doelen kunnen <code>float</code> en <code>position</code> nog nuttig zijn. Daarom leggen we beiden hier kort uit.</p>
+        
+        <h2>Float</h2>
+        <h3>Een afbeelding floaten</h3>
+        <p>Volgende situatie komt af en toe voor: je wilt de tekst rond een afbeelding laten gaan, als volgt:</p>
+        <img src="https://frontend.webontwerp.ucll.be/assets/css/floatLinks.png" alt="float:left" class="blok">
+        <p>De HTML-code hiervan is:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot;&gt;
+&lt;head&gt;
+  …
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;floatstijl.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi …&lt;/p&gt;
+  &lt;p&gt;&lt;img class=&quot;links&quot; src=&quot;paraplu.jpg&quot; width=&quot;200&quot; height=&quot;300&quot; 
+    alt=&quot;kleurrijke paraplu&#39;s&quot;&gt;Lorem ipsum dolor sit amet …&lt;/p&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat alias eveniet …&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Drie alinea's (<code>p</code>) volgen elkaar op. De tweede alinea bevat een afbeelding.</p>
+<p>De CSS-code die voor deze lay-out zorgt is:</p>
+<pre><code>body &lbrace;
+  max-width: 30em;
+  margin: 0 auto;
+  font-family: "Trebuchet MS", sans-serif;
+  line-height: 1.45;
+&rbrace;
+
+.links &lbrace;
+  float: left;
+  margin: 10px 10px 10px 0;
+&rbrace;</code></pre>
+<p>Een woordje uitleg bij bovenstaande code. In de HTML geven we de afbeelding een <code>class="links"</code>. Je mag die klasse gelijk welke naam geven, maar toch liefst een naam die de betekenis verduidelijkt. De CSS laat alle elementen met deze klasse <em>floaten</em> naar de uiterst linkse positie mogelijk, dus tot tegen de rand van de <code>body</code>. De rest van de <code>p</code> en alle volgende worden aan de linkerkant weggeduwd door deze afbeelding.</p>
+<p>Het effect is dat alles rond deze afbeelding gaat. Van zodra de tekstregels onder de afbeelding komen, staan ze terug tegen de linkerkant. Vanzelfsprekend voorzie je rond een gefloate afbeelding voldoende ruimte (hier via <code>margin</code>). Tekst die tot tegen een afbeelding komt is echt niet mooi.</p>
+
+
+<section class="taak">
+    <p>Als je even logisch nadenkt, hoe zou je dan volgende lay-out kunnen bekomen?</p>
+    <img src="https://frontend.webontwerp.ucll.be/assets/css/floatRechts.png" alt="float:right" class="blok">
+    <button>Toon / verberg oplossing</button>
+    <section class="oplossing">In de HTML-code veranderen we de klasse tot <code>class="rechts"</code>. In de CSS voeg je dan volgende regels toe. Klein detail: let op de aangepaste <code>margin</code>.
+<pre><code>.rechts &lbrace;
+  float: right;
+  margin: 10px 0 10px 10px;
+&rbrace;</code></pre>
+</section>
+
+</section>
+
+    <h3>Clear</h3>  
+
+<p>Soms wil je vermijden dat iets aan de linkerkant (of rechterkant) wordt weggeduwd door een gefloat voorwerp dat er naast staat, zoals bvb de ongelukkige plaats van de titel in volgende pagina:</p>
+<img src="https://frontend.webontwerp.ucll.be/assets/css/floatTitel.png" alt="titel wordt ook weggeduwd" class="blok">  
+<p>Daarom dat je vaak de eigenschap <code>float</code> vergezeld ziet van de eigenschap <code>clear</code>. We voegen volgende CSS-regel toe:</p>
+<pre><code>h2 &lbrace;
+  clear: left;
+&rbrace;</code></pre>
+<p>Deze regel zegt “alle h2-elementen mogen aan de linkerkant niet worden weggeduwd”. Het effect is dat de titel dan onder de gefloate afbeelding komt te staan:</p>
+<img src="https://frontend.webontwerp.ucll.be/assets/css/floatTitelClear.png" alt="titel gecleared links" class="blok">  
+
+        <h3>Inline of blokelementen floaten</h3>
+<p>Je bent niet beperkt tot het floaten van een afbeelding. Elk element is toegestaan. Er is één belangrijke voorwaarde: je moet de <code>width</code> van het element altijd meegeven. Bij de <code>img</code> hierboven was het niet nodig, omdat we de afmetingen van de afbeelding in de attributen in HTML hadden bepaald. In het volgend voorbeeld floaten we een citaat, gemaakt met een <code>blockquote</code>.</p>
+
+<section class="taak">
+    <p>Probeer zelf de HTML- en CSS-code te schrijven om deze pagina te bekomen.</p>
+    <img src="https://frontend.webontwerp.ucll.be/assets/css/floatBlockquote.png" alt="blockquote wordt gefloat" class="blok">
+    <button>Toon / verberg oplossing</button>
+    <section class="oplossing">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Een element floaten&lt;/title&gt;
+    &lt;style&gt;
+      body &lbrace;
+        max-width: 30em;
+        margin: 0 auto;
+        font-family: &quot;Trebuchet MS&quot;, &quot;Lucida Sans Unicode&quot;, &quot;Lucida Grande&quot;,
+          &quot;Lucida Sans&quot;, Arial, sans-serif;
+        line-height: 1.45;
+      &rbrace;
+
+      blockquote &lbrace;
+        margin: 10px 10px 10px 0;
+        padding:10px;
+        line-height: 1.1;
+        width: 5em;
+        float: left;
+        font-family: georgia, serif;
+        font-style: italic;
+        font-size: 3rem;
+        color: #444;
+        border-top: 3px solid #aaa;
+        border-bottom: 3px solid #aaa;
+        background-color: #eee;
+      &rbrace;
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+      doloremque vel ducimus, amet velit non dolor voluptas nemo eius. Quo!
+    &lt;/p&gt;
+    &lt;blockquote&gt;“To be or not to be, that&#39;s the question!”&lt;/blockquote&gt;
+    &lt;p&gt;
+      Facilis non a sapiente quos rerum similique itaque autem nostrum tempore
+      at repudiandae exercitationem voluptatem, quas fuga omnis aliquid nesciunt
+      unde maiores.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Quam repellendus fugit iste ex corrupti hic nemo quos officia unde
+      veritatis culpa, vitae mollitia error cupiditate asperiores beatae quo.
+      Officia sit illo soluta ipsam, quisquam architecto perspiciatis maiores
+      nisi harum aperiam vero delectus eum veritatis et adipisci nobis. Velit,
+      ad earum.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>    
+    </section>
+</section>
+        
+
+
+
+        <h2>Position: absolute (en relative)</h2>
+<p>Je weet ondertussen dat ik fan ben van Kevin … In volgend filmpje legt hij uit hoe <code>position: abolute</code> werkt.</p>
+
+<div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/P6UgYq3J3Qs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<p class="opgepast">Zoals hij in het vorig filmpje meermaals beklemtoont: <strong>elementen absoluut positioneren moet de uitzondering zijn</strong>. Je kan het gebruiken om een element op een specifieke plaats binnen een container te plaatsen. Maar het is niet geschikt om de algemene lay-out van je site te bepalen.</p>
+<p>In deze wat langere film toont Kevin Powell een praktische toepassing waar <code>position: absolute</code> zinvol is.</p>
+<div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/lUaw-AA9HnA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/CSS_float_pos/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

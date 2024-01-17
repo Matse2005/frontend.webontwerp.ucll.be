@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_basispg/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/styles/stijl.css">
+        <link rel="stylesheet" href="https://frontend.webontwerp.ucll.be/assets/highlight/styles/vs2015.min.css">
+        <script src="https://frontend.webontwerp.ucll.be/assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>HTML basis</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="https://frontend.webontwerp.ucll.be/">Home</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/OPO">OPO</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/tools">Tools</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/web">Web?</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/HTML_00_menu">HTML</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/CSS_00_menu">CSS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/JS_00_menu">JS</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/varia">Varia</a></li>
+                        <li><a href="https://frontend.webontwerp.ucll.be/bronnen">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+        <blockquote>
+			<p>
+					<span class="citaat">Programming is not a zero-sum game. Teaching something to a fellow programmer doesn't take it away from you. I'm happy to share what I can, because I'm in it for the love of programming.</span> <br>
+					&mdash; John Carmack (maar het is ook de reden waarom ik leerkracht geworden ben)
+					
+			</p>
+		</blockquote>
+		<h1>HTML basisdocument</h1>
+        <section class="leerdoel">
+            <p>In deze les maak je een kleine webpagina en zet je die online op onze webserver:</p>
+            <ul>
+                <li>Gebruik van visual studio code voor HTML;</li>
+                <li>HTML elementen, tags, attributen;</li>
+                <li>invoegen van een link;</li>
+                <li>een afbeelding vinden en toevoegen;</li>
+                <li>alles online zetten met Filezilla;</li>
+                <li>testen in een browser.</li>
+            </ul>
+        </section>
+		
+        <h2>Basisstructuur</h2>
+        <p>Voor deze kleine pagina maken we een aparte map. Noem die bvb ‘kat’. In deze map maken we straks een HTML-document aan. We willen in deze pagina ook minstens één foto toevoegen. Het is meestal een goed idee om foto's, logo's enz. in een aparte map te bewaren. Maak daarom in de map ‘kat’ een mapje ‘img’.</p>
+
+		<h2>Rechtenvrije foto's</h2>
+        <p>Voor deze oefening willen we ook een afbeelding toevoegen aan een webpagina. Je kan natuurlijk een zoekopdracht doen en een passende afbeelding downloaden. Je moet dan wel de toestemming hebben van de auteur, wat vaak niet kan omdat je de auteur niet kent.</p>
+        <p>Er bestaan gelukkig sites waar je mooie foto's, iconen en andere afbeeldingen kan vinden en het auteursrecht toch respecteren. In onderstaand filmpje tonen we twee dergelijke sites: <a href="https://unsplash.com/">unsplash.com</a> en <a href="https://flickr.com/">flickr.com</a>.</p>
+
+        <div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_mshmdaeh&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_3t6cma45" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+
+       
+        <p>Download nu enkele foto's, bvb eentje in lage resolutie en eentje in hoge resolutie. Bewaar de foto's in het mapje ‘img’.</p>
+
+        <h2>HTML-pagina maken</h2>
+        <p>We maken nu een eenvoudige pagina met enkele HTML-elementen, een foto, een link … Al deze dingen worden later in detail uitgelegd. Nu probereren we enkel de manier van werken uit.</p>
+        <p>Volg mee met onderstaande filmpjes. Het doel is een HTML-bestand in deze stijl:</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Mijn eerste pagina&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Mijn eerste webpagina&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;h2&gt;Werken met HTML&lt;/h2&gt;
+    &lt;p&gt;Dit is de eerste alinea, met een p element&lt;/p&gt;
+    &lt;p&gt;En dit is dan de tweede alinea. Dit zijn blokelementen. 
+    Er zijn ook inline elementen, 
+    zoals om &lt;em&gt;woorden te beklemtonen&lt;em&gt;.&lt;/p&gt;
+
+    &lt;h2&gt;Werken met een afbeelding&lt;/h2&gt;
+    &lt;p&gt;Een img is inline: 
+    &lt;img src=&quot;img/kote-puerto-so5nsYDOdxw-unsplash.jpg&quot; 
+      alt=&quot;foto van een kleine kat&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;Als er geen plaats is, komt die eronder: 
+    &lt;img src=&quot;img/25161907065_8a763415f9_k.jpg&quot; 
+      alt=&quot;grote afbeelding van kat&quot;&gt;&lt;/p&gt;
+
+    &lt;h2&gt;Werken met links&lt;/h2&gt;
+    &lt;p&gt;Meer info vind je op 
+    &lt;a href=&quot;https://www.ucll.be&quot;&gt;de website van UCLL&lt;/a&gt;.&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+      &amp;copy; 2022 Jan Van Hee &amp;lt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<h3>Editor, code, browser, live server</h3>
+<section class="leerdoel">
+<p>We vertrekken van de map ‘kat’ met daarin een map ‘img’ die twee foto's bevat. In onderstaande film bekijken we:</p>
+<ul>
+  <li>Editor: Visual Studio Code (‘VS Code’ of soms kortweg ‘Code’);</li>
+  <li>open map + nieuw bestand aanmaken;</li>
+  <li>HTML <em>elementen</em> en <em>attributen</em>;</li>
+  <li>resultaat in een browser bekijken;</li>
+  <li>extensie ‘live server’ installeren en gebruiken.</li>
+</ul>
+</section>
+<div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_q73au8al&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=nl&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_vxlijtwb" width="1280" height="720" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+
+<h3>HTML elementen toevoegen, block / inline, img, links, validatie</h3>
+<section class="leerdoel">
+<p>Het vervolg van de film behandelt:</p>
+<ul>
+  <li>Elementen toevoegen met &lt;… of via Emmet;</li>
+  <li><code>header</code>, <code>h1</code>, <code>main</code>, <code>p</code>, <code>em</code>, <code>footer</code>;</li>
+  <li>block / inline;</li>
+  <li>HTML entity zoals bvb &copy; en &lt;;</li>
+  <li><code>img</code> element;</li>
+  <li><code>a</code> element voor links.</li>
+  <li>validatie via <a href="https://html5.validator.nu/">https://html5.validator.nu</a>.</li>
+</ul>  
+</section>
+<div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_n6ajn6p9&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=nl&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_vdsxsbqb" width="640" height="360" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+
+
+<h2>FTP (File Transfer Protocol)</h2>
+<p>We hebben de pagina lokaal getest, liefst in verschillende browsers. Alles schijnt te werken. Tijd om het resultaat van ons werk online te zetten. Dat kan op heel wat verschillende manieren. De basisversie is een FTP-client gebruiken om alle nodige bestanden naar de server te kopiëren. Modernere manieren om een site te <em>deployen</em> maken bvb gebruik van een github commit. Voor dit OPO houden we het echter gewoon bij een bestandsoverdracht via FTP.</p>
+<p>Bekijk eerst de stappen in <a href="https://frontend.webontwerp.ucll.be/assets/html/handleiding_filezillaSFTP.pdf">de installatiehandleiding (PDF 4,2 MB)</a> om het programma Filezilla te installeren. Er zijn heel wat alternatieve FTP-clients. We gebruiken Filezilla omdat dit programma draait onder Windows, Linux en MacOS en gratis is. Gebruik gerust iets anders als je al vertrouwd bent met FTP!</p>
+<p>In het volgend filmpje tonen we voor dit voorbeeld concreet hoe dit werkt. Als het inloggen op onze webserver niet lukt, neem dan contact op met je lector. Mogelijk moet je r-nummer manueel toegevoegd worden aan een databank. We brengen dat wel voor jou in orde, maar dan moet je het wel eerst signaleren.</p>
+<div class="iframewrapper kaltura"><iframe class="preview-iframe" id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375821/sp/237582100/embedIframeJs/uiconf_id/43066731/partner_id/2375821?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_evkwnunq&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=nl&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_oxm69lsi" width="640" height="360" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe></div>
+	</main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="https://frontend.webontwerp.ucll.be/assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="https://frontend.webontwerp.ucll.be/assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/HTML_basispg/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:51:32 GMT -->
+</html>

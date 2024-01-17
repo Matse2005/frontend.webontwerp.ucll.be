@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="nl">
+    
+<!-- Mirrored from frontend.webontwerp.ucll.be/varia/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:37:50 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../assets/styles/stijl.css">
+        <link rel="stylesheet" href="../assets/highlight/styles/vs2015.min.css">
+        <script src="../assets/highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css">
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
+        <title>Varia: usability en accessibility</title>
+    </head>
+
+    <body>
+        <header id="top">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../OPO/index.html">OPO</a></li>
+                        <li><a href="../tools/index.html">Tools</a></li>
+                        <li><a href="../web/index.html">Web?</a></li>
+                        <li><a href="../HTML_00_menu/index.html">HTML</a></li>
+                        <li><a href="../CSS_00_menu/index.html">CSS</a></li>
+                        <li><a href="../JS_00_menu/index.html">JS</a></li>
+                        <li><a href="index.html">Varia</a></li>
+                        <li><a href="../bronnen/index.html">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+<blockquote>
+			<p>
+					<span class="citaat">And not just the right thing; it’s profoundly the right thing to do, because the one argument for accessibility that doesn’t get made nearly often enough is how extraordinarily better it makes some people’s lives. How many opportunities do we have to dramatically improve people’s lives just by doing our job a little better?</span> <br>
+					&mdash;Steve Krug, Don't Make Me Think: A Common Sense Approach to Web Usability
+					
+			</p>
+		</blockquote>
+       <h1>Varia</h1>
+       <p>Ik zocht eigenlijk een betere naam voor dit deel. ‘Varia’ klinkt nogal als ‘nog wat losse, niet zo belangrijke dingen’ en dat is nu net het laatste wat ik bedoel.</p>
+       <p>Je volgt een technische opleiding rond informatica. Toch kan het geen kwaad om eens heel kort naar de minder technische kant van dit verhaal te kijken. Het resultaat van je werk zal immers gebruikt worden door <em>mensen</em>. <em>Wat kan ik als programmeur doen om mijn site of applicatie zo goed mogelijk bruikbaar en toegankelijk te maken?</em></p>
+         <section class="leerdoel">
+
+            <ul>
+                <li>Bruikbaarheid (usability);</li>
+                <li>toegankelijkheid (accessibility).</li>
+            </ul>
+        </section>
+      <h2>Bruikbaarheid</h2>
+<p><img src="../assets/access/liftknop.jpg" alt="verwarrende liftknop" class="links" width="200">Bruikbaarheid (‘Usability’) houdt zich bezig met hoe mensen (gebruikers) producten gebruiken. Bereiken ze op een eenvoudige manier hun doel? Geraken ze gefrustreerd omdat het niet duidelijk is hoe je het toestel moet bedienen? Vinden ze in een site hun weg niet? Termen die hiermee nauw verwant zijn zijn ‘User Interface’ (UI) en ‘User eXperience’ (UX).</p>
+<p>Er is duidelijk een usability probleem als er op een toestel briefjes geplakt moeten worden, omdat mensen last hebben met het bedienen van het toestel. Iedereen kent wel voorbeelden van automaten waar je eerst een tijdje moet staan kijken wat je juist moet doen.</p>
+<p>Denk even aan heel het domein van security: dat is een spanningsveld tussen bruikbaarheid en veiligheid. Je kan een applicatie heel zwaar beveiligen (moeilijke wachtwoorden, 2FA, …) maar dan wordt het vervelend om ze te gebruiken. Als je aan de andere kant teveel de klemtoon legt op eenvoud, is het best mogelijk dat je applicatie veiligheidsrisico's heeft.</p>
+<p>In dit stukje willen we je een paar kleine tips geven die je kunnen helpen om je site zo bruikbaar mogelijk te maken.</p>
+
+
+<h3>Hoe lezen gebruikers op het web?</h3>
+<p>Op de vraag “How do readers read on the web?” antwoordt Jakob Nielsen “They don't. They scan”. Nu hoop ik natuurlijk wel dat je deze cursustekst wel grondig leest en de tijd neemt om alles rustig te verwerken. Maar gemiddeld gezien is het wel zo dat mensen een website al scannend lezen.  </p>
+<p>Met ‘eye tracking’ kan men bekijken naar waar op een scherm een proefpersoon kijkt. Dat geeft dan dergelijke ‘heat maps’. Hoe roder, hoe langer proefpersonen naar dit punt op het scherm keken.</p>
+<img src="../assets/access/HotSpot_elib.jpg" alt="heat map van eye tracking software" class="blok">
+<p>We beginnen dus te lezen linksboven (rechtsboven voor Arabisch, Hebreeuws, …), kijken vooral naar titels, navigatie, begin van een alinea. Als er een foto is waarop een persoon staan, kijken we vooral naar de ogen.</p>
+<p class="opgepast">Aandachtspunt voor je eigen site: maak je site goed scanbaar. Voorzie titels, maak alinea's niet te lang, lijn dingen uit, werk met duidelijk afgelijnde blokken, …. Een aantal van deze principes vind je in <a href="../CSS_CRAP/index.html">het topic rond grafische vormgeving (‘CRAP’)</a>. </p>
+
+<h3>Conventies zijn je vriend</h3>
+<p>Een typische discussie met een student begint met een opmerking als “Ja maar, iedereen doet dat zo op sites. Kan ik niet wat origineler uit de hoek komen?”. Niets mis met originaliteit natuurlijk, maar conventies hebben zo hun voordelen. Dat ondervind je heel duidelijk als iets totaal anders is dan je gewoon bent. Je komt bvb voor het eerst in Engeland en huurt een auto. Dan heb je ongetwijfeld gemerkt dat het in het begin echt wel aanpassen is aan rijden aan de linkerkant van de baan met een auto waarvan het stuur rechts staat.</p>
+<p>Bekijk volgende screenshot van een site in het arabisch. Ik kan hier niets van lezen en het feit dat alles van rechts naar links is, is voor mij heel ongewoon. Toch herken ik heel wat dingen: bovenaan staat vermoedelijk navigatie. Ik herken titels (want groter geschreven), alinea's (want ruimte ertussen), een zoekveld (dankzij vorm en icoontje), een soort lijst aan de linkerkant, een verplicht formulierveld (rood kruisje) enz.</p>
+<img src="../assets/access/arabischeSite.png" alt="Site in het arabisch" class="blok">
+<p class="opgepast">Creatief zijn is prima. Daarbij rekening houden met conventies die maken dat gebruikers zonder problemen je site kunnen gebruiken, is dat zeker ook!</p>
+
+<h3>Navigatie</h3>
+<p>Navigatie is een belangrijk onderdeel van een site. Het laat de gebruiker zien wat er allemaal op de site te vinden is, hoe ze daar kan geraken en waar ze nu zit. Vooral dat laatste wordt vaak vergeten. Het is een kleine moeite om in de navigatie aan te geven op welke pagina je nu zit. Op deze site doe ik dit door de pagina (of rubriek) waar ik nu zit aan te geven met een oranje achtergrond. </p>
+<p>Je navigatie is gewoonlijk een <code>nav</code> element, met daarin een <code>ul</code>, daarin een aantal <code>li</code> elementen en elke <code>li</code> bevat dan een <code>a</code> met de linktekst. De pagina waarop je je nu bevindt, kan je aangeven door bij die <code>li</code> een <code>class="hier"</code> te voorzien. In CSS kan je dan de <code>a</code> elementen die in een dergelijke <code>li</code> staan anders vormgeven. Mijn CSS bevat daarvoor volgende regel:</p>
+<pre><code>header nav ul li.hier a &lbrace;
+  color: #fff;
+  background-color: var(--linkkleur);
+&rbrace;</code></pre>
+<p>Als je dit zou bekijken door de broncode van bvb deze pagina te onderzoeken, zal je merken dat er geen <code>class="hier"</code> in de HTML-code staat. Dat komt omdat ik deze klasse toevoeg via een paar regels JS. Dat doe ik – een beetje primitief – met volgende code die kijkt waar de eerste twee letters van het <code>title</code> element voorkomen in een array met alle mogelijkheden, in volgorde opgesomd:</p>
+<pre><code>let navItems = ['Ho','OP','To','We','HT','CS','JS','Va','Li'];
+let eersteTweeLettersTitle = document.title.slice(0,2);
+let i = navItems.indexOf(eersteTweeLettersTitle) + 1;
+let queryString = "header nav li:nth-child(" + i + ")";
+document.querySelector(queryString).classList.toggle("hier");</code></pre>
+<p>Zorg dat <em>links in de tekst</em> duidelijk als link herkenbaar zijn. Dat betekent bijna altijd dat een link in de tekst onderstreept moet worden, bovenop de andere kleur. Omgekeerd betekent dat ook dat je nooit dingen onderstreept die geen link zijn, zoals bvb. titels. Samengevat:</p>
+<p class="opgepast">Je navigatie geeft duidelijk aan waar ik naartoe kan en waar ik nu zit. Links moeten duidelijk herkenbaar zijn, wat betekent dat je ze onderstreept, tenzij ze door de vorm (knoppen) of plaats op het scherm (bvb. bovenaan in een donkere balk) voor iedereen als link duidelijk zijn. Onderstreep nooit titels (tenzij ze een link zijn natuurlijk). Zorg dat de linktekst duidelijk is, dus geen “klik hier”.</p>
+
+<h3>Test!</h3>
+<p>Waarschijnlijk het belangrijkste principe van usability is: test! <em>Test met echte gebruikers</em>. Ik noem dat vaak de ‘bommatest’. Vraag aan je bomma, opa, oom, … om je site eens te gebruiken. Kijk of je testpersonen ergens last mee hebben. Als je een probleem merkt, denk dan niet ‘wat voor stommeriken dat ze dat niet door hebben’, maar pas je product aan en test opnieuw.</p>
+
+<h2>Toegankelijkheid</h2>
+<p>Waar bruikbaarheid over alle gebruikers gaat, gaat toegankelijkheid (‘Accessibility’ ook wel ‘a11y’ geschreven) over hoe mensen met een handicap je site of applicatie gebruiken. Welke hinderpalen ondervindt iemand die geen muis kan bedienen, iemand die kleurenblind is, iemand met ADD, …? Voor dit stuk baseer ik mij op de richtlijnen van <a href="https://www.anysurfer.be/nl">Anysurfer</a>. Deze organisatie zet zich in voor een toegankelijker internet. Overheidswebsites zijn verplicht om toegankelijk te zijn voor iedereen. En ook voor sites voor bedrijven is de business case snel gemaakt: waarom zou je het risico lopen om heel wat potentiële klanten te verliezen omdat je site niet toegankelijk is?</p>
+<p>Toegankelijk bouwen is niet moeilijk als je er van bij het begin rekening mee houdt. Als je wacht tot je site helemaal klaar is en dan nadenkt over toegankelijkheid, kan het heel wat meer werk zijn om aanpassingen te doen om ze toegankelijk te maken. </p>
+<p>We maken hier een selectie uit <a href="https://www.anysurfer.be/nl/documentatie">de lange lijst van aanbevelingen van Anysurfer</a> van enkele eenvoudige principes.</p>
+
+<h3>Toetsenbordnavigatie</h3>
+<p>Sommige gebruikers hebben last om een muis te gebruiken. Daarom moet alle functionaliteit die de website biedt, behalve met de muis ook met het <em>toetsenbord</em> te gebruiken zijn. Dit betekent ondermeer dat alle links en formuliervelden bereikbaar zijn met de <em>tabtoets</em> en activeerbaar met de <em>entertoets</em>. </p>
+<p>Lees meer op <a href="https://www.anysurfer.be/nl/documentatie/artikels/detail/toetsenbordnavigatie">de pagina ‘Toetsenbordnavigatie’ van Anysurfer (o.a. ook hoe je in MacOS eerst een instelling moet aanpassen om dit te testen)</a>.</p>
+
+<h3>Titel</h3>
+<p>Er is maar één element verplicht in de <code>head</code> en dat is het <code>title</code> element. Daar is een goede reden voor. Niet alleen is het voor iedereen interessant om een samenvatting in enkele woorden van deze pagina te krijgen en dat in een tab van de browser te zien. Maar een blinde die met een screenreader navigeert, krijgt deze <code>title</code> als eerste voorgelezen. <a href="https://www.anysurfer.be/nl/documentatie/artikels/detail/betekenisvolle-paginatitel">Zorg dus voor een zo zinvol mogelijke titel</a>.</p>
+
+<h3>Contrast en leesbaarheid</h3>
+<p>Zorg voor voldoende contrast tussen tekst- en achtergrondkleur. Daarover hadden we het reeds in <a href="../CSS_kleuren/index.html">het topic over CSS-kleuren</a>. Test met de ‘Colour Contrast Analyser’ en houdt rekening met het feit dat nogal wat mannen een verstoord kleurenzicht hebben.</p>
+
+
+<h3>Semantische HTML</h3>
+<p>Daar hadden we het al meer dan eens over: maak je site niet alleen met <code>div</code> elementen, maar probeer zoveel mogelijk betekenis toe te voegen door gebruik te maken van <code>header</code>, <code>main</code>, <code>nav</code>, <code>footer</code>, <code>section</code> enz.</p>
+	
+
+<h3>Beweging en knipperingen</h3> 
+<p>Vermijd snelle flitsende bewegingen. <a href="https://www.anysurfer.be/nl/documentatie/artikels/detail/bewegende-onderdelen-pauzeren">Zorg ervoor dat gebruikers een filmpje dat automatisch begint ook kunnen stop zetten</a>. Als je naar de site van Servilux.be (reparatie machines) gaat, is er geen mogelijkheid om het bewegend beeld stop te zetten. Dit kan een probleem zijn voor mensen met een aandachtsproblematiek. Persoonlijk vind ik dat ontwerpers van dergelijke onzin verplicht moeten worden om een hele dag naar dit scherm te kijken, zonder de mogelijkheid om hun oogleden dicht te doen.</p>
+<p>Ik bewaarde een klein (hm, 13 MB) GIFje voor het nageslacht, voor het geval men toch beslist om deze kemel recht te zetten (maar deze openingspagina gaat wel al in deze vorm 2 jaar mee …). Deze GIF hieronder is met opzet niet pauzeerbaar (zoals ook de originele site). </p>
+<img src="../assets/access/servilux.gif" alt="bewegend beeld kan niet stilgezet worden" class="blok">
+
+  
+<h3>Taalgebruik</h3>
+<p>Zorg voor duidelijke taal, aangepast aan het doelpubliek. Geef aan in welke taal je document geschreven is m.b.v. het <code>lang</code> attribuut (dat je overal kan bijzetten, maar dat zeker bij het element <code>html</code> moet staan). Voor Nederlandstalige tekst gebruik je <code>lang="nl"</code>. Als je de foute taal instelt, wordt de tekst waarschijnlijk met een compleet onverstaanbaar accent uitgesproken.</p>
+
+    
+<h3>Tekstalternatief</h3>
+<p>Voorzie een tekstalternatief voor afbeeldingen, video's, … We hadden het in dit verband al over het <code>alt</code> attribuut, dat verplicht is bij een <code>img</code> element. Deze alternatieve tekst wordt voorgelezen door de screenreader van een bezoeker met een visuele handicap. <a href="https://www.anysurfer.be/nl/documentatie/artikels/detail/tekstalternatieven">Besteed voldoende aandacht aan een zinvolle alt-tekst en laat dit attribuut leeg als de figuur enkel decoratief is.</a></p>
+<div class="iframewrapper"><iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/dEbl5jvLKGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    </main>
+        <footer>
+            <div class="container">
+                <p>
+                    <img src="../assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2022 — Jan Van Hee
+                </p>
+                <p><a href="#top">&uarr; Naar top</a></p>
+            </div>
+        </footer>
+        <script src="../assets/js/func2.js"></script>
+    </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/varia/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:37:51 GMT -->
+</html>

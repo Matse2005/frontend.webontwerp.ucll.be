@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="nl">
+  
+<!-- Mirrored from frontend.webontwerp.ucll.be/tools/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:37:33 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/stijl.css">
+    <!--     <link rel="stylesheet" href="/assets/highlight/styles/vs2015.min.css" />
+    <script src="/assets/highlight/highlight.min.js" is:inline></script>
+    <script is:inline>
+      hljs.highlightAll();
+    </script> -->
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <title>Tools</title>
+  </head>
+
+  <body>
+    <header id="top">
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../OPO/index.html">OPO</a></li>
+            <li><a href="index.html">Tools</a></li>
+            <li><a href="../web/index.html">Web?</a></li>
+            <li><a href="../HTML_00_menu/index.html">HTML</a></li>
+            <li><a href="../CSS_00_menu/index.html">CSS</a></li>
+            <li><a href="../JS_00_menu/index.html">JS</a></li>
+            <li><a href="../varia/index.html">Varia</a></li>
+            <li><a href="../bronnen/index.html">Links</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+    <blockquote>
+      <p>
+        <span class="citaat">When I talk about evaluating technology for front-end development, I
+          like to draw a distinction between two categories of technology. On
+          the one hand, you’ve got the raw materials of the web: HTML, CSS, and
+          JavaScript. This is what users will ultimately interact with. On the
+          other hand, you’ve got all the tools and technologies that help you
+          produce the HTML, CSS, and JavaScript: pre-processors,
+          post-processors, transpilers, bundlers, and other build tools.
+          Personally, I’m much more interested and excited by the materials than
+          I am by the tools. But I think it’s right and proper that other
+          developers are excited by the tools. A good balance of both is
+          probably the healthiest mix.</span>
+        <br>
+        &mdash; Jeremy Keith
+      </p>
+    </blockquote>
+    <h1>Tools</h1>
+    <section class="leerdoel">
+      <ul>
+        <li>Browsers;</li>
+        <li>editor: Visual Studio Code;</li>
+        <li>FTP client: Filezilla;</li>
+        <li>tools om beelden te bewerken;</li>
+        <li>HTML- en CSS-validator;</li>
+        <li>performantietesten.</li>
+      </ul>
+    </section>
+    <h2>Browser(s)</h2>
+    <p>
+      De kans is groot dat het resultaat van je werk als front-end developer in
+      een browser bekeken wordt. Er zijn heel wat verschillende browsers. Een
+      belangrijk uitgangspunt van deze cursus is dat een webpagina in alle
+      browsers moet kunnen bekeken (beluisterd) worden. Door verschillen tussen
+      browsers is het mogelijk dat het er niet overal exact hetzelfde uitziet
+      (probeer maar eens een site te maken die er nog perfect uitziet in
+      Internet Explorer bvb).
+    </p>
+    <p>
+      Er is maar een beperkt aantal ‘rendering engines’, die dan gedeeld worden
+      door verschillende browsers:
+    </p>
+    <ul>
+      <li>
+        <strong>Blink</strong> (Chromium): Chrome, Edge, Opera, Brave, Vivaldi, …
+      </li>
+      <li><strong>Gecko</strong> (Quantum): Firefox</li>
+      <li><strong>Webkit</strong>: Safari, alle (!) browsers op iOS</li>
+    </ul>
+    <p class="opgepast">
+      Je zorgt ervoor dat je van elk type minstens één browser hebt, dus zeker
+      Chrome / Edge, Firefox (developer edition, zie een paar alinea's verder)
+      en Safari. Die laatste browser bestaat alleen voor MacOS, iOs en iPadOS.
+      Heb je zelf geen enkel Apple toestel, zorg dan dat je in je omgeving
+      mensen vindt met een dergelijk toestel zodat je ook daarop kan testen.
+      Kleine tip: <em>ik beschik enkel over Apple toestellen (alle mogelijke groottes)</em>, behalve mijn orgel dat windows 7 draait :-). Zorg je ervoor dat je toch
+      zeker ook test op Safari?
+    </p>
+    <p>
+      Dit wil zeggen dat een site er op recente versies van Edge en Chrome
+      meestal hetzelfde zal uitzien. Nuttig om hierbij op te merken is dat op
+      iOS (iPad, iPhone) alle browsers verplicht Webkit moeten gebruiken. Google
+      Chrome op een iPhone is dus niet gebaseerd op Chromium maar wel op Webkit.
+    </p>
+    <p>
+      <a href="https://youtu.be/W4wWdmfOibY">De geschiedenis leert ons dat browsers komen en gaan</a>. Wat de geschiedenis ons ook leert is dat browsermonopolies meestal geen
+      goede zaak zijn. Zo waren ooit eerst Netscape en later Internet Explorer
+      de overheersende browser. Veel drive om te vernieuwen was er niet voor
+      zo'n monopolist.
+    </p>
+    <p>
+      Jammer genoeg zijn we opnieuw op weg naar een monopolie (moet ik de naam
+      noemen?).
+    </p>
+    <figure>
+      <img src="../assets/tools/whatsapp-chrome-error.png" alt="melding: werkt enkel in google chrome">
+    </figure>
+    <p>
+      Voor dit opleidingsonderdeel zullen we meestal <a href="https://www.mozilla.org/en-US/firefox/developer/">Firefox Developer Edition</a> gebruiken. Dat is een versie van Firefox, specifiek gericht op developers.
+      Deze browser bevat de laatste experimentele ontwikkelingen. De developer tools
+      zijn vooral voor CSS en design zeer goed. Vanzelfsprekend zijn ook de developer
+      tools van andere browsers zeer goed, maar we moeten ergens een keuze maken
+      en er is al genoeg Chrome in deze wereld … Als ik het dus in de les heb over
+      de ‘responsive design mode’ in de developer tools, dan toon ik waar je dit
+      vindt in Firefox Developer Edition. Gebruik gerust andere tools, maar zoek
+      dan zelf uit wat waar staat.
+    </p>
+    <figure>
+      <img src="../assets/tools/FirefoxDevEd.png" alt="Firefox Developer Edition">
+    </figure>
+    <p class="opgepast">
+      <strong>Test in alle mogelijke browsers!</strong> Het argument ‘bij mij werkt
+      het wel zoals ik het bedoelde’ maakt <span class="doorstreept">weinig</span> geen indruk.
+    </p>
+    <figure>
+      <img src="../assets/tools/itworksonmymachine.jpg" alt="it works on my machine meme">
+    </figure>
+    <p></p>
+
+    <h2>Editor, IDE</h2>
+    <p>
+      Code moet ook ingetypt worden. Dat doe je liefst in een programma dat je
+      zoveel mogelijk helpt met HTML, CSS en Javascript. Een dergelijk programma
+      noemen we ‘editor’. Als het gaat over een volledige ontwikkelomgeving (bvb
+      voor Java ontwikkeling) spreken we eerder over een <abbr title="Integrated Development Environment">‘IDE’</abbr>.
+    </p>
+    <p>
+      Developers hebben vaak nogal een sterke mening over welke editor of IDE de
+      beste is. Dat is vanzelfsprekend heel subjectief. Geen enkele editor is in
+      alles de beste. Net zoals browsers komen en gaan editors ook. Enkele jaren
+      geleden was Brackets of Atom hip, nu is die rol eerder voor Visual Studio
+      Code weggelegd.
+    </p>
+
+    <p class="opgepast">
+      De keuze die we nu voor dit OPO maken is <a href="https://code.visualstudio.com/">Visual Studio Code</a>, een open source editor gemaakt door Microsoft. Het is gratis en bestaat
+      voor de meest courante besturingssystemen. Installeer die nu.
+    </p>
+    <figure><img src="../assets/tools/VSCode.png" alt=""></figure>
+    <p>
+      Het zal me persoonlijk worst wezen welke editor of IDE je gebruikt om je
+      code te typen. Als ik (de code van) een site bekijk, kan ik meestal niet
+      zien in welk programma die code ingevoerd is. Wat me wel belangrijk lijkt
+      is dit: zorg dat je de editor die jij gebruikt, grondig leert kennen.
+      Welke shortcuts zijn handig? Hoe kan je bepaalde dingen automatiseren of
+      versnellen?
+    </p>
+    <p>
+      Als je naar een volledige ontwikkelomgeving gaat (voor mensen die zowel
+      front-end als back-end doen, met een lelijk woord ‘full stack developers’
+      genoemd), dan is IntelliJ de meest gebruikte IDE op dit moment. Dit is
+      dure software, maar studenten krijgen een gratis licentie.
+    </p>
+    <p>
+      Kevin Powell (deze naam zal je geregeld zien opduiken in de deze tekst)
+      maakte een overzichtelijk filmpje over Visual Studio Code. Bekijk het
+      eens. Je zal misschien niet alles direct kunnen plaatsen, maar als je
+      binnen enkele pagina's begint te coderen herinner je je misschien wel een
+      paar van de dingen die aan bod komen. Warm aanbevolen filmpje!
+    </p>
+    <div class="iframewrapper">
+      <iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/EUJlVYggR1Y?si=15xBwqXVcocLXHds" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <h2>FTP</h2>
+    <p>Code geschreven. Lokaal getest op alle mogelijke browsers.</p>
+    <p>
+      Hoog tijd dus om je site online te zetten, zodat die daar grondig kan
+      getest worden (bvb op alle mogelijke tablets en smartphones) en dan in
+      productie kan genomen worden.
+    </p>
+    <p>
+      Er bestaan verschillende manieren om dit te doen. De traditionele manier
+      is gebruik maken van <abbr title="File Transfer Protocol">FTP</abbr>.
+      Hiervoor hebben we een stukje software nodig dat bekend staat als ‘FTP
+      client’.
+    </p>
+    <p class="opgepast">
+      Uit de lijst van enkele tientallen FTP clients, kozen we <a href="https://filezilla-project.org/">Filezilla</a>. <em>Wacht nog even met de installatie van deze FTP client</em>. We
+      komen hierop terug als we onze eerste HTML pagina maken en online zetten
+      op onze didactische server.
+    </p>
+    <figure><img src="../assets/tools/Filezilla.png" alt=""></figure>
+
+    <h2>Beeldbewerking</h2>
+    <p>
+      Het grootste deel van de bandbreedte die nodig is om een site van een
+      server te laden wordt ingenomen door afbeeldingen. “Een afbeelding is
+      duizend woorden waard” zegt men soms. In feite is de factor nog veel
+      groter. De volledige bijbel bevat ongeveer 800.000 woorden. Die passen op
+      ongeveer 4 MB. Eén foto genomen met een gewone smartphone is soms als
+      groter dan 4 MB!
+    </p>
+    <p>
+      HTML, CSS en JS zijn allemaal tekst. Zeker HTML en CSS zijn meestal kleine
+      bestanden. Met JS gaat het soms mis als developers zich laten gaan en heel
+      wat JS-frameworks gebruiken zonder stil te staan bij performantie.
+    </p>
+    <p>
+      Het loont dus de moeite om even stil te staan bij afbeeldingen. Meestal
+      gaat het hier over <em>een afweging tussen bestandsgrootte en kwaliteit</em>. Aan de ene kant grote foto's met veel pixels en dus jammer genoeg ook
+      een grote bestandsgrootte. Aan het andere uiterste zwaar gecomprimeerde
+      foto's met een kleine resolutie. Kleine bestandsgrootte ten koste van de
+      kwaliteit. We zoeken hier dus naar een zo goed mogelijk compromis.
+    </p>
+    <p>
+      Op zijn minst moet je als front-end developer toch een ruw idee hebben van
+      hoe je een afbeelding kan schalen (‘scale’ of ’resize’), bijsnijden
+      (‘crop’) en bewaren in het meest geschikte formaat. Ook hiervoor bestaan
+      heel wat tools, zowel downloadbaar als online.
+    </p>
+
+    <h3>Desktopsoftware</h3>
+    <p>
+      Bij de applicatiesoftware denk je dan aan dingen zoals Adobe Photoshop
+      (dure software), <a href="https://www.gimp.org/">Gimp (gratis en open source)</a>, Affinity Photos, …
+    </p>
+    <figure>
+      <img src="../assets/tools/gimp.jpg" alt="Gnu Image Manipulation Program">
+    </figure>
+
+    <h3>Online tools</h3>
+    <p>
+      Online tools komen en gaan. Veel van deze tools hebben een gratis en een
+      betalende versie. Wat moet je zeker kunnen in een online tool:
+    </p>
+    <ul>
+      <li>
+        ‘Crop’: foto bijsnijden. Je kan nooit van een slechte foto een goede
+        maken, maar door onnodige stukken van een foto weg te snijden kan je de
+        compositie vaak wel verbeteren.
+      </li>
+      <li>
+        ‘Resize’: foto schalen. Zet geen foto van 5000 op 4000 pixels op een
+        pagina die maximaal 1000 pixels breed kan worden. Het aantal pixels naar
+        beneden halen geef meestal een spectaculaire verbetering van de
+        downloadsnelheid.
+      </li>
+      <li>
+        ‘Adjust’: contrast, belichting bijregelen. Maak een iets te donkere foto
+        wat lichter bvb.
+      </li>
+      <li>
+        En tenslotte, als je klaar bent: het resultaat bewaren als jpeg (foto's)
+        of png (tekeningen, logo's). Er zijn ondertussen nieuwe
+        bestandsformaten, maar dat leidt ons te ver. Hou het voor dit OPO maar
+        bij deze twee. Bij jpeg kan je de kwaliteit kiezen. Ergens is er een
+        ‘sweet spot’ waar de kwaliteit nog goed is, maar de bestandsgrootte
+        voldoende klein. Je moet dan soms enkele instellingen proberen, maar het
+        resultaat is vaak wel de moeite waard.
+      </li>
+    </ul>
+    <p>
+      Een online tool die gemakkelijk te gebruiken is voor deze basisbewerkingen
+      is <a href="https://www.fotor.com/">fotor.com</a>. De gratis versie is
+      voldoende. Volgend filmpje toont in een halve minuut hoe je een foto
+      bijsnijdt (‘crop’). Een foto bijsnijden of een effect toepassen op een
+      foto is gelijkaardig. Je vindt ongetwijfeld meer info over deze
+      bewerkingen in fotor.com op youtube.
+    </p>
+
+    <div class="iframewrapper">
+      <iframe class="preview-iframe" width="560" height="315" src="https://www.youtube.com/embed/A7lfY1JQcjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <h2>Validatoren</h2>
+    <p>
+      Een eerste stap op weg naar een goede website is foutloze code. Het is
+      zeker niet voldoende, maar het kan geen kwaad om na te kijken of de HTML
+      en CSS die je geschreven hebt, wel voldoet aan de standaarden. Soms geeft
+      foute HTML- / CSS-code toch het juiste resultaat in de browser, maar soms
+      ook niet en loopt heel de lay-out fout. Een goede eigenschap van HTML en
+      CSS is dat ze fouttolerant zijn. Een browser zal zijn best doen om foute
+      code toch zo goed mogelijk te interpreteren. Fout geschreven CSS-regels
+      worden gewoon overgeslagen, zonder dat de browser crasht. We gebruiken
+      volgende online tools:
+    </p>
+    <ul>
+      <li>
+        <a href="https://html5.validator.nu/">https://html5.validator.nu</a>:
+        validatie van HTML bestanden;
+      </li>
+      <li>
+        <a href="https://jigsaw.w3.org/css-validator/">https://jigsaw.w3.org/css-validator/</a>: idem voor CSS.
+      </li>
+    </ul>
+    <p class="opgepast">
+      Foutloze code schrijven is een basisvereiste voor dit OPO (trouwens voor
+      ongeveer elk OPO uit je opleiding!). Het is niet moeilijk om je HTML en
+      CSS code voor te leggen aan een validator, die in het beste scenario
+      antwoordt met een groen kadertje als teken dat je code geen syntaxisfouten
+      bevat. In een iets minder optimaal geval krijg je een rood kader, met
+      hopelijk een voldoende duidelijke foutmelding. Daar kan je dan mee aan de
+      slag om de fouten eruit te halen. We komen hier later zeker op terug.
+    </p>
+
+    <h2>Performantietesten</h2>
+    <p>
+      Een handige online tool is <a href="https://webpagetest.org/">webpagetest.org</a>. Die bekijkt de performantie van een pagina. Hoe snel laadt de pagina?
+      Hoeveel seconden duurt het vooraleer er iets getekend wordt op het scherm?
+      Hoelang tot de volledige pagina klaar is? Hoeveel kB (MB?) is de pagina
+      groot? Hoe zit het met de compressie van de afbeeldingen? Zijn er
+      processen die op andere moeten wachten?
+    </p>
+    <figure>
+      <img src="../assets/tools/webpagetest.png" alt="Webpagetest om performantie te meten.">
+    </figure>
+    <p>
+      De kost van de pagina (in dollartekentjes …) geeft een goed idee hoe snel
+      de pagina laadt. Ook het submenu ‘Image Analysis’ is handig om de
+      compressie en grootte van je afbeeldingen te evalueren.
+    </p>
+  </main>
+    <footer>
+      <div class="container">
+        <p>
+          <img src="../assets/Logo_UCLL_negatief_RGB.png" width="100" height="53" alt="Logo UCLL Hogeschool"><br>&copy; 2023 — Jan Van Hee
+        </p>
+        <p><a href="#top">&uarr; Naar top</a></p>
+      </div>
+    </footer>
+    <script src="../assets/js/func2.js"></script>
+  </body>
+
+<!-- Mirrored from frontend.webontwerp.ucll.be/tools/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 08:37:37 GMT -->
+</html>
